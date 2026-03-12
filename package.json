@@ -17,8 +17,5 @@
     "astro": "^6.0.3",
     "serve": "^14.2.6",
     "tailwindcss": "^4.2.1"
-  },
-  "devDependencies": {
-    "puppeteer-core": "^24.39.0"
   }
 }
