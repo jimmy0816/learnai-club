@@ -1,0 +1,66 @@
+[
+  {
+    "title": "OpenClaw 自動工作系統",
+    "description": "AI 助理 24/7 自動執行任務、寫內容、管社群、排程發布。每天處理 50+ 自動化任務。",
+    "tools": ["Claude API", "Node.js", "Telegram Bot", "Cron"],
+    "pitfall": "Context window 爆了三次。學會了壓縮策略和記憶分層，現在穩定運轉。",
+    "status": "跑中",
+    "featured": true
+  },
+  {
+    "title": "Polymarket 交易 Agent",
+    "description": "AI 自動掃描 600+ 預測市場、分析邊際價值、下單、風控。每 2 小時跑一次。",
+    "tools": ["Polymarket CLOB", "CoinGecko", "Polygon", "ethers.js"],
+    "pitfall": "賣單精度問題導致每筆留 1 share dust。改查鏈上餘額後解決。",
+    "status": "跑中",
+    "featured": true
+  },
+  {
+    "title": "多帳號社群自動化",
+    "description": "Threads + IG 自動產文、AI 審核、排程發布。管理 3 個帳號，每週 20+ 篇。",
+    "tools": ["Threads API", "Instagram API", "Puppeteer", "PM2"],
+    "pitfall": "Threads API 500 字上限 + 只能一個 topic tag。串文必須一次送，不能逐則 reply。",
+    "status": "跑中",
+    "featured": true
+  },
+  {
+    "title": "mrgeo.ai — GEO 顧問官網",
+    "description": "AI 搜尋引擎品牌能見度顧問網站。Generative Engine Optimization 專業定位。",
+    "tools": ["Astro", "Tailwind", "Cloudflare"],
+    "pitfall": "SEO 和 GEO 的受眾完全不同，內容策略要分開打。",
+    "status": "上架中",
+    "featured": false
+  },
+  {
+    "title": "hellokids.tw — 親子部落格",
+    "description": "Laravel 全端親子內容網站，前後台分離，Editorial × Wabi-sabi 設計風格。",
+    "tools": ["Laravel 11", "Blade", "Tailwind", "Vite"],
+    "pitfall": "CSS 前後台混在一起導致樣式衝突。拆成三支 CSS 後解決。",
+    "status": "跑中",
+    "featured": false
+  },
+  {
+    "title": "AI 塔羅占卜 App",
+    "description": "AI 解牌 + LemonSqueezy 收費。台灣不能用 Stripe，改串 LemonSqueezy。",
+    "tools": ["Node.js", "Claude API", "LemonSqueezy", "Cloudflare"],
+    "pitfall": "Stripe 不支援台灣個人收款，繞了一圈才找到 LemonSqueezy。",
+    "status": "上架中",
+    "featured": false
+  },
+  {
+    "title": "即時 Dashboard 群",
+    "description": "基金面板、內容審核頁、週報 Viewer。所有系統的視覺化控制台。",
+    "tools": ["Express", "Chart.js", "PM2", "Cloudflare Tunnel"],
+    "pitfall": "Dashboard 讀了三個不同數據源導致數字打架。統一成 journal.json 單一來源後解決。",
+    "status": "跑中",
+    "featured": true
+  },
+  {
+    "title": "虛擬明星流程",
+    "description": "ComfyUI + AI 生成虛擬網紅角色，從人設到內容的完整 pipeline。",
+    "tools": ["ComfyUI", "Stable Diffusion", "Replicate"],
+    "pitfall": "風格一致性是最大挑戰。需要固定 seed + LoRA + 嚴格 prompt template。",
+    "status": "實驗中",
+    "featured": false
+  }
+]

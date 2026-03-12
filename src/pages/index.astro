@@ -1,17 +1,51 @@
 ---
+import Layout from '../layouts/Layout.astro';
+import WorkCard from '../components/WorkCard.astro';
+import works from '../data/works.json';
 
+const featured = works.filter(w => w.featured);
 ---
+<Layout title="首頁">
+  <!-- Hero -->
+  <section class="max-w-5xl mx-auto px-4 pt-20 pb-16">
+    <p class="text-sm text-[var(--accent)] font-medium mb-4">👋 我是 Jimmy</p>
+    <h1 class="text-3xl md:text-5xl font-bold leading-tight mb-6">
+      CTO，用 AI 打造<br/>
+      <span class="text-[var(--accent)]">個人作業系統</span>
+    </h1>
+    <p class="text-lg text-[var(--muted)] max-w-2xl mb-8 leading-relaxed">
+      不是教你理論，是給你看我每天實際在跑的東西。<br/>
+      自動化工作流、交易 Agent、內容矩陣、管理面板——全部自己做，全部真的在用。
+    </p>
+    <div class="flex gap-4">
+      <a href="/works" class="inline-block bg-[var(--accent)] text-black font-semibold px-6 py-2.5 rounded-lg hover:opacity-90 transition no-underline hover:no-underline">
+        看我做的東西 →
+      </a>
+      <a href="/courses" class="inline-block border border-[var(--border)] text-[var(--muted)] font-medium px-6 py-2.5 rounded-lg hover:border-[var(--accent)] hover:text-[var(--text)] transition no-underline hover:no-underline">
+        加入等候名單
+      </a>
+    </div>
+  </section>
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+  <!-- Featured Works -->
+  <section class="max-w-5xl mx-auto px-4 pb-20">
+    <h2 class="text-xl font-bold mb-6">精選作品</h2>
+    <div class="grid md:grid-cols-2 gap-4">
+      {featured.map(w => <WorkCard {...w} />)}
+    </div>
+    <div class="mt-6 text-center">
+      <a href="/works" class="text-sm text-[var(--accent)]">查看全部作品 →</a>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="max-w-5xl mx-auto px-4 pb-20">
+    <div class="rounded-lg border border-[var(--border)] bg-[var(--card)] p-8 text-center">
+      <h2 class="text-xl font-bold mb-3">想學怎麼做？</h2>
+      <p class="text-[var(--muted)] mb-6">我正在規劃實戰工作坊，教你從零建立 AI 自動化工作流。</p>
+      <a href="/courses" class="inline-block bg-[var(--accent)] text-black font-semibold px-6 py-2.5 rounded-lg hover:opacity-90 transition no-underline hover:no-underline">
+        留下 Email，搶先通知 →
+      </a>
+    </div>
+  </section>
+</Layout>

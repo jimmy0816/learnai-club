@@ -1,0 +1,14 @@
+---
+import Layout from '../layouts/Layout.astro';
+import WorkCard from '../components/WorkCard.astro';
+import works from '../data/works.json';
+---
+<Layout title="成果集">
+  <section class="max-w-5xl mx-auto px-4 pt-12 pb-20">
+    <h1 class="text-3xl font-bold mb-3">成果集</h1>
+    <p class="text-[var(--muted)] mb-10">這些不是 demo，是每天在跑的系統。每個都踩過坑，每個都有故事。</p>
+    <div class="grid md:grid-cols-2 gap-4">
+      {works.map(w => <WorkCard {...w} />)}
+    </div>
+  </section>
+</Layout>

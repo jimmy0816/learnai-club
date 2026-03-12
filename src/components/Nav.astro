@@ -1,0 +1,53 @@
+---
+const links = [
+  { href: '/', label: '首頁' },
+  { href: '/works', label: '成果集' },
+  { href: '/blog', label: 'Blog' },
+  { href: '/courses', label: '開課' },
+  { href: '/about', label: '關於' },
+];
+const current = Astro.url.pathname;
+---
+<nav class="sticky top-0 z-50 border-b border-[var(--border)] bg-[var(--bg)]/90 backdrop-blur-md">
+  <div class="max-w-5xl mx-auto px-4 h-14 flex items-center justify-between">
+    <a href="/" class="text-lg font-bold text-[var(--accent)] no-underline hover:no-underline">
+      learnai<span class="text-[var(--text)]">.club</span>
+    </a>
+    <!-- Desktop -->
+    <div class="hidden md:flex gap-6">
+      {links.map(l => (
+        <a href={l.href}
+           class:list={['text-sm font-medium no-underline transition-colors',
+             current === l.href || (l.href !== '/' && current.startsWith(l.href))
+               ? 'text-[var(--accent)]'
+               : 'text-[var(--muted)] hover:text-[var(--text)]'
+           ]}>
+          {l.label}
+        </a>
+      ))}
+    </div>
+    <!-- Mobile hamburger -->
+    <button id="menu-btn" class="md:hidden text-[var(--muted)] hover:text-[var(--text)]" aria-label="選單">
+      <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M4 6h16M4 12h16M4 18h16"/>
+      </svg>
+    </button>
+  </div>
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="hidden md:hidden border-t border-[var(--border)] bg-[var(--bg)]">
+    {links.map(l => (
+      <a href={l.href}
+         class:list={['block px-4 py-3 text-sm font-medium border-b border-[var(--border)] no-underline',
+           current === l.href ? 'text-[var(--accent)]' : 'text-[var(--muted)]'
+         ]}>
+        {l.label}
+      </a>
+    ))}
+  </div>
+</nav>
+
+<script>
+  document.getElementById('menu-btn')?.addEventListener('click', () => {
+    document.getElementById('mobile-menu')?.classList.toggle('hidden');
+  });
+</script>

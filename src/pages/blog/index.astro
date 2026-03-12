@@ -1,0 +1,39 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const postModules = import.meta.glob('../../content/blog/*.mdx', { eager: true }) as Record<string, any>;
+const posts = Object.entries(postModules)
+  .map(([file, mod]) => ({
+    slug: file.split('/').pop()!.replace(/\.mdx?$/, ''),
+    ...mod.frontmatter,
+  }))
+  .filter(p => !p.draft)
+  .sort((a, b) => new Date(b.date).valueOf() - new Date(a.date).valueOf());
+---
+<Layout title="Blog">
+  <section class="max-w-3xl mx-auto px-4 pt-12 pb-20">
+    <h1 class="text-3xl font-bold mb-3">Blog / 踩坑筆記</h1>
+    <p class="text-[var(--muted)] mb-10">每篇 300-500 字，真實踩坑紀錄。沒有廢話，只有教訓。</p>
+
+    <div class="space-y-6">
+      {posts.map(post => (
+        <a href={`/blog/${post.slug}`} class="block rounded-lg border border-[var(--border)] bg-[var(--card)] p-5 hover:border-[var(--accent)]/40 transition-colors no-underline group">
+          <div class="flex items-center gap-3 mb-2">
+            <time class="text-xs text-[var(--muted)]">
+              {new Date(post.date).toLocaleDateString('zh-TW')}
+            </time>
+            {post.tags?.map((tag: string) => (
+              <span class="text-xs bg-[var(--accent-dim)] text-[var(--accent)] px-2 py-0.5 rounded">{tag}</span>
+            ))}
+          </div>
+          <h2 class="text-lg font-semibold text-[var(--text)] group-hover:text-[var(--accent)] transition-colors">{post.title}</h2>
+          <p class="text-sm text-[var(--muted)] mt-1">{post.description}</p>
+        </a>
+      ))}
+    </div>
+
+    {posts.length === 0 && (
+      <p class="text-[var(--muted)] text-center py-12">還沒有文章，很快就來。</p>
+    )}
+  </section>
+</Layout>

@@ -1,0 +1,60 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+<Layout title="開課 / 顧問">
+  <section class="max-w-3xl mx-auto px-4 pt-12 pb-20">
+    <h1 class="text-3xl font-bold mb-3">開課 / 顧問</h1>
+    <p class="text-[var(--muted)] mb-10 leading-relaxed">
+      我正在規劃 AI 實戰工作坊——不是教你用 ChatGPT 寫文案，<br/>
+      是教你怎麼用 AI 建一整套自動化系統。
+    </p>
+
+    <!-- What you'll learn -->
+    <div class="rounded-lg border border-[var(--border)] bg-[var(--card)] p-6 mb-8">
+      <h2 class="text-lg font-bold mb-4">你會學到的</h2>
+      <ul class="space-y-3 text-[var(--muted)]">
+        <li class="flex gap-3"><span class="text-[var(--accent)]">⚡</span> 從零架設 AI 自動工作系統（真的跑起來的那種）</li>
+        <li class="flex gap-3"><span class="text-[var(--accent)]">⚡</span> 用 AI Agent 管理社群帳號、自動產文、排程發布</li>
+        <li class="flex gap-3"><span class="text-[var(--accent)]">⚡</span> 建立即時 Dashboard 監控所有系統狀態</li>
+        <li class="flex gap-3"><span class="text-[var(--accent)]">⚡</span> 每一步的踩坑經驗和解法（這個最值錢）</li>
+      </ul>
+    </div>
+
+    <!-- Email form -->
+    <div class="rounded-lg border border-[var(--accent)]/30 bg-[var(--accent-dim)] p-6">
+      <h2 class="text-lg font-bold mb-2">搶先通知</h2>
+      <p class="text-sm text-[var(--muted)] mb-4">留下 Email，開課第一時間通知你。不會寄垃圾信，保證。</p>
+      <form action="#" method="POST" class="flex flex-col sm:flex-row gap-3">
+        <input
+          type="email"
+          name="email"
+          required
+          placeholder="your@email.com"
+          class="flex-1 px-4 py-2.5 rounded-lg bg-[var(--bg)] border border-[var(--border)] text-[var(--text)] placeholder:text-[var(--muted)] focus:outline-none focus:border-[var(--accent)]"
+        />
+        <button type="submit" class="bg-[var(--accent)] text-black font-semibold px-6 py-2.5 rounded-lg hover:opacity-90 transition cursor-pointer">
+          我要搶先報名
+        </button>
+      </form>
+    </div>
+
+    <!-- FAQ -->
+    <div class="mt-12">
+      <h2 class="text-lg font-bold mb-4">常見問題</h2>
+      <div class="space-y-4">
+        <div>
+          <h3 class="font-medium text-[var(--text)]">需要會寫程式嗎？</h3>
+          <p class="text-sm text-[var(--muted)] mt-1">有基礎最好（會用 Terminal、知道 API 是什麼），但不需要是工程師。</p>
+        </div>
+        <div>
+          <h3 class="font-medium text-[var(--text)]">什麼時候開課？</h3>
+          <p class="text-sm text-[var(--muted)] mt-1">預計 2026 Q3。先收名單，人數夠了就開。</p>
+        </div>
+        <div>
+          <h3 class="font-medium text-[var(--text)]">跟其他 AI 課程有什麼不同？</h3>
+          <p class="text-sm text-[var(--muted)] mt-1">這裡教的每一套系統，我自己每天都在用。不是 demo，是實戰。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
