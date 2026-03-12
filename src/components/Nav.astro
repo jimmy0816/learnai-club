@@ -8,18 +8,18 @@ const links = [
 ];
 const current = Astro.url.pathname;
 ---
-<nav class="sticky top-0 z-50 border-b border-[var(--border)] bg-[var(--bg)]/90 backdrop-blur-md">
-  <div class="max-w-5xl mx-auto px-4 h-14 flex items-center justify-between">
-    <a href="/" class="text-lg font-bold text-[var(--accent)] no-underline hover:no-underline">
+<nav id="main-nav" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 nav-transparent">
+  <div class="max-w-7xl mx-auto px-6 md:px-12 h-16 flex items-center justify-between">
+    <a href="/" class="text-xl font-bold text-[var(--accent)] hover:text-[var(--accent-hover)] transition-colors">
       learnai<span class="text-[var(--text)]">.club</span>
     </a>
     <!-- Desktop -->
-    <div class="hidden md:flex gap-6">
+    <div class="hidden md:flex gap-8">
       {links.map(l => (
         <a href={l.href}
-           class:list={['text-sm font-medium no-underline transition-colors',
+           class:list={['text-sm font-medium transition-colors',
              current === l.href || (l.href !== '/' && current.startsWith(l.href))
-               ? 'text-[var(--accent)]'
+               ? 'text-[var(--text)]'
                : 'text-[var(--muted)] hover:text-[var(--text)]'
            ]}>
           {l.label}
@@ -34,11 +34,11 @@ const current = Astro.url.pathname;
     </button>
   </div>
   <!-- Mobile menu -->
-  <div id="mobile-menu" class="hidden md:hidden border-t border-[var(--border)] bg-[var(--bg)]">
+  <div id="mobile-menu" class="hidden md:hidden bg-[var(--bg)]/95 backdrop-blur-md">
     {links.map(l => (
       <a href={l.href}
-         class:list={['block px-4 py-3 text-sm font-medium border-b border-[var(--border)] no-underline',
-           current === l.href ? 'text-[var(--accent)]' : 'text-[var(--muted)]'
+         class:list={['block px-6 py-4 text-sm font-medium border-b border-[var(--border)]',
+           current === l.href ? 'text-[var(--text)]' : 'text-[var(--muted)]'
          ]}>
         {l.label}
       </a>
@@ -47,7 +47,23 @@ const current = Astro.url.pathname;
 </nav>
 
 <script>
-  document.getElementById('menu-btn')?.addEventListener('click', () => {
-    document.getElementById('mobile-menu')?.classList.toggle('hidden');
+  const nav = document.getElementById('main-nav');
+  const menuBtn = document.getElementById('menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  // Scroll effect: transparent -> solid
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+      nav?.classList.remove('nav-transparent');
+      nav?.classList.add('nav-solid');
+    } else {
+      nav?.classList.remove('nav-solid');
+      nav?.classList.add('nav-transparent');
+    }
+  });
+
+  // Mobile menu toggle
+  menuBtn?.addEventListener('click', () => {
+    mobileMenu?.classList.toggle('hidden');
   });
 </script>

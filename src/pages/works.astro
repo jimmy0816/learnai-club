@@ -2,13 +2,58 @@
 import Layout from '../layouts/Layout.astro';
 import WorkCard from '../components/WorkCard.astro';
 import works from '../data/works.json';
+
+// 分類作品
+const running = works.filter(w => w.status === '跑中');
+const launched = works.filter(w => w.status === '上架中');
+const experimental = works.filter(w => w.status === '實驗中' || w.status === '規劃中');
 ---
 <Layout title="成果集">
-  <section class="max-w-5xl mx-auto px-4 pt-12 pb-20">
-    <h1 class="text-3xl font-bold mb-3">成果集</h1>
-    <p class="text-[var(--muted)] mb-10">這些不是 demo，是每天在跑的系統。每個都踩過坑，每個都有故事。</p>
-    <div class="grid md:grid-cols-2 gap-4">
-      {works.map(w => <WorkCard {...w} />)}
+  <!-- Hero section -->
+  <section class="relative py-20 px-6 md:px-12">
+    <div class="max-w-7xl mx-auto">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">成果集</h1>
+      <p class="text-xl text-[var(--muted)] max-w-2xl">
+        這些不是 demo，是每天在跑的系統。每個都踩過坑，每個都有故事。
+      </p>
     </div>
   </section>
+
+  <!-- Netflix-style rows by status -->
+  <div class="pb-20 space-y-10">
+    <!-- 🟢 跑中 -->
+    <section class="px-6 md:px-12">
+      <h2 class="text-xl md:text-2xl font-bold text-[var(--text)] mb-4 flex items-center gap-2">
+        <span class="w-3 h-3 rounded-full bg-green-500"></span>
+        正在運行
+      </h2>
+      <div class="netflix-row">
+        {running.map(w => <WorkCard {...w} size="large" />)}
+      </div>
+    </section>
+
+    <!-- 🔵 上架中 -->
+    <section class="px-6 md:px-12">
+      <h2 class="text-xl md:text-2xl font-bold text-[var(--text)] mb-4 flex items-center gap-2">
+        <span class="w-3 h-3 rounded-full bg-blue-500"></span>
+        已上架
+      </h2>
+      <div class="netflix-row">
+        {launched.map(w => <WorkCard {...w} />)}
+      </div>
+    </section>
+
+    <!-- 🟡 實驗中 -->
+    {experimental.length > 0 && (
+      <section class="px-6 md:px-12">
+        <h2 class="text-xl md:text-2xl font-bold text-[var(--text)] mb-4 flex items-center gap-2">
+          <span class="w-3 h-3 rounded-full bg-yellow-500"></span>
+          實驗中
+        </h2>
+        <div class="netflix-row">
+          {experimental.map(w => <WorkCard {...w} />)}
+        </div>
+      </section>
+    )}
+  </div>
 </Layout>
