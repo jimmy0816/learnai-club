@@ -5,7 +5,8 @@
     "tools": ["Claude API", "Node.js", "Telegram Bot", "Cron"],
     "pitfall": "Context window 爆了三次。學會了壓縮策略和記憶分層，現在穩定運轉。",
     "status": "跑中",
-    "featured": true
+    "featured": true,
+    "poster": "/posters/openclaw.png"
   },
   {
     "title": "Polymarket 交易 Agent",
@@ -13,7 +14,8 @@
     "tools": ["Polymarket CLOB", "CoinGecko", "Polygon", "ethers.js"],
     "pitfall": "賣單精度問題導致每筆留 1 share dust。改查鏈上餘額後解決。",
     "status": "跑中",
-    "featured": true
+    "featured": true,
+    "poster": "/posters/polymarket.png"
   },
   {
     "title": "多帳號社群自動化",
@@ -21,7 +23,8 @@
     "tools": ["Threads API", "Instagram API", "Puppeteer", "PM2"],
     "pitfall": "Threads API 500 字上限 + 只能一個 topic tag。串文必須一次送，不能逐則 reply。",
     "status": "跑中",
-    "featured": true
+    "featured": true,
+    "poster": "/posters/social.png"
   },
   {
     "title": "mrgeo.ai — GEO 顧問官網",
@@ -29,7 +32,8 @@
     "tools": ["Astro", "Tailwind", "Cloudflare"],
     "pitfall": "SEO 和 GEO 的受眾完全不同，內容策略要分開打。",
     "status": "上架中",
-    "featured": false
+    "featured": false,
+    "poster": "/posters/mrgeo.png"
   },
   {
     "title": "hellokids.tw — 親子部落格",
@@ -37,7 +41,8 @@
     "tools": ["Laravel 11", "Blade", "Tailwind", "Vite"],
     "pitfall": "CSS 前後台混在一起導致樣式衝突。拆成三支 CSS 後解決。",
     "status": "跑中",
-    "featured": false
+    "featured": false,
+    "poster": "/posters/hellokids.png"
   },
   {
     "title": "AI 塔羅占卜 App",
@@ -45,7 +50,8 @@
     "tools": ["Node.js", "Claude API", "LemonSqueezy", "Cloudflare"],
     "pitfall": "Stripe 不支援台灣個人收款，繞了一圈才找到 LemonSqueezy。",
     "status": "上架中",
-    "featured": false
+    "featured": false,
+    "poster": "/posters/tarot.png"
   },
   {
     "title": "即時 Dashboard 群",
@@ -53,7 +59,8 @@
     "tools": ["Express", "Chart.js", "PM2", "Cloudflare Tunnel"],
     "pitfall": "Dashboard 讀了三個不同數據源導致數字打架。統一成 journal.json 單一來源後解決。",
     "status": "跑中",
-    "featured": true
+    "featured": true,
+    "poster": "/posters/dashboard.png"
   },
   {
     "title": "虛擬明星流程",
@@ -61,6 +68,7 @@
     "tools": ["ComfyUI", "Stable Diffusion", "Replicate"],
     "pitfall": "風格一致性是最大挑戰。需要固定 seed + LoRA + 嚴格 prompt template。",
     "status": "實驗中",
-    "featured": false
+    "featured": false,
+    "poster": "/posters/virtual-idol.png"
   }
 ]

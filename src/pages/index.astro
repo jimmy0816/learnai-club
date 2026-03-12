@@ -19,85 +19,96 @@ const branding = works.filter(w =>
   w.title.includes('hellokids') ||
   w.title.includes('虛擬')
 );
+
+// Hero featured work (用第一個 featured)
+const heroWork = featured[0];
 ---
 <Layout title="首頁">
-  <!-- Hero Banner - Netflix Style -->
-  <section class="relative min-h-[85vh] flex items-center">
-    <!-- Background gradient -->
-    <div class="absolute inset-0 bg-gradient-to-r from-[var(--bg)] via-[var(--bg)]/80 to-transparent"></div>
-    <div class="absolute inset-0 bg-gradient-to-t from-[var(--bg)] via-transparent to-[var(--bg)]/50"></div>
+  <!-- Hero Banner - Netflix Style with Poster Background -->
+  <section class="relative min-h-[85vh] flex items-end">
+    <!-- 海報背景圖 -->
+    <div class="absolute inset-0">
+      <img 
+        src={heroWork.poster} 
+        alt={heroWork.title}
+        class="w-full h-full object-cover object-center"
+      />
+    </div>
+    
+    <!-- 多層漸層遮罩 -->
+    <div class="absolute inset-0 bg-gradient-to-r from-[var(--bg)] via-[var(--bg)]/90 to-transparent"></div>
+    <div class="absolute inset-0 bg-gradient-to-t from-[var(--bg)] via-[var(--bg)]/60 to-transparent"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-[var(--bg)]/80 via-transparent to-transparent"></div>
 
     <!-- Hero content -->
-    <div class="relative z-10 max-w-7xl mx-auto px-6 md:px-12 py-20">
-      <p class="text-[var(--accent)] font-semibold text-sm md:text-base tracking-wider mb-4">JIMMY HUANG</p>
-      <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6 max-w-3xl">
-        CTO，用 AI 打造<br/>
-        <span class="text-[var(--accent)]">個人作業系統</span>
+    <div class="relative z-10 max-w-7xl mx-auto px-6 md:px-12 py-16 md:py-20">
+      <p class="text-[var(--accent)] font-semibold text-xs md:text-sm tracking-wider mb-3 uppercase">Jimmy Huang · Featured</p>
+      <h1 class="text-3xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4 md:mb-6 max-w-2xl">
+        {heroWork.title}
       </h1>
-      <p class="text-lg md:text-xl text-[var(--muted)] max-w-2xl mb-8 leading-relaxed">
-        不是教你理論，是給你看我每天實際在跑的東西。<br/>
-        自動化工作流、交易 Agent、內容矩陣、管理面板——全部自己做，全部真的在用。
+      <p class="text-base md:text-lg text-gray-300 max-w-xl mb-6 md:mb-8 leading-relaxed">
+        {heroWork.description}
       </p>
-      <div class="flex flex-wrap gap-4">
-        <a href="/works" class="inline-flex items-center gap-2 bg-[var(--accent)] hover:bg-[var(--accent-hover)] text-white font-bold px-8 py-3 rounded transition-colors">
-          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+      <div class="flex flex-wrap gap-3 md:gap-4">
+        <a href="/works" class="inline-flex items-center gap-2 bg-white hover:bg-white/90 text-black font-bold px-6 md:px-8 py-2.5 md:py-3 rounded transition-colors text-sm md:text-base">
+          <svg class="w-4 h-4 md:w-5 md:h-5" fill="currentColor" viewBox="0 0 20 20">
             <path d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"/>
           </svg>
-          看我做的東西
+          看所有作品
         </a>
-        <a href="/courses" class="inline-flex items-center gap-2 bg-[var(--muted)]/20 hover:bg-[var(--muted)]/30 text-white font-bold px-8 py-3 rounded transition-colors border border-[var(--muted)]/40">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <a href="#works" class="inline-flex items-center gap-2 bg-white/20 hover:bg-white/30 text-white font-bold px-6 md:px-8 py-2.5 md:py-3 rounded transition-colors border border-white/40 text-sm md:text-base">
+          <svg class="w-4 h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
           </svg>
-          加入等候名單
+          了解更多
         </a>
       </div>
     </div>
   </section>
 
   <!-- Netflix-style Rows -->
-  <div class="relative z-10 -mt-32 pb-20 space-y-10">
-    <!-- 🔥 精選 -->
-    <section class="px-6 md:px-12">
-      <h2 class="text-xl md:text-2xl font-bold text-[var(--text)] mb-4">🔥 精選</h2>
+  <div id="works" class="relative z-10 -mt-16 md:-mt-24 pb-20 space-y-8 md:space-y-12">
+    <!-- 🔥 精選作品 -->
+    <section class="px-4 md:px-6 lg:px-12">
+      <h2 class="text-lg md:text-xl lg:text-2xl font-bold text-white mb-3 md:mb-4">🔥 精選作品</h2>
       <div class="netflix-row">
         {featured.map(w => <WorkCard {...w} size="large" />)}
       </div>
     </section>
 
     <!-- 🤖 AI 自動化 -->
-    <section class="px-6 md:px-12">
-      <h2 class="text-xl md:text-2xl font-bold text-[var(--text)] mb-4">🤖 AI 自動化</h2>
+    <section class="px-4 md:px-6 lg:px-12">
+      <h2 class="text-lg md:text-xl lg:text-2xl font-bold text-white mb-3 md:mb-4">🤖 AI 自動化</h2>
       <div class="netflix-row">
         {aiAutomation.map(w => <WorkCard {...w} />)}
       </div>
     </section>
 
     <!-- 💰 交易與變現 -->
-    <section class="px-6 md:px-12">
-      <h2 class="text-xl md:text-2xl font-bold text-[var(--text)] mb-4">💰 交易與變現</h2>
+    <section class="px-4 md:px-6 lg:px-12">
+      <h2 class="text-lg md:text-xl lg:text-2xl font-bold text-white mb-3 md:mb-4">💰 交易與變現</h2>
       <div class="netflix-row">
         {trading.map(w => <WorkCard {...w} />)}
       </div>
     </section>
 
     <!-- 🌐 品牌與內容 -->
-    <section class="px-6 md:px-12">
-      <h2 class="text-xl md:text-2xl font-bold text-[var(--text)] mb-4">🌐 品牌與內容</h2>
+    <section class="px-4 md:px-6 lg:px-12">
+      <h2 class="text-lg md:text-xl lg:text-2xl font-bold text-white mb-3 md:mb-4">🌐 品牌與內容</h2>
       <div class="netflix-row">
         {branding.map(w => <WorkCard {...w} />)}
       </div>
     </section>
 
     <!-- CTA Section -->
-    <section class="px-6 md:px-12 pt-10">
-      <div class="relative overflow-hidden rounded-lg bg-gradient-to-r from-[var(--accent)]/20 via-[var(--card)] to-[var(--card)] p-8 md:p-12">
+    <section class="px-4 md:px-6 lg:px-12 pt-6 md:pt-10">
+      <div class="relative overflow-hidden rounded-lg bg-gradient-to-r from-[var(--accent)]/20 via-[var(--card)] to-[var(--card)] p-6 md:p-8 lg:p-12">
         <div class="absolute top-0 left-0 w-1 h-full bg-[var(--accent)]"></div>
-        <h2 class="text-2xl md:text-3xl font-bold mb-4">想學怎麼做？</h2>
-        <p class="text-[var(--muted)] mb-6 max-w-xl">
+        <h2 class="text-xl md:text-2xl lg:text-3xl font-bold mb-3 md:mb-4">想學怎麼做？</h2>
+        <p class="text-sm md:text-base text-[var(--muted)] mb-4 md:mb-6 max-w-xl">
           我正在規劃實戰工作坊，教你從零建立 AI 自動化工作流。不是理論課，是每一步都帶你做的實戰。
         </p>
-        <a href="/courses" class="inline-flex items-center gap-2 bg-[var(--accent)] hover:bg-[var(--accent-hover)] text-white font-bold px-6 py-3 rounded transition-colors">
+        <a href="/courses" class="inline-flex items-center gap-2 bg-[var(--accent)] hover:bg-[var(--accent-hover)] text-white font-bold px-5 md:px-6 py-2.5 md:py-3 rounded transition-colors text-sm md:text-base">
           留下 Email，搶先通知 →
         </a>
       </div>
