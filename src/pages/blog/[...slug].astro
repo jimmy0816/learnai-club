@@ -1,5 +1,5 @@
 ---
-import Layout from '../../layouts/Layout.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
 
 export async function getStaticPaths() {
   const posts = import.meta.glob('../../content/blog/*.mdx', { eager: true }) as Record<string, any>;
@@ -12,24 +12,49 @@ export async function getStaticPaths() {
 const { post } = Astro.props;
 const { Content, frontmatter } = post;
 ---
-<Layout title={frontmatter.title} description={frontmatter.description}>
-  <article class="max-w-3xl mx-auto px-4 pt-12 pb-20">
+<BaseLayout title={frontmatter.title} description={frontmatter.description}>
+  <article class="max-w-3xl mx-auto px-4 pt-12 pb-4">
     <a href="/blog" class="text-sm text-[var(--accent)] mb-6 inline-block">← 回到 Blog</a>
     <div class="flex items-center gap-3 mb-4">
-      <time class="text-sm text-[var(--muted)]">{new Date(frontmatter.date).toLocaleDateString('zh-TW')}</time>
+      <time class="text-sm text-[var(--muted)]">{new Date(frontmatter.date).toLocaleDateString('zh-TW', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
       {frontmatter.tags?.map((tag: string) => (
         <span class="text-xs bg-[var(--accent-dim)] text-[var(--accent)] px-2 py-0.5 rounded">{tag}</span>
       ))}
     </div>
-    <h1 class="text-3xl font-bold mb-8">{frontmatter.title}</h1>
     <div class="prose prose-invert max-w-none
                 prose-headings:text-[var(--text)] prose-headings:font-bold
+                prose-h1:text-3xl prose-h1:font-black prose-h1:mb-8
+                prose-h2:text-2xl prose-h2:mt-12 prose-h2:mb-4
                 prose-p:text-[var(--muted)] prose-p:leading-relaxed
                 prose-strong:text-[var(--text)]
                 prose-code:text-[var(--accent)] prose-code:bg-[var(--card)] prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded
                 prose-li:text-[var(--muted)]
-                prose-a:text-[var(--accent)]">
+                prose-a:text-[var(--accent)] prose-a:no-underline hover:prose-a:underline
+                prose-table:text-sm prose-th:text-[var(--text)] prose-td:text-[var(--muted)]
+                prose-hr:border-white/10">
       <Content />
     </div>
   </article>
-</Layout>
+
+  <!-- Fixed CTA Block -->
+  <section class="max-w-3xl mx-auto px-4 pb-20">
+    <div class="mt-12 grid md:grid-cols-2 gap-6">
+      <div class="bg-[var(--card)] border border-white/10 rounded-2xl p-8 text-center">
+        <div class="text-3xl mb-4">🔍</div>
+        <h3 class="text-lg font-bold text-[var(--text)] mb-3">不確定你的公司該從哪個開始？</h3>
+        <p class="text-[var(--muted)] text-sm mb-6">2 分鐘免費 AI 健檢，找出最值得自動化的 3 個流程。</p>
+        <a href="/ai-checkup" class="btn-primary inline-block">
+          免費 AI 健檢 →
+        </a>
+      </div>
+      <div class="bg-[var(--card)] border border-[var(--accent)]/30 rounded-2xl p-8 text-center">
+        <div class="text-3xl mb-4">💬</div>
+        <h3 class="text-lg font-bold text-[var(--text)] mb-3">需要專人幫你導入？</h3>
+        <p class="text-[var(--muted)] text-sm mb-6">預約免費 30 分鐘諮詢，直接跟顧問聊你的狀況。</p>
+        <a href="/consult" class="btn-primary inline-block">
+          預約免費諮詢 →
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
