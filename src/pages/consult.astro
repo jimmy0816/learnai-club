@@ -3,29 +3,272 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 <BaseLayout
   title="預約免費 30 分鐘 AI 策略諮詢"
-  description="和我們的 AI 顧問聊 30 分鐘，免費找出最值得優先導入 AI 的流程，無銷售壓力。"
+  description="由服務過國泰人壽、華碩、TOTO 的 AI 顧問親自診斷，免費找出最值得優先導入 AI 的流程。"
 >
-  <section class="section" style="background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);">
-    <div class="container">
-      <div class="max-w-2xl mx-auto text-center py-12">
-        <div class="text-5xl mb-6">📅</div>
-        <h1 class="text-4xl md:text-5xl font-black text-white mb-6" style="font-family: 'Noto Sans TC', sans-serif;">
-          預約 AI 策略諮詢
-        </h1>
-        <p class="text-xl text-white/90 mb-8">
-          即將推出線上預約系統
-        </p>
-        <div class="bg-white/20 rounded-2xl p-8 text-white mb-8">
-          <p class="text-lg mb-4">在預約系統上線前，請直接透過 Email 聯絡我們：</p>
-          <a href="mailto:contact@learnai.club" class="text-2xl font-bold underline underline-offset-4">
-            contact@learnai.club
-          </a>
-          <p class="mt-4 text-white/80 text-sm">請在信件主旨寫上「預約 AI 諮詢」，我們會在 24 小時內回覆。</p>
-        </div>
-        <a href="/" class="btn-secondary" style="border-color: white; color: white;">
-          ← 回到首頁
-        </a>
-      </div>
+  <!-- Hero -->
+  <section style="background: linear-gradient(135deg, #1e3a5f 0%, #0f2444 100%); padding: 64px 20px 48px;">
+    <div style="max-width: 640px; margin: 0 auto; text-align: center;">
+      <div style="font-size: 56px; margin-bottom: 16px;">📅</div>
+      <h1 style="font-family: 'Noto Sans TC', sans-serif; font-size: clamp(28px, 5vw, 42px); font-weight: 900; color: white; margin: 0 0 16px;">
+        預約免費 30 分鐘 AI 策略諮詢
+      </h1>
+      <p style="color: rgba(255,255,255,0.85); font-size: 18px; margin: 0;">
+        由服務過國泰人壽、華碩、TOTO 的 AI 顧問親自診斷
+      </p>
     </div>
   </section>
+
+  <!-- Form Section -->
+  <section style="background: #f8fafc; padding: 48px 20px 80px;">
+    <div style="max-width: 640px; margin: 0 auto;">
+
+      <!-- Value props -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 16px; margin-bottom: 40px;">
+        <div style="background: white; border-radius: 12px; padding: 20px; text-align: center; box-shadow: 0 1px 4px rgba(0,0,0,0.08);">
+          <div style="font-size: 28px; margin-bottom: 8px;">🎯</div>
+          <div style="font-size: 14px; color: #374151; font-weight: 600;">找出最值得自動化的流程</div>
+        </div>
+        <div style="background: white; border-radius: 12px; padding: 20px; text-align: center; box-shadow: 0 1px 4px rgba(0,0,0,0.08);">
+          <div style="font-size: 28px; margin-bottom: 8px;">🚀</div>
+          <div style="font-size: 14px; color: #374151; font-weight: 600;">30 分鐘，具體可執行方案</div>
+        </div>
+        <div style="background: white; border-radius: 12px; padding: 20px; text-align: center; box-shadow: 0 1px 4px rgba(0,0,0,0.08);">
+          <div style="font-size: 28px; margin-bottom: 8px;">💡</div>
+          <div style="font-size: 14px; color: #374151; font-weight: 600;">無銷售壓力，純乾貨</div>
+        </div>
+      </div>
+
+      <!-- Form Card -->
+      <div id="form-card" style="background: white; border-radius: 16px; padding: 40px; box-shadow: 0 4px 24px rgba(0,0,0,0.10);">
+        <h2 style="font-family: 'Noto Sans TC', sans-serif; font-size: 22px; font-weight: 700; color: #1e3a5f; margin: 0 0 28px;">
+          填寫諮詢資料
+        </h2>
+
+        <form id="consult-form" novalidate>
+          <!-- Honeypot (spam prevention) -->
+          <div style="display: none;" aria-hidden="true">
+            <label>不要填這個欄位 <input type="text" name="_honeypot" tabindex="-1" autocomplete="off"></label>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
+            <!-- Company -->
+            <div style="grid-column: 1 / -1;">
+              <label for="company" style="display: block; font-size: 14px; font-weight: 600; color: #374151; margin-bottom: 6px;">
+                公司名稱 <span style="color: #ef4444;">*</span>
+              </label>
+              <input
+                type="text"
+                id="company"
+                name="company"
+                required
+                placeholder="例：台灣製造股份有限公司"
+                style="width: 100%; padding: 12px 14px; border: 1.5px solid #e5e7eb; border-radius: 8px; font-size: 15px; color: #111827; box-sizing: border-box; transition: border-color 0.2s;"
+                onfocus="this.style.borderColor='#f97316'"
+                onblur="this.style.borderColor='#e5e7eb'"
+              >
+            </div>
+
+            <!-- Name -->
+            <div>
+              <label for="name" style="display: block; font-size: 14px; font-weight: 600; color: #374151; margin-bottom: 6px;">
+                姓名 <span style="color: #ef4444;">*</span>
+              </label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                required
+                placeholder="王小明"
+                style="width: 100%; padding: 12px 14px; border: 1.5px solid #e5e7eb; border-radius: 8px; font-size: 15px; color: #111827; box-sizing: border-box; transition: border-color 0.2s;"
+                onfocus="this.style.borderColor='#f97316'"
+                onblur="this.style.borderColor='#e5e7eb'"
+              >
+            </div>
+
+            <!-- Title -->
+            <div>
+              <label for="job-title" style="display: block; font-size: 14px; font-weight: 600; color: #374151; margin-bottom: 6px;">
+                職稱 <span style="color: #ef4444;">*</span>
+              </label>
+              <input
+                type="text"
+                id="job-title"
+                name="title"
+                required
+                placeholder="IT 主管 / 業務協理"
+                style="width: 100%; padding: 12px 14px; border: 1.5px solid #e5e7eb; border-radius: 8px; font-size: 15px; color: #111827; box-sizing: border-box; transition: border-color 0.2s;"
+                onfocus="this.style.borderColor='#f97316'"
+                onblur="this.style.borderColor='#e5e7eb'"
+              >
+            </div>
+
+            <!-- Email -->
+            <div>
+              <label for="email" style="display: block; font-size: 14px; font-weight: 600; color: #374151; margin-bottom: 6px;">
+                Email <span style="color: #ef4444;">*</span>
+              </label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                placeholder="you@company.com"
+                style="width: 100%; padding: 12px 14px; border: 1.5px solid #e5e7eb; border-radius: 8px; font-size: 15px; color: #111827; box-sizing: border-box; transition: border-color 0.2s;"
+                onfocus="this.style.borderColor='#f97316'"
+                onblur="this.style.borderColor='#e5e7eb'"
+              >
+            </div>
+
+            <!-- Phone -->
+            <div>
+              <label for="phone" style="display: block; font-size: 14px; font-weight: 600; color: #374151; margin-bottom: 6px;">
+                電話 <span style="color: #9ca3af; font-weight: 400;">（選填）</span>
+              </label>
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                placeholder="0912-345-678"
+                style="width: 100%; padding: 12px 14px; border: 1.5px solid #e5e7eb; border-radius: 8px; font-size: 15px; color: #111827; box-sizing: border-box; transition: border-color 0.2s;"
+                onfocus="this.style.borderColor='#f97316'"
+                onblur="this.style.borderColor='#e5e7eb'"
+              >
+            </div>
+
+            <!-- Needs -->
+            <div style="grid-column: 1 / -1;">
+              <label for="needs" style="display: block; font-size: 14px; font-weight: 600; color: #374151; margin-bottom: 6px;">
+                需求簡述 <span style="color: #ef4444;">*</span>
+              </label>
+              <textarea
+                id="needs"
+                name="needs"
+                required
+                rows="4"
+                placeholder="例如：我們想用 AI 優化客服流程"
+                style="width: 100%; padding: 12px 14px; border: 1.5px solid #e5e7eb; border-radius: 8px; font-size: 15px; color: #111827; box-sizing: border-box; resize: vertical; font-family: inherit; transition: border-color 0.2s;"
+                onfocus="this.style.borderColor='#f97316'"
+                onblur="this.style.borderColor='#e5e7eb'"
+              ></textarea>
+            </div>
+          </div>
+
+          <!-- Error message -->
+          <div id="form-error" style="display: none; background: #fef2f2; border: 1px solid #fecaca; border-radius: 8px; padding: 12px 16px; color: #dc2626; font-size: 14px; margin-bottom: 16px;"></div>
+
+          <!-- Submit button -->
+          <button
+            type="submit"
+            id="submit-btn"
+            style="width: 100%; padding: 16px; background: #f97316; color: white; border: none; border-radius: 10px; font-size: 17px; font-weight: 700; cursor: pointer; transition: background 0.2s, transform 0.1s; font-family: 'Noto Sans TC', sans-serif;"
+            onmouseover="if(!this.disabled) this.style.background='#ea580c'"
+            onmouseout="if(!this.disabled) this.style.background='#f97316'"
+          >
+            送出諮詢 →
+          </button>
+
+          <p style="text-align: center; font-size: 12px; color: #9ca3af; margin-top: 12px; margin-bottom: 0;">
+            送出即代表同意我們與您聯繫以安排諮詢。
+          </p>
+        </form>
+
+        <!-- Success message (hidden by default) -->
+        <div id="success-msg" style="display: none; text-align: center; padding: 32px 0;">
+          <div style="font-size: 56px; margin-bottom: 16px;">✅</div>
+          <h3 style="font-family: 'Noto Sans TC', sans-serif; font-size: 22px; font-weight: 700; color: #1e3a5f; margin: 0 0 12px;">
+            已收到！我們會在 24 小時內回覆您。
+          </h3>
+          <p style="color: #6b7280; font-size: 15px;">
+            感謝您預約諮詢，請留意 Email 通知。
+          </p>
+          <a href="/" style="display: inline-block; margin-top: 24px; padding: 12px 28px; background: #1e3a5f; color: white; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 15px;">
+            ← 回到首頁
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <script>
+    const form = document.getElementById('consult-form') as HTMLFormElement;
+    const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement;
+    const errorDiv = document.getElementById('form-error') as HTMLDivElement;
+    const successMsg = document.getElementById('success-msg') as HTMLDivElement;
+
+    // Auto-detect UTM source from URL
+    function getUtmSource(): string {
+      try {
+        const params = new URLSearchParams(window.location.search);
+        return params.get('utm_source') || params.get('ref') || document.referrer || '';
+      } catch {
+        return '';
+      }
+    }
+
+    function showError(msg: string) {
+      errorDiv.textContent = msg;
+      errorDiv.style.display = 'block';
+    }
+
+    function hideError() {
+      errorDiv.style.display = 'none';
+    }
+
+    form?.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      hideError();
+
+      const data = new FormData(form);
+      const payload = {
+        company: (data.get('company') as string)?.trim(),
+        name: (data.get('name') as string)?.trim(),
+        title: (data.get('title') as string)?.trim(),
+        email: (data.get('email') as string)?.trim(),
+        phone: (data.get('phone') as string)?.trim(),
+        needs: (data.get('needs') as string)?.trim(),
+        source: getUtmSource(),
+        _honeypot: (data.get('_honeypot') as string)?.trim(),
+      };
+
+      // Client-side validation
+      if (!payload.company || !payload.name || !payload.email || !payload.needs) {
+        showError('請填寫所有必填欄位（標有 * 號）。');
+        return;
+      }
+
+      // Loading state
+      submitBtn.disabled = true;
+      submitBtn.textContent = '送出中...';
+      submitBtn.style.background = '#9ca3af';
+      submitBtn.style.cursor = 'not-allowed';
+
+      try {
+        const res = await fetch('/api/consult', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        });
+
+        const json = await res.json();
+
+        if (json.success) {
+          form.style.display = 'none';
+          successMsg.style.display = 'block';
+        } else {
+          showError(json.error || '送出失敗，請稍後再試或直接寄信至 contact@learnai.club');
+          submitBtn.disabled = false;
+          submitBtn.textContent = '送出諮詢 →';
+          submitBtn.style.background = '#f97316';
+          submitBtn.style.cursor = 'pointer';
+        }
+      } catch {
+        showError('網路錯誤，請稍後再試或直接寄信至 contact@learnai.club');
+        submitBtn.disabled = false;
+        submitBtn.textContent = '送出諮詢 →';
+        submitBtn.style.background = '#f97316';
+        submitBtn.style.cursor = 'pointer';
+      }
+    });
+  </script>
 </BaseLayout>
