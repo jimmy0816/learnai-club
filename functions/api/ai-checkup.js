@@ -111,27 +111,51 @@ function extractScore(reportText) {
 }
 
 async function callAnthropic(apiKey, prompt) {
-  const response = await fetch('https://api.anthropic.com/v1/messages', {
-    method: 'POST',
-    headers: {
-      'x-api-key': apiKey,
-      'anthropic-version': '2023-06-01',
-      'content-type': 'application/json',
-    },
-    body: JSON.stringify({
-      model: 'claude-3-haiku-20240307',
-      max_tokens: 2000,
-      messages: [{ role: 'user', content: prompt }],
-    }),
-  });
-
-  if (!response.ok) {
-    const errText = await response.text();
-    throw new Error(`Anthropic API error ${response.status}: ${errText}`);
+  let response;
+  try {
+    response = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: {
+        'x-api-key': apiKey,
+        'anthropic-version': '2023-06-01',
+        'content-type': 'application/json',
+      },
+      body: JSON.stringify({
+        model: 'claude-3-haiku-20240307',
+        max_tokens: 2000,
+        messages: [{ role: 'user', content: prompt }],
+      }),
+    });
+  } catch (networkErr) {
+    console.error('[ai-checkup] Network error calling Anthropic:', networkErr.message);
+    throw new Error(`Network error calling Anthropic: ${networkErr.message}`);
   }
 
-  const json = await response.json();
-  return json.content?.[0]?.text || '';
+  if (!response.ok) {
+    let errBody = '';
+    try {
+      errBody = await response.text();
+    } catch (_) {}
+    console.error(`[ai-checkup] Anthropic API error status=${response.status} body=${errBody}`);
+    throw new Error(`Anthropic API error ${response.status}: ${errBody}`);
+  }
+
+  let json;
+  try {
+    json = await response.json();
+  } catch (parseErr) {
+    console.error('[ai-checkup] Failed to parse Anthropic response JSON:', parseErr.message);
+    throw new Error('Failed to parse Anthropic response');
+  }
+
+  const text = json.content?.[0]?.text || '';
+  if (!text) {
+    console.error('[ai-checkup] Anthropic returned empty content. Full response:', JSON.stringify(json));
+    throw new Error('Anthropic returned empty content');
+  }
+
+  console.log(`[ai-checkup] Anthropic call success. tokens_used=${json.usage?.output_tokens || 'unknown'}`);
+  return text;
 }
 
 async function sendTelegram(botToken, chatId, message) {
@@ -232,7 +256,7 @@ export async function onRequestPost(context) {
     const prompt = buildPrompt({ industry, size, painPoints, tools });
     report = await callAnthropic(apiKey, prompt);
   } catch (err) {
-    console.error('Anthropic call failed:', err);
+    console.error('[ai-checkup] Report generation failed:', err.message, err.stack || '');
     return new Response(
       JSON.stringify({ success: false, error: 'AI 報告產出失敗，請稍後再試或直接預約諮詢。' }),
       { status: 500, headers: { 'Content-Type': 'application/json', ...corsHeaders } }

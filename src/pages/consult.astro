@@ -50,7 +50,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             <label>不要填這個欄位 <input type="text" name="_honeypot" tabindex="-1" autocomplete="off"></label>
           </div>
 
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
+          <div class="form-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
             <!-- Company -->
             <div style="grid-column: 1 / -1;">
               <label for="company" style="display: block; font-size: 14px; font-weight: 600; color: #374151; margin-bottom: 6px;">
@@ -62,7 +62,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                 name="company"
                 required
                 placeholder="例：台灣製造股份有限公司"
-                style="width: 100%; padding: 12px 14px; border: 1.5px solid #e5e7eb; border-radius: 8px; font-size: 15px; color: #111827; box-sizing: border-box; transition: border-color 0.2s;"
+                style="width: 100%; padding: 12px 14px; border: 2px solid #e5e7eb; border-radius: 8px; font-size: 16px; color: #111827; box-sizing: border-box; transition: border-color 0.2s;"
                 onfocus="this.style.borderColor='#f97316'"
                 onblur="this.style.borderColor='#e5e7eb'"
               >
@@ -79,7 +79,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                 name="name"
                 required
                 placeholder="王小明"
-                style="width: 100%; padding: 12px 14px; border: 1.5px solid #e5e7eb; border-radius: 8px; font-size: 15px; color: #111827; box-sizing: border-box; transition: border-color 0.2s;"
+                style="width: 100%; padding: 12px 14px; border: 2px solid #e5e7eb; border-radius: 8px; font-size: 16px; color: #111827; box-sizing: border-box; transition: border-color 0.2s;"
                 onfocus="this.style.borderColor='#f97316'"
                 onblur="this.style.borderColor='#e5e7eb'"
               >
@@ -96,7 +96,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                 name="title"
                 required
                 placeholder="IT 主管 / 業務協理"
-                style="width: 100%; padding: 12px 14px; border: 1.5px solid #e5e7eb; border-radius: 8px; font-size: 15px; color: #111827; box-sizing: border-box; transition: border-color 0.2s;"
+                style="width: 100%; padding: 12px 14px; border: 2px solid #e5e7eb; border-radius: 8px; font-size: 16px; color: #111827; box-sizing: border-box; transition: border-color 0.2s;"
                 onfocus="this.style.borderColor='#f97316'"
                 onblur="this.style.borderColor='#e5e7eb'"
               >
@@ -113,7 +113,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                 name="email"
                 required
                 placeholder="you@company.com"
-                style="width: 100%; padding: 12px 14px; border: 1.5px solid #e5e7eb; border-radius: 8px; font-size: 15px; color: #111827; box-sizing: border-box; transition: border-color 0.2s;"
+                style="width: 100%; padding: 12px 14px; border: 2px solid #e5e7eb; border-radius: 8px; font-size: 16px; color: #111827; box-sizing: border-box; transition: border-color 0.2s;"
                 onfocus="this.style.borderColor='#f97316'"
                 onblur="this.style.borderColor='#e5e7eb'"
               >
@@ -129,7 +129,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                 id="phone"
                 name="phone"
                 placeholder="0912-345-678"
-                style="width: 100%; padding: 12px 14px; border: 1.5px solid #e5e7eb; border-radius: 8px; font-size: 15px; color: #111827; box-sizing: border-box; transition: border-color 0.2s;"
+                style="width: 100%; padding: 12px 14px; border: 2px solid #e5e7eb; border-radius: 8px; font-size: 16px; color: #111827; box-sizing: border-box; transition: border-color 0.2s;"
                 onfocus="this.style.borderColor='#f97316'"
                 onblur="this.style.borderColor='#e5e7eb'"
               >
@@ -146,7 +146,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                 required
                 rows="4"
                 placeholder="例如：我們想用 AI 優化客服流程"
-                style="width: 100%; padding: 12px 14px; border: 1.5px solid #e5e7eb; border-radius: 8px; font-size: 15px; color: #111827; box-sizing: border-box; resize: vertical; font-family: inherit; transition: border-color 0.2s;"
+                style="width: 100%; padding: 12px 14px; border: 2px solid #e5e7eb; border-radius: 8px; font-size: 16px; color: #111827; box-sizing: border-box; resize: vertical; font-family: inherit; transition: border-color 0.2s;"
                 onfocus="this.style.borderColor='#f97316'"
                 onblur="this.style.borderColor='#e5e7eb'"
               ></textarea>
@@ -189,6 +189,20 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
     </div>
   </section>
+
+  <style>
+    @media (max-width: 480px) {
+      .form-grid {
+        grid-template-columns: 1fr !important;
+      }
+      .form-grid > div[style*="grid-column: 1 / -1"] {
+        grid-column: 1 !important;
+      }
+      #form-card {
+        padding: 24px 16px !important;
+      }
+    }
+  </style>
 
   <script>
     const form = document.getElementById('consult-form') as HTMLFormElement;
