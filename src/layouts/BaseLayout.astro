@@ -45,6 +45,17 @@ const fullTitle = title.includes('Learn AI Club') ? title : `${title} | Learn AI
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
   <title>{fullTitle}</title>
+
+  <!-- TODO: Replace G-XXXXXXXXXX with real GA4 Measurement ID when Jimmy provides it -->
+  <Fragment set:html={`
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX');
+    </script>
+  `} />
 </head>
 <body class="min-h-screen flex flex-col">
   <!-- Navigation -->
