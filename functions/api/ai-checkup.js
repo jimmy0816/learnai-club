@@ -57,51 +57,103 @@ async function sendWelcomeEmail(origin, { email, name }) {
   }
 }
 
+// 產業 benchmark 數據（用於報告中的對比）
+const INDUSTRY_BENCHMARKS = {
+  '製造業': { avgScore: 4.8, avgMonthlyWaste: { '1-10': 8, '11-50': 25, '51-200': 80, '200+': 200 }, aiAdoption: '42%', topUseCase: 'AI 品檢 + 預測維護' },
+  '零售 / 電商': { avgScore: 5.5, avgMonthlyWaste: { '1-10': 6, '11-50': 20, '51-200': 60, '200+': 150 }, aiAdoption: '51%', topUseCase: 'AI 客服 + 庫存預測' },
+  '服務業': { avgScore: 4.2, avgMonthlyWaste: { '1-10': 5, '11-50': 18, '51-200': 50, '200+': 120 }, aiAdoption: '35%', topUseCase: 'AI 排程 + 客戶管理' },
+  '金融 / 保險': { avgScore: 6.1, avgMonthlyWaste: { '1-10': 10, '11-50': 35, '51-200': 100, '200+': 300 }, aiAdoption: '58%', topUseCase: 'AI 風控 + 文件審查' },
+  '餐飲': { avgScore: 3.5, avgMonthlyWaste: { '1-10': 4, '11-50': 15, '51-200': 40, '200+': 100 }, aiAdoption: '28%', topUseCase: 'AI 排班 + LINE 訂位' },
+  '物流': { avgScore: 5.0, avgMonthlyWaste: { '1-10': 7, '11-50': 22, '51-200': 70, '200+': 180 }, aiAdoption: '45%', topUseCase: 'AI 路線優化 + 自動派單' },
+  '科技 / 軟體': { avgScore: 7.2, avgMonthlyWaste: { '1-10': 5, '11-50': 15, '51-200': 45, '200+': 100 }, aiAdoption: '68%', topUseCase: 'AI 程式審查 + 自動測試' },
+  '其他': { avgScore: 4.5, avgMonthlyWaste: { '1-10': 6, '11-50': 20, '51-200': 55, '200+': 130 }, aiAdoption: '38%', topUseCase: 'AI 客服 + 文件處理' },
+};
+
+const PAIN_COST_MAP = {
+  '找不到人 / 缺工': { costRatio: 0.30, aiSaving: '40-60%', desc: '人力招募+加班成本' },
+  '客服回覆太慢 / 客訴多': { costRatio: 0.25, aiSaving: '50-70%', desc: '客服人力+客戶流失' },
+  '報表 / 文件做太久': { costRatio: 0.15, aiSaving: '60-80%', desc: '行政人力+加班費' },
+  '庫存管理混亂': { costRatio: 0.12, aiSaving: '30-50%', desc: '庫存損耗+缺貨損失' },
+  '內部溝通效率差': { costRatio: 0.10, aiSaving: '20-40%', desc: '會議時間+溝通成本' },
+  '業務追蹤困難': { costRatio: 0.15, aiSaving: '30-50%', desc: '業務漏單+跟進遺漏' },
+  '老員工離職知識就沒了': { costRatio: 0.08, aiSaving: '50-70%', desc: '知識流失+新人培訓' },
+  '想用 AI 但不知從哪開始': { costRatio: 0.05, aiSaving: '20-30%', desc: '決策延遲成本' },
+};
+
 function buildPrompt({ industry, size, painPoints, tools }) {
-  return `你是台灣企業 AI 導入顧問，專門幫中小企業評估 AI 自動化機會。
+  const bench = INDUSTRY_BENCHMARKS[industry] || INDUSTRY_BENCHMARKS['其他'];
+  const monthlyWaste = bench.avgMonthlyWaste[size] || 20;
 
-根據以下企業資訊，產出一份「AI 導入診斷報告」：
+  // 計算每個痛點的成本
+  const painCostDetails = painPoints.map(p => {
+    const info = PAIN_COST_MAP[p] || { costRatio: 0.10, aiSaving: '30-50%', desc: p };
+    const cost = Math.round(monthlyWaste * info.costRatio);
+    return `- ${p}：每月約 NT$${cost} 萬（${info.desc}），AI 可節省 ${info.aiSaving}`;
+  }).join('\n');
 
-產業：${industry}
-公司規模：${size}
-主要痛點：${painPoints.join('、')}
-現有工具：${tools.join('、')}
+  const totalWaste = monthlyWaste;
+  const estimatedSaving = Math.round(totalWaste * 0.45);
 
-請產出以下格式的報告（使用繁體中文，語氣專業但親民）：
+  return `你是台灣頂尖的企業 AI 導入顧問。你的報告以「具體數字」和「同業對比」聞名，讓老闆看完會想截圖傳給合夥人。
 
-## 📊 AI 成熟度評分
+## 企業資訊
+- 產業：${industry}
+- 規模：${size} 人
+- 痛點：${painPoints.join('、')}
+- 現有工具：${tools.join('、')}
 
-給這家公司 1-10 分的 AI 成熟度評分，並簡要說明原因（2-3 句）。
+## 同業 Benchmark 數據（寫進報告）
+- ${industry} 平均 AI 成熟度：${bench.avgScore}/10
+- ${industry} AI 導入率：${bench.aiAdoption}
+- ${industry} 最熱門 AI 用途：${bench.topUseCase}
+- ${size} 人規模企業，可自動化工作的平均月成本：約 NT$${totalWaste} 萬
+- 各痛點成本拆解：
+${painCostDetails}
 
-## 🎯 最值得 AI 化的 3 個流程
+## 請嚴格按照以下格式輸出（繁體中文，專業但說人話）：
 
-針對這家公司的痛點和產業特性，列出最值得用 AI 優化的前 3 個流程：
+## 📉 你正在燒的隱形成本
 
-每個流程包含：
-1. 流程名稱
-2. 目前的問題（1 句）
-3. AI 怎麼解（具體工具或方案，2-3 句）
-4. 預估效益（節省多少時間/人力/成本，用百分比或具體數字）
+用表格呈現這家公司「目前估計成本 vs AI 導入後 vs 每月省下」。
+根據他的痛點和規模，給出 3-4 行具體項目。
+最後一行加粗合計。
+末尾加一句：「⚠️ 每延遲一個月導入 = 多燒 NT$${estimatedSaving} 萬」
 
-## 🛠️ 推薦工具
+## 🏆 AI 成熟度：X / 10
 
-免費工具（立刻可以開始用）：列 2-3 個
-付費方案（需要專業導入）：列 2-3 個
+根據他的現有工具和痛點，給 1-10 分。
+用文字進度條對比（不要用 emoji 方塊，用中文描述）：
+- 他的分數 vs 同業平均 ${bench.avgScore} 分 vs 領先者（自己估一個合理數字）
+- 說明差距代表什麼，以及「好消息是從 X 到 Y 只需要 N 個月」
 
-## 🗓️ 30/60/90 天導入路線圖
+## 🎯 最該優先做的 3 件事（按 ROI 排序）
 
-- 第 1-30 天：[具體行動]
-- 第 31-60 天：[具體行動]
-- 第 61-90 天：[具體行動]
+每件事包含：
+1. **標題**（標注 [最高 ROI] / [最快見效] / [長期價值]）
+2. **📌 為什麼是優先**：結合他填的痛點，說明為什麼這個 ROI 最高（2 句）
+3. **💰 投入 vs 回報**：具體金額 — 導入成本 NT$X + 月費 NT$X → 預估月省 NT$X → 回本時間
+4. **🛠️ 具體怎麼做**：4 個步驟，每步一句話，要具體到工具名稱
 
-## 💰 預估 ROI
+## 🗓️ 你的專屬 90 天路線圖
 
-以這家公司的規模和痛點，估算導入 AI 後：
-- 預估每月節省的人力成本
-- 預估投入成本
-- 回本時間
+用 Week 1-2 / Week 3-4 / Month 2 / Month 3 四段，每段包含：
+- 具體行動（不是「導入 AI」，是「設定 LINE OA 自動回應 + 整理 30 個 FAQ」）
+- 目標指標（如：客服回覆時間從 4 小時 → 10 分鐘）
 
-注意：數字要合理，不要誇大。用「約」「預估」等詞彙，不要給出精確到個位數的假數字。`;
+## 💰 12 個月 ROI 預測
+
+用表格：月份（第1/3/6/12月）× 累計投入 × 累計節省 × 淨效益
+最後算出年 ROI 百分比。
+數字要根據他的規模和痛點計算，保守合理。
+
+## 重要規則
+- 所有金額都用 NT$，以「萬」為單位（如 NT$4.8 萬）
+- 數字要具體但用「約」「預估」修飾
+- 工具名稱必須真實存在
+- 不要有免責聲明或附錄
+- 報告直接結束在 ROI 表格，不要加結尾語（CTA 由前端加）
+- 語氣像一個很厲害的顧問在跟老闆一對一簡報，不是在寫論文`;
+}
 }
 
 function extractScore(reportText) {
@@ -122,7 +174,7 @@ async function callAnthropic(apiKey, prompt) {
       },
       body: JSON.stringify({
         model: 'claude-haiku-4-5-20251001',
-        max_tokens: 2000,
+        max_tokens: 3500,
         messages: [{ role: 'user', content: prompt }],
       }),
     });
