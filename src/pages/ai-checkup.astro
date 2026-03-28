@@ -430,6 +430,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     flex-direction: column;
     gap: 16px;
     margin-bottom: 24px;
+    max-width: 100%;
+    overflow: hidden;
   }
 
   .form-row {
@@ -446,6 +448,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     display: flex;
     flex-direction: column;
     gap: 6px;
+    max-width: 100%;
   }
 
   .form-group label {
@@ -453,20 +456,26 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     font-weight: 600;
     color: #374151;
     font-family: 'Noto Sans TC', sans-serif;
+    display: block;
+    margin-bottom: 4px;
   }
 
   .required { color: #ef4444; }
   .optional { color: #9ca3af; font-weight: 400; }
 
   .form-group input {
-    padding: 11px 14px;
-    border: 2px solid #e5e7eb;
-    border-radius: 10px;
-    font-size: 15px;
+    padding: 12px 16px;
+    border: 2px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 16px;
     color: #111827;
     transition: border-color 0.2s;
     font-family: 'Noto Sans TC', sans-serif;
     background: #fafafa;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
+    display: block;
   }
 
   .form-group input:focus {
@@ -491,6 +500,18 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     transition: all 0.2s;
     font-family: 'Noto Sans TC', sans-serif;
     white-space: nowrap;
+  }
+
+  @media (max-width: 480px) {
+    .btn-submit {
+      width: 100%;
+      white-space: normal;
+    }
+    #step5 {
+      max-width: 100%;
+      overflow: hidden;
+      padding: 0;
+    }
   }
 
   .btn-submit:hover {
@@ -953,6 +974,16 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
       const contentEl = getEl('reportContent');
       contentEl.innerHTML = markdownToHtml(json.report || '');
+
+      // Build consult URL with pre-filled params
+      const consultUrl = `/consult?company=${encodeURIComponent(formData.company)}&name=${encodeURIComponent(formData.name)}&title=${encodeURIComponent(formData.title)}&email=${encodeURIComponent(formData.email)}&phone=${encodeURIComponent(formData.phone || '')}`;
+
+      // Update all CTA links to consult page
+      document.querySelectorAll<HTMLAnchorElement>('.cta-button, .btn-consult').forEach(link => {
+        if (link.getAttribute('href') === '/consult') {
+          link.setAttribute('href', consultUrl);
+        }
+      });
 
     } catch (err: any) {
       const loadingState = getEl('loadingState');

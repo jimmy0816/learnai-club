@@ -210,6 +210,25 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     const errorDiv = document.getElementById('form-error') as HTMLDivElement;
     const successMsg = document.getElementById('success-msg') as HTMLDivElement;
 
+    // Auto-fill form from URL params (e.g. from AI 健檢 redirect)
+    (function prefillFromUrl() {
+      const params = new URLSearchParams(window.location.search);
+      const fieldMap: Record<string, string> = {
+        company: 'company',
+        name: 'name',
+        title: 'job-title',
+        email: 'email',
+        phone: 'phone',
+      };
+      Object.entries(fieldMap).forEach(([param, inputId]) => {
+        const value = params.get(param);
+        if (value) {
+          const input = document.getElementById(inputId) as HTMLInputElement | null;
+          if (input) input.value = value;
+        }
+      });
+    })();
+
     // Auto-detect UTM source from URL
     function getUtmSource(): string {
       try {
