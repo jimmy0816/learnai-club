@@ -1,0 +1,119 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  ogImage?: string;
+}
+
+const {
+  title = '你的公司有多少工作可以交給 AI？',
+  description = '2 分鐘免費 AI 健檢，找出最值得自動化的 3 個流程。幫台灣中小企業解決缺工、客服、報表等痛點的 AI 顧問服務。',
+  ogImage = '/og-image.jpg',
+} = Astro.props;
+
+const fullTitle = title.includes('Learn AI Club') ? title : `${title} | Learn AI Club`;
+---
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content={description} />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content={fullTitle} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image" content={`https://learnai.club${ogImage}`} />
+  <meta property="og:url" content="https://learnai.club" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="zh_TW" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={fullTitle} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={`https://learnai.club${ogImage}`} />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+  <title>{fullTitle}</title>
+</head>
+<body class="min-h-screen flex flex-col">
+  <!-- Navigation -->
+  <nav class="sticky top-0 z-50 bg-white border-b border-gray-100 shadow-sm">
+    <div class="container">
+      <div class="flex items-center justify-between h-16">
+        <!-- Logo -->
+        <a href="/" class="flex items-center gap-2">
+          <div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background: #1e3a5f;">
+            <span class="text-white font-bold text-sm">AI</span>
+          </div>
+          <span class="font-bold text-lg" style="color: #1e3a5f;">Learn AI Club</span>
+        </a>
+
+        <!-- Desktop Nav -->
+        <div class="hidden md:flex items-center gap-8">
+          <a href="/" class="text-gray-600 hover:text-[#1e3a5f] font-medium transition-colors">首頁</a>
+          <a href="/ai-checkup" class="text-gray-600 hover:text-[#1e3a5f] font-medium transition-colors">AI 健檢</a>
+          <a href="/blog" class="text-gray-600 hover:text-[#1e3a5f] font-medium transition-colors">部落格</a>
+          <a href="/consult" class="btn-primary text-sm py-2 px-5">預約諮詢</a>
+        </div>
+
+        <!-- Mobile menu button -->
+        <button id="menu-btn" class="md:hidden p-2 rounded-lg hover:bg-gray-100" aria-label="選單">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="hidden md:hidden border-t border-gray-100 bg-white">
+      <div class="container py-4 flex flex-col gap-3">
+        <a href="/" class="text-gray-700 font-medium py-2">首頁</a>
+        <a href="/ai-checkup" class="text-gray-700 font-medium py-2">AI 健檢</a>
+        <a href="/blog" class="text-gray-700 font-medium py-2">部落格</a>
+        <a href="/consult" class="btn-primary text-center mt-2">預約諮詢</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main content -->
+  <main class="flex-1">
+    <slot />
+  </main>
+
+  <!-- Footer -->
+  <footer class="py-10 border-t border-gray-200" style="background: #1e3a5f;">
+    <div class="container">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+        <div class="flex items-center gap-2">
+          <div class="w-7 h-7 rounded-lg bg-white/20 flex items-center justify-center">
+            <span class="text-white font-bold text-xs">AI</span>
+          </div>
+          <span class="text-white font-semibold">Learn AI Club</span>
+        </div>
+        <p class="text-white/60 text-sm">© 2026 Learn AI Club · 台灣 AI 企業顧問</p>
+        <a href="mailto:contact@learnai.club" class="text-white/70 hover:text-white text-sm transition-colors">聯絡我們</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const btn = document.getElementById('menu-btn');
+    const menu = document.getElementById('mobile-menu');
+    btn?.addEventListener('click', () => {
+      menu?.classList.toggle('hidden');
+    });
+  </script>
+</body>
+</html>

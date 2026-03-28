@@ -1,117 +1,285 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import WorkCard from '../components/WorkCard.astro';
-import works from '../data/works.json';
-
-// 分類作品
-const featured = works.filter(w => w.featured);
-const aiAutomation = works.filter(w =>
-  w.title.includes('OpenClaw') ||
-  w.title.includes('社群') ||
-  w.title.includes('Dashboard')
-);
-const trading = works.filter(w =>
-  w.title.includes('Polymarket') ||
-  w.title.includes('塔羅')
-);
-const branding = works.filter(w =>
-  w.title.includes('mrgeo') ||
-  w.title.includes('hellokids') ||
-  w.title.includes('虛擬')
-);
-
-// Hero featured work (用第一個 featured)
-const heroWork = featured[0];
+import BaseLayout from '../layouts/BaseLayout.astro';
 ---
-<Layout title="首頁">
-  <!-- Hero Banner - Netflix Style with Poster Background -->
-  <section class="relative min-h-[85vh] flex items-end">
-    <!-- 海報背景圖 -->
-    <div class="absolute inset-0">
-      <img 
-        src={heroWork.poster} 
-        alt={heroWork.title}
-        class="w-full h-full object-cover object-center"
-      />
-    </div>
-    
-    <!-- 多層漸層遮罩 -->
-    <div class="absolute inset-0 bg-gradient-to-r from-[var(--bg)] via-[var(--bg)]/90 to-transparent"></div>
-    <div class="absolute inset-0 bg-gradient-to-t from-[var(--bg)] via-[var(--bg)]/60 to-transparent"></div>
-    <div class="absolute inset-0 bg-gradient-to-b from-[var(--bg)]/80 via-transparent to-transparent"></div>
+<BaseLayout
+  title="你的公司有多少工作可以交給 AI？"
+  description="2 分鐘免費 AI 健檢，找出最值得自動化的 3 個流程。幫台灣中小企業解決缺工、客服、報表等痛點的 AI 顧問服務。"
+>
 
-    <!-- Hero content -->
-    <div class="relative z-10 max-w-7xl mx-auto px-6 md:px-12 py-16 md:py-20">
-      <p class="text-[var(--accent)] font-semibold text-xs md:text-sm tracking-wider mb-3 uppercase">Jimmy Huang · Featured</p>
-      <h1 class="text-3xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4 md:mb-6 max-w-2xl">
-        {heroWork.title}
-      </h1>
-      <p class="text-base md:text-lg text-gray-300 max-w-xl mb-6 md:mb-8 leading-relaxed">
-        {heroWork.description}
-      </p>
-      <div class="flex flex-wrap gap-3 md:gap-4">
-        <a href="/works" class="inline-flex items-center gap-2 bg-white hover:bg-white/90 text-black font-bold px-6 md:px-8 py-2.5 md:py-3 rounded transition-colors text-sm md:text-base">
-          <svg class="w-4 h-4 md:w-5 md:h-5" fill="currentColor" viewBox="0 0 20 20">
-            <path d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"/>
-          </svg>
-          看所有作品
-        </a>
-        <a href="#works" class="inline-flex items-center gap-2 bg-white/20 hover:bg-white/30 text-white font-bold px-6 md:px-8 py-2.5 md:py-3 rounded transition-colors border border-white/40 text-sm md:text-base">
-          <svg class="w-4 h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-          </svg>
-          了解更多
+  <!-- ===== HERO ===== -->
+  <section class="section" style="background: linear-gradient(135deg, #1e3a5f 0%, #2a4f7c 50%, #1e3a5f 100%);">
+    <div class="container">
+      <div class="max-w-3xl mx-auto text-center py-8">
+        <div class="inline-flex items-center gap-2 bg-white/10 text-white/80 text-sm font-medium px-4 py-2 rounded-full mb-6">
+          <span class="w-2 h-2 rounded-full bg-orange-400 animate-pulse"></span>
+          台灣 AI 企業顧問 · 已服務超過 50 家企業
+        </div>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-black text-white leading-tight mb-6" style="font-family: 'Noto Sans TC', sans-serif;">
+          你的公司有多少工作<br class="hidden md:block" />
+          <span style="color: #f97316;">可以交給 AI？</span>
+        </h1>
+        <p class="text-xl text-white/80 mb-10 leading-relaxed">
+          2 分鐘免費 AI 健檢，找出最值得自動化的 3 個流程<br class="hidden md:block" />
+          不必懂技術，只需要告訴我們你的痛點
+        </p>
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a href="/ai-checkup" class="btn-primary text-lg w-full sm:w-auto justify-center">
+            開始免費健檢 →
+          </a>
+          <a href="/consult" class="btn-secondary text-lg w-full sm:w-auto justify-center" style="border-color: rgba(255,255,255,0.4); color: white;">
+            預約 30 分鐘諮詢
+          </a>
+        </div>
+        <!-- Social proof -->
+        <p class="text-white/50 text-sm mt-8">
+          👥 已有 127 位企業主完成 AI 健檢
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 痛點區塊 ===== -->
+  <section class="section section-gray">
+    <div class="container">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4" style="color: #1e3a5f; font-family: 'Noto Sans TC', sans-serif;">
+          這些痛點，你中了幾個？
+        </h2>
+        <p class="text-gray-500 text-lg">台灣中小企業最常見的 4 大困境，AI 都有解法</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- 痛點 1 -->
+        <div class="card group">
+          <div class="flex items-start gap-4">
+            <div class="text-4xl flex-shrink-0">🔴</div>
+            <div>
+              <h3 class="text-xl font-bold mb-2" style="color: #1e3a5f;">缺工請不到人</h3>
+              <p class="text-gray-500 mb-3">人力市場愈來愈難找，薪資成本不斷攀升，但業務量卻一直增加。</p>
+              <div class="flex items-center gap-2 text-orange-500 font-semibold">
+                <span>→</span>
+                <span>AI 幫你自動化重複工作，1 個人做 3 個人的事</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 痛點 2 -->
+        <div class="card group">
+          <div class="flex items-start gap-4">
+            <div class="text-4xl flex-shrink-0">🟡</div>
+            <div>
+              <h3 class="text-xl font-bold mb-2" style="color: #1e3a5f;">客服回不完</h3>
+              <p class="text-gray-500 mb-3">下班後還有客戶詢問，週末假日一樣要值班，員工疲憊、客戶不滿意。</p>
+              <div class="flex items-center gap-2 text-orange-500 font-semibold">
+                <span>→</span>
+                <span>AI 客服 24 小時不休息，回覆時間從 2 小時縮到 10 秒</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 痛點 3 -->
+        <div class="card group">
+          <div class="flex items-start gap-4">
+            <div class="text-4xl flex-shrink-0">🟡</div>
+            <div>
+              <h3 class="text-xl font-bold mb-2" style="color: #1e3a5f;">報表做不完</h3>
+              <p class="text-gray-500 mb-3">每週花 2 天整理數據、做報表，高薪人才在做低價值工作，浪費資源。</p>
+              <div class="flex items-center gap-2 text-orange-500 font-semibold">
+                <span>→</span>
+                <span>AI 數據自動產報表，每天早上 9 點自動送到老闆信箱</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 痛點 4 -->
+        <div class="card group">
+          <div class="flex items-start gap-4">
+            <div class="text-4xl flex-shrink-0">🟢</div>
+            <div>
+              <h3 class="text-xl font-bold mb-2" style="color: #1e3a5f;">經驗都在老員工腦裡</h3>
+              <p class="text-gray-500 mb-3">關鍵員工離職就帶走一切，新人訓練要 3 個月，SOP 散落各處找不到。</p>
+              <div class="flex items-center gap-2 text-orange-500 font-semibold">
+                <span>→</span>
+                <span>AI 知識管理系統，讓新人 2 週就能上手</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center mt-10">
+        <a href="/ai-checkup" class="btn-primary text-lg">
+          免費診斷我的企業痛點 →
         </a>
       </div>
     </div>
   </section>
 
-  <!-- Netflix-style Rows -->
-  <div id="works" class="relative z-10 -mt-16 md:-mt-24 pb-20 space-y-8 md:space-y-12">
-    <!-- 🔥 精選作品 -->
-    <section class="px-4 md:px-6 lg:px-12">
-      <h2 class="text-lg md:text-xl lg:text-2xl font-bold text-white mb-3 md:mb-4">🔥 精選作品</h2>
-      <div class="netflix-row">
-        {featured.map(w => <WorkCard {...w} size="large" />)}
+  <!-- ===== 數據區塊 ===== -->
+  <section class="section" style="background: #1e3a5f;">
+    <div class="container">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+        <div class="py-6">
+          <div class="text-5xl font-black text-orange-400 mb-3" style="font-family: 'Inter', sans-serif;">73%</div>
+          <p class="text-white/80 text-lg">台灣中小企業表示<br /><span class="text-white font-semibold">缺工是最大挑戰</span></p>
+        </div>
+        <div class="py-6 border-y md:border-y-0 md:border-x border-white/20">
+          <div class="text-5xl font-black text-orange-400 mb-3" style="font-family: 'Inter', sans-serif;">30%</div>
+          <p class="text-white/80 text-lg">導入 AI 的企業<br /><span class="text-white font-semibold">平均節省人力成本</span></p>
+        </div>
+        <div class="py-6">
+          <div class="text-5xl font-black text-orange-400 mb-3" style="font-family: 'Inter', sans-serif;">3x</div>
+          <p class="text-white/80 text-lg">AI 自動化可以讓<br /><span class="text-white font-semibold">一人產出翻三倍</span></p>
+        </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- 🤖 AI 自動化 -->
-    <section class="px-4 md:px-6 lg:px-12">
-      <h2 class="text-lg md:text-xl lg:text-2xl font-bold text-white mb-3 md:mb-4">🤖 AI 自動化</h2>
-      <div class="netflix-row">
-        {aiAutomation.map(w => <WorkCard {...w} />)}
+  <!-- ===== 信任背書 ===== -->
+  <section class="section section-gray">
+    <div class="container">
+      <div class="text-center mb-10">
+        <p class="text-gray-400 text-sm font-medium uppercase tracking-wider mb-4">我們的顧問服務過</p>
+        <h2 class="text-2xl md:text-3xl font-bold" style="color: #1e3a5f; font-family: 'Noto Sans TC', sans-serif;">
+          各產業龍頭企業的信賴選擇
+        </h2>
       </div>
-    </section>
-
-    <!-- 💰 交易與變現 -->
-    <section class="px-4 md:px-6 lg:px-12">
-      <h2 class="text-lg md:text-xl lg:text-2xl font-bold text-white mb-3 md:mb-4">💰 交易與變現</h2>
-      <div class="netflix-row">
-        {trading.map(w => <WorkCard {...w} />)}
+      <div class="flex flex-wrap justify-center gap-4 md:gap-6">
+        {['國泰人壽', '華碩', 'TOTO', '群益投信', '展晟照明', '英業達'].map(name => (
+          <div class="bg-white border border-gray-200 rounded-xl px-6 py-4 shadow-sm hover:shadow-md transition-shadow">
+            <span class="text-gray-700 font-semibold text-lg">{name}</span>
+          </div>
+        ))}
       </div>
-    </section>
+      <p class="text-center text-gray-400 text-sm mt-6">
+        ※ Logo 即將更新，品牌名稱均獲授權展示
+      </p>
+    </div>
+  </section>
 
-    <!-- 🌐 品牌與內容 -->
-    <section class="px-4 md:px-6 lg:px-12">
-      <h2 class="text-lg md:text-xl lg:text-2xl font-bold text-white mb-3 md:mb-4">🌐 品牌與內容</h2>
-      <div class="netflix-row">
-        {branding.map(w => <WorkCard {...w} />)}
+  <!-- ===== 服務介紹 ===== -->
+  <section class="section">
+    <div class="container">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4" style="color: #1e3a5f; font-family: 'Noto Sans TC', sans-serif;">
+          三種服務，對應不同需求
+        </h2>
+        <p class="text-gray-500 text-lg">從探索到落地，我們陪你走完整段 AI 導入旅程</p>
       </div>
-    </section>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
 
-    <!-- CTA Section -->
-    <section class="px-4 md:px-6 lg:px-12 pt-6 md:pt-10">
-      <div class="relative overflow-hidden rounded-lg bg-gradient-to-r from-[var(--accent)]/20 via-[var(--card)] to-[var(--card)] p-6 md:p-8 lg:p-12">
-        <div class="absolute top-0 left-0 w-1 h-full bg-[var(--accent)]"></div>
-        <h2 class="text-xl md:text-2xl lg:text-3xl font-bold mb-3 md:mb-4">想學怎麼做？</h2>
-        <p class="text-sm md:text-base text-[var(--muted)] mb-4 md:mb-6 max-w-xl">
-          我正在規劃實戰工作坊，教你從零建立 AI 自動化工作流。不是理論課，是每一步都帶你做的實戰。
-        </p>
-        <a href="/courses" class="inline-flex items-center gap-2 bg-[var(--accent)] hover:bg-[var(--accent-hover)] text-white font-bold px-5 md:px-6 py-2.5 md:py-3 rounded transition-colors text-sm md:text-base">
-          留下 Email，搶先通知 →
+        <!-- AI 健檢 -->
+        <div class="card text-center flex flex-col">
+          <div class="w-14 h-14 rounded-xl flex items-center justify-center mx-auto mb-5" style="background: rgba(249, 115, 22, 0.1);">
+            <span class="text-3xl">🔍</span>
+          </div>
+          <h3 class="text-xl font-bold mb-2" style="color: #1e3a5f;">AI 健檢</h3>
+          <div class="text-orange-500 font-bold text-lg mb-3">3 - 5 萬元</div>
+          <p class="text-gray-500 mb-6 flex-1 leading-relaxed">
+            30 分鐘深度訪談，全面盤點你的營運流程，找出最值得 AI 化的 3-5 個機會點，並提供完整導入路線圖。
+          </p>
+          <ul class="text-left text-sm text-gray-500 space-y-2 mb-6">
+            <li class="flex items-center gap-2"><span class="text-green-500">✓</span> 現況流程分析報告</li>
+            <li class="flex items-center gap-2"><span class="text-green-500">✓</span> AI 化優先序評估</li>
+            <li class="flex items-center gap-2"><span class="text-green-500">✓</span> ROI 試算表</li>
+            <li class="flex items-center gap-2"><span class="text-green-500">✓</span> 導入路線圖</li>
+          </ul>
+          <a href="/ai-checkup" class="btn-primary justify-center">了解 AI 健檢</a>
+        </div>
+
+        <!-- Agent 導入 -->
+        <div class="card text-center flex flex-col relative" style="border-color: #1e3a5f; box-shadow: 0 8px 32px rgba(30,58,95,0.15);">
+          <div class="absolute -top-4 left-1/2 -translate-x-1/2">
+            <span class="bg-orange-500 text-white text-xs font-bold px-4 py-1.5 rounded-full">最多企業選擇</span>
+          </div>
+          <div class="w-14 h-14 rounded-xl flex items-center justify-center mx-auto mb-5 mt-4" style="background: rgba(30, 58, 95, 0.08);">
+            <span class="text-3xl">🤖</span>
+          </div>
+          <h3 class="text-xl font-bold mb-2" style="color: #1e3a5f;">Agent 導入</h3>
+          <div class="text-orange-500 font-bold text-lg mb-3">15 - 30 萬元</div>
+          <p class="text-gray-500 mb-6 flex-1 leading-relaxed">
+            從 POC 到正式上線，全程陪跑。客製化 AI Agent 開發、系統整合、員工培訓，確保落地有效。
+          </p>
+          <ul class="text-left text-sm text-gray-500 space-y-2 mb-6">
+            <li class="flex items-center gap-2"><span class="text-green-500">✓</span> 客製 AI Agent 開發</li>
+            <li class="flex items-center gap-2"><span class="text-green-500">✓</span> 現有系統 API 整合</li>
+            <li class="flex items-center gap-2"><span class="text-green-500">✓</span> 員工操作培訓</li>
+            <li class="flex items-center gap-2"><span class="text-green-500">✓</span> 上線後 30 天支援</li>
+          </ul>
+          <a href="/consult" class="btn-primary justify-center">預約評估諮詢</a>
+        </div>
+
+        <!-- 長期顧問 -->
+        <div class="card text-center flex flex-col">
+          <div class="w-14 h-14 rounded-xl flex items-center justify-center mx-auto mb-5" style="background: rgba(249, 115, 22, 0.1);">
+            <span class="text-3xl">📈</span>
+          </div>
+          <h3 class="text-xl font-bold mb-2" style="color: #1e3a5f;">長期顧問</h3>
+          <div class="text-orange-500 font-bold text-lg mb-3">5 - 10 萬元 / 月</div>
+          <p class="text-gray-500 mb-6 flex-1 leading-relaxed">
+            持續陪跑的 AI 顧問服務，每月滾動優化、追蹤 KPI、擴大 AI 導入範圍，確保長期 ROI 最大化。
+          </p>
+          <ul class="text-left text-sm text-gray-500 space-y-2 mb-6">
+            <li class="flex items-center gap-2"><span class="text-green-500">✓</span> 每月策略調整會議</li>
+            <li class="flex items-center gap-2"><span class="text-green-500">✓</span> AI 工具持續優化</li>
+            <li class="flex items-center gap-2"><span class="text-green-500">✓</span> 新流程 AI 化評估</li>
+            <li class="flex items-center gap-2"><span class="text-green-500">✓</span> 無限次 Email 諮詢</li>
+          </ul>
+          <a href="/consult" class="btn-secondary justify-center">了解長期顧問</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Blog 預覽 ===== -->
+  <section class="section section-gray">
+    <div class="container">
+      <div class="flex items-center justify-between mb-10">
+        <h2 class="text-3xl font-bold" style="color: #1e3a5f; font-family: 'Noto Sans TC', sans-serif;">最新 AI 洞察</h2>
+        <a href="/blog" class="text-orange-500 hover:text-orange-600 font-semibold flex items-center gap-1">
+          查看全部 →
         </a>
       </div>
-    </section>
-  </div>
-</Layout>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- 文章佔位 (待有實際 blog 文章後替換) -->
+        {[
+          { emoji: '🏭', tag: '製造業', title: '台灣製造業導入 AI 的 3 個最快回本案例', date: '即將發布' },
+          { emoji: '💼', tag: '客服自動化', title: '用 AI 客服取代真人值班，這家公司省了 40 萬年薪', date: '即將發布' },
+          { emoji: '📊', tag: '數據分析', title: '老闆每天看報表花 2 小時？這個 AI 方案讓它變 0', date: '即將發布' },
+        ].map(post => (
+          <div class="card">
+            <div class="text-3xl mb-4">{post.emoji}</div>
+            <span class="text-xs font-semibold text-orange-500 uppercase tracking-wider bg-orange-50 px-2 py-1 rounded">{post.tag}</span>
+            <h3 class="text-lg font-bold mt-3 mb-2 leading-snug" style="color: #1e3a5f;">{post.title}</h3>
+            <p class="text-gray-400 text-sm">{post.date}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Footer CTA ===== -->
+  <section class="section" style="background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);">
+    <div class="container">
+      <div class="text-center max-w-2xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-black text-white mb-4" style="font-family: 'Noto Sans TC', sans-serif;">
+          不確定從哪開始？
+        </h2>
+        <p class="text-white/90 text-xl mb-8 leading-relaxed">
+          跟我們聊 30 分鐘，我們免費幫你找出<br class="hidden md:block" />
+          最值得優先導入 AI 的流程
+        </p>
+        <a href="/consult" class="inline-flex items-center gap-2 bg-white text-orange-600 font-bold text-lg px-8 py-4 rounded-xl hover:bg-orange-50 transition-colors shadow-lg">
+          預約免費 30 分鐘 AI 策略諮詢 →
+        </a>
+        <p class="text-white/70 text-sm mt-6">
+          📅 本週還有 3 個名額 · 無銷售壓力 · 純粹諮詢
+        </p>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>

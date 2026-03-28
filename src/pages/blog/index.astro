@@ -1,50 +1,27 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-
-const postModules = import.meta.glob('../../content/blog/*.mdx', { eager: true }) as Record<string, any>;
-const posts = Object.entries(postModules)
-  .map(([file, mod]) => ({
-    slug: file.split('/').pop()!.replace(/\.mdx?$/, ''),
-    ...mod.frontmatter,
-  }))
-  .filter(p => !p.draft)
-  .sort((a, b) => new Date(b.date).valueOf() - new Date(a.date).valueOf());
+import BaseLayout from '../../layouts/BaseLayout.astro';
 ---
-<Layout title="Blog">
-  <!-- Hero section -->
-  <section class="relative py-20 px-6 md:px-12">
-    <div class="max-w-4xl mx-auto">
-      <p class="text-[var(--accent)] font-semibold text-sm tracking-wider mb-4">BLOG</p>
-      <h1 class="text-4xl md:text-5xl font-bold mb-4">踩坑筆記</h1>
-      <p class="text-xl text-[var(--muted)]">每篇 300-500 字，真實踩坑紀錄。沒有廢話，只有教訓。</p>
+<BaseLayout
+  title="AI 導入洞察部落格"
+  description="分享台灣企業 AI 導入實戰經驗、案例分析，以及最新 AI 工具評測。"
+>
+  <section class="section" style="background: #1e3a5f;">
+    <div class="container">
+      <div class="max-w-2xl mx-auto text-center py-12">
+        <div class="text-5xl mb-6">📝</div>
+        <h1 class="text-4xl md:text-5xl font-black text-white mb-6" style="font-family: 'Noto Sans TC', sans-serif;">
+          AI 洞察部落格
+        </h1>
+        <p class="text-xl text-white/80 mb-8">
+          即將推出 — 我們正在整理台灣企業 AI 導入實戰案例
+        </p>
+        <div class="bg-white/10 rounded-2xl p-8 text-white/70 mb-8">
+          <p class="text-lg">第一篇文章即將發布，歡迎先去看看我們提供哪些服務。</p>
+        </div>
+        <a href="/" class="btn-primary text-lg">
+          ← 回到首頁
+        </a>
+      </div>
     </div>
   </section>
-
-  <div class="max-w-4xl mx-auto px-6 md:px-12 pb-20">
-    <div class="space-y-4">
-      {posts.map(post => (
-        <a href={`/blog/${post.slug}`} class="netflix-card block rounded-lg bg-[var(--card)] overflow-hidden no-underline group">
-          <div class="h-1 w-full bg-[var(--accent)] opacity-0 group-hover:opacity-100 transition-opacity"></div>
-          <div class="p-6">
-            <div class="flex items-center gap-3 mb-3">
-              <time class="text-xs text-[var(--muted-dim)] font-medium">
-                {new Date(post.date).toLocaleDateString('zh-TW')}
-              </time>
-              {post.tags?.map((tag: string) => (
-                <span class="text-xs bg-[var(--accent-dim)] text-[var(--accent)] px-2 py-0.5 rounded">{tag}</span>
-              ))}
-            </div>
-            <h2 class="text-xl font-bold text-[var(--text)] group-hover:text-[var(--accent)] transition-colors mb-2">{post.title}</h2>
-            <p class="text-sm text-[var(--muted)] leading-relaxed">{post.description}</p>
-          </div>
-        </a>
-      ))}
-    </div>
-
-    {posts.length === 0 && (
-      <div class="rounded-lg bg-[var(--card)] p-12 text-center">
-        <p class="text-[var(--muted)] text-lg">還沒有文章，很快就來。</p>
-      </div>
-    )}
-  </div>
-</Layout>
+</BaseLayout>

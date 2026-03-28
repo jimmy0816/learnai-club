@@ -1,17 +1,19 @@
 @import "tailwindcss";
 
 :root {
-  --bg: #141414;
-  --bg-dark: #0a0a0a;
-  --card: #1a1a2e;
-  --card-hover: #252540;
-  --border: #2a2a3a;
-  --accent: #E50914;
-  --accent-hover: #f40612;
-  --accent-dim: rgba(229, 9, 20, 0.15);
-  --text: #ffffff;
-  --muted: #b3b3b3;
-  --muted-dim: #808080;
+  --navy: #1e3a5f;
+  --navy-dark: #162d4a;
+  --navy-light: #2a4f7c;
+  --orange: #f97316;
+  --orange-hover: #ea6c0a;
+  --orange-light: rgba(249, 115, 22, 0.1);
+  --bg: #ffffff;
+  --bg-gray: #f8fafc;
+  --card: #ffffff;
+  --border: #e2e8f0;
+  --text: #1e293b;
+  --muted: #64748b;
+  --muted-light: #94a3b8;
 }
 
 html { scroll-behavior: smooth; }
@@ -19,48 +21,66 @@ body {
   background: var(--bg);
   color: var(--text);
   font-family: 'Inter', 'Noto Sans TC', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
 }
 
 a { color: inherit; text-decoration: none; }
 a:hover { text-decoration: none; }
 
-/* Netflix-style horizontal scroll row */
-.netflix-row {
-  display: flex;
-  gap: 0.75rem;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-  padding-bottom: 1rem;
+/* CTA button */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--orange);
+  color: white;
+  font-weight: 600;
+  padding: 0.875rem 2rem;
+  border-radius: 0.5rem;
+  transition: background 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
 }
-.netflix-row::-webkit-scrollbar { display: none; }
-.netflix-row > * {
-  scroll-snap-align: start;
-  flex-shrink: 0;
+.btn-primary:hover {
+  background: var(--orange-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(249, 115, 22, 0.4);
 }
-
-/* Card hover zoom effect */
-.netflix-card {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: transparent;
+  color: var(--navy);
+  font-weight: 600;
+  padding: 0.875rem 2rem;
+  border-radius: 0.5rem;
+  border: 2px solid var(--navy);
+  transition: background 0.2s ease, color 0.2s ease;
 }
-.netflix-card:hover {
-  transform: scale(1.08);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
-  z-index: 10;
-}
-
-/* Hero gradient overlay */
-.hero-gradient {
-  background: linear-gradient(
-    to top,
-    var(--bg) 0%,
-    rgba(20, 20, 20, 0.8) 30%,
-    rgba(20, 20, 20, 0.4) 60%,
-    rgba(20, 20, 20, 0.2) 100%
-  );
+.btn-secondary:hover {
+  background: var(--navy);
+  color: white;
 }
 
-/* Nav scroll effect handled via JS */
-.nav-transparent { background: transparent; }
-.nav-solid { background: var(--bg); }
+/* Card style */
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+.card:hover {
+  box-shadow: 0 8px 32px rgba(30, 58, 95, 0.12);
+  transform: translateY(-2px);
+}
+
+/* Section spacing */
+.section { padding: 5rem 0; }
+.section-gray { background: var(--bg-gray); }
+
+/* Container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
