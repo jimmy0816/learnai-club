@@ -3,25 +3,995 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 <BaseLayout
   title="AI 健檢 - 2 分鐘找出最值得自動化的 3 個流程"
-  description="免費 AI 健檢：30 分鐘診斷你的企業流程，找出最值得 AI 化的機會點，提供完整導入路線圖。"
+  description="免費 AI 健檢：填 2 分鐘問卷，AI 即時產出你公司的客製化導入診斷報告。"
 >
-  <section class="section" style="background: linear-gradient(135deg, #1e3a5f 0%, #2a4f7c 100%);">
-    <div class="container">
-      <div class="max-w-2xl mx-auto text-center py-12">
-        <div class="text-5xl mb-6">🔍</div>
-        <h1 class="text-4xl md:text-5xl font-black text-white mb-6" style="font-family: 'Noto Sans TC', sans-serif;">
-          AI 健檢
-        </h1>
-        <p class="text-xl text-white/80 mb-8">
-          即將推出 — 我們正在準備全新的 AI 健檢系統
-        </p>
-        <div class="bg-white/10 rounded-2xl p-8 text-white/70 mb-8">
-          <p class="text-lg">在系統上線前，你可以直接預約諮詢，我們會提供同等服務。</p>
-        </div>
-        <a href="/consult" class="btn-primary text-lg">
-          先預約人工諮詢 →
-        </a>
+  <section class="checkup-section">
+    <div class="checkup-container">
+
+      <!-- Header -->
+      <div class="checkup-header">
+        <div class="checkup-icon">🔬</div>
+        <h1 class="checkup-title">AI 健檢</h1>
+        <p class="checkup-subtitle">填 2 分鐘問卷，AI 即時產出你公司的客製化診斷報告</p>
       </div>
-    </div>
+
+      <!-- Progress Bar -->
+      <div class="progress-bar-wrap" id="progressWrap">
+        <div class="progress-steps">
+          <span class="progress-label" id="progressLabel">Step 1 / 5</span>
+        </div>
+        <div class="progress-track">
+          <div class="progress-fill" id="progressFill" style="width: 20%"></div>
+        </div>
+      </div>
+
+      <!-- Quiz Form -->
+      <div class="quiz-card" id="quizCard">
+
+        <!-- Step 1: Industry -->
+        <div class="quiz-step active" id="step1">
+          <h2 class="step-title">你的公司屬於哪個產業？</h2>
+          <div class="options-grid">
+            <button class="option-card" data-field="industry" data-value="製造業">🏭<span>製造業</span></button>
+            <button class="option-card" data-field="industry" data-value="零售/電商">🛒<span>零售 / 電商</span></button>
+            <button class="option-card" data-field="industry" data-value="服務業">🏢<span>服務業</span></button>
+            <button class="option-card" data-field="industry" data-value="金融/保險">🏦<span>金融 / 保險</span></button>
+            <button class="option-card" data-field="industry" data-value="餐飲">🍽️<span>餐飲</span></button>
+            <button class="option-card" data-field="industry" data-value="物流">🚚<span>物流</span></button>
+            <button class="option-card" data-field="industry" data-value="科技/軟體">💻<span>科技 / 軟體</span></button>
+            <button class="option-card" data-field="industry" data-value="其他">📦<span>其他</span></button>
+          </div>
+          <div class="step-nav">
+            <div></div>
+            <button class="btn-next" id="next1" disabled>下一步 →</button>
+          </div>
+        </div>
+
+        <!-- Step 2: Size -->
+        <div class="quiz-step" id="step2">
+          <h2 class="step-title">公司目前多少人？</h2>
+          <div class="options-grid options-grid-2">
+            <button class="option-card" data-field="size" data-value="1-10 人">👤<span>1-10 人</span></button>
+            <button class="option-card" data-field="size" data-value="11-50 人">👥<span>11-50 人</span></button>
+            <button class="option-card" data-field="size" data-value="51-200 人">🏢<span>51-200 人</span></button>
+            <button class="option-card" data-field="size" data-value="200 人以上">🏙️<span>200 人以上</span></button>
+          </div>
+          <div class="step-nav">
+            <button class="btn-back" id="back2">← 上一步</button>
+            <button class="btn-next" id="next2" disabled>下一步 →</button>
+          </div>
+        </div>
+
+        <!-- Step 3: Pain Points (multi-select) -->
+        <div class="quiz-step" id="step3">
+          <h2 class="step-title">最困擾你的是什麼？</h2>
+          <p class="step-hint">可選 1-3 個</p>
+          <div class="options-grid">
+            <button class="option-card multi" data-field="painPoints" data-value="找不到人/缺工">🔴<span>找不到人 / 缺工</span></button>
+            <button class="option-card multi" data-field="painPoints" data-value="客服回覆太慢/客訴多">📞<span>客服回覆太慢 / 客訴多</span></button>
+            <button class="option-card multi" data-field="painPoints" data-value="報表/文件做太久">📊<span>報表 / 文件做太久</span></button>
+            <button class="option-card multi" data-field="painPoints" data-value="庫存管理混亂">📦<span>庫存管理混亂</span></button>
+            <button class="option-card multi" data-field="painPoints" data-value="內部溝通效率差">💬<span>內部溝通效率差</span></button>
+            <button class="option-card multi" data-field="painPoints" data-value="業務追蹤困難">📈<span>業務追蹤困難</span></button>
+            <button class="option-card multi" data-field="painPoints" data-value="老員工離職知識就沒了">🧠<span>老員工離職知識就沒了</span></button>
+            <button class="option-card multi" data-field="painPoints" data-value="想用AI但不知從哪開始">❓<span>想用 AI 但不知從哪開始</span></button>
+          </div>
+          <div class="step-nav">
+            <button class="btn-back" id="back3">← 上一步</button>
+            <button class="btn-next" id="next3" disabled>下一步 →</button>
+          </div>
+        </div>
+
+        <!-- Step 4: Current Tools (multi-select) -->
+        <div class="quiz-step" id="step4">
+          <h2 class="step-title">目前公司用了哪些工具？</h2>
+          <p class="step-hint">可多選</p>
+          <div class="options-grid">
+            <button class="option-card multi" data-field="tools" data-value="Excel/Google Sheets">📊<span>Excel / Google Sheets</span></button>
+            <button class="option-card multi" data-field="tools" data-value="ERP系統">🏭<span>ERP 系統</span></button>
+            <button class="option-card multi" data-field="tools" data-value="LINE官方帳號">📱<span>LINE 官方帳號</span></button>
+            <button class="option-card multi" data-field="tools" data-value="ChatGPT/AI工具">🤖<span>ChatGPT / AI 工具</span></button>
+            <button class="option-card multi" data-field="tools" data-value="CRM系統">💼<span>CRM 系統</span></button>
+            <button class="option-card multi" data-field="tools" data-value="Email為主">📧<span>Email 為主</span></button>
+            <button class="option-card multi" data-field="tools" data-value="幾乎沒有數位工具">❌<span>幾乎沒有數位工具</span></button>
+          </div>
+          <div class="step-nav">
+            <button class="btn-back" id="back4">← 上一步</button>
+            <button class="btn-next" id="next4" disabled>下一步 →</button>
+          </div>
+        </div>
+
+        <!-- Step 5: Contact Info -->
+        <div class="quiz-step" id="step5">
+          <h2 class="step-title">報告要寄到哪？</h2>
+          <div class="contact-form">
+            <div class="form-group">
+              <label for="company">公司名稱 <span class="required">*</span></label>
+              <input type="text" id="company" name="company" placeholder="例：台灣製造股份有限公司" required />
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="name">姓名 <span class="required">*</span></label>
+                <input type="text" id="name" name="name" placeholder="王大明" required />
+              </div>
+              <div class="form-group">
+                <label for="title">職稱 <span class="required">*</span></label>
+                <input type="text" id="title" name="title" placeholder="總經理" required />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="email">Email <span class="required">*</span></label>
+              <input type="email" id="email" name="email" placeholder="you@company.com" required />
+            </div>
+            <div class="form-group">
+              <label for="phone">電話 <span class="optional">（選填）</span></label>
+              <input type="tel" id="phone" name="phone" placeholder="0912-345-678" />
+            </div>
+          </div>
+          <div class="step-nav">
+            <button class="btn-back" id="back5">← 上一步</button>
+            <button class="btn-submit" id="submitBtn">產出我的 AI 診斷報告 →</button>
+          </div>
+        </div>
+
+        <!-- Step 6: Loading + Result -->
+        <div class="quiz-step" id="step6">
+          <!-- Loading State -->
+          <div id="loadingState">
+            <div class="loading-animation">
+              <div class="loading-icon">🤖</div>
+              <div class="loading-bars">
+                <div class="loading-bar"></div>
+                <div class="loading-bar"></div>
+                <div class="loading-bar"></div>
+              </div>
+            </div>
+            <h2 class="loading-title">AI 正在分析你的公司...</h2>
+            <p class="loading-subtitle">正在產出客製化診斷報告，約需 10-15 秒</p>
+            <div class="loading-steps">
+              <div class="loading-step active" id="ls1">✓ 分析產業特性</div>
+              <div class="loading-step" id="ls2">⏳ 評估 AI 成熟度</div>
+              <div class="loading-step" id="ls3">⏳ 產出導入建議</div>
+              <div class="loading-step" id="ls4">⏳ 計算預估 ROI</div>
+            </div>
+          </div>
+
+          <!-- Error State -->
+          <div id="errorState" style="display:none;">
+            <div class="error-icon">😓</div>
+            <h2 class="error-title">報告產出失敗</h2>
+            <p class="error-msg" id="errorMsg">系統暫時繁忙，請稍後再試。</p>
+            <div class="error-cta">
+              <p>不想等？直接與顧問預約吧：</p>
+              <a href="/consult" class="btn-consult">預約免費 30 分鐘策略諮詢 →</a>
+            </div>
+          </div>
+
+          <!-- Report State -->
+          <div id="reportState" style="display:none;">
+            <div class="report-header">
+              <div class="report-badge">✅ 診斷完成</div>
+              <h2 class="report-title">你的 AI 導入診斷報告</h2>
+              <div class="report-meta" id="reportMeta"></div>
+              <button class="btn-pdf" disabled title="PDF 下載功能 coming soon">
+                📄 下載 PDF（即將推出）
+              </button>
+            </div>
+            <div class="report-content" id="reportContent"></div>
+            <div class="cta-box">
+              <h3>📊 這份報告只是起點</h3>
+              <p>想知道你的公司具體怎麼開始？</p>
+              <p>由服務過國泰人壽、華碩、TOTO 的 AI 顧問親自為你規劃。</p>
+              <a href="/consult" class="cta-button">預約免費 30 分鐘策略諮詢 →</a>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /quiz-card -->
+
+    </div><!-- /checkup-container -->
   </section>
 </BaseLayout>
+
+<style>
+  /* ===== Layout ===== */
+  .checkup-section {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #1e3a5f 0%, #2a4f7c 60%, #1a3450 100%);
+    padding: 40px 16px 80px;
+  }
+
+  .checkup-container {
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  /* ===== Header ===== */
+  .checkup-header {
+    text-align: center;
+    margin-bottom: 32px;
+  }
+
+  .checkup-icon {
+    font-size: 52px;
+    margin-bottom: 12px;
+  }
+
+  .checkup-title {
+    font-family: 'Noto Sans TC', sans-serif;
+    font-size: clamp(28px, 6vw, 42px);
+    font-weight: 900;
+    color: #fff;
+    margin: 0 0 10px;
+  }
+
+  .checkup-subtitle {
+    font-size: 16px;
+    color: rgba(255,255,255,0.75);
+    margin: 0;
+  }
+
+  /* ===== Progress Bar ===== */
+  .progress-bar-wrap {
+    margin-bottom: 24px;
+  }
+
+  .progress-steps {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 8px;
+  }
+
+  .progress-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.7);
+    letter-spacing: 0.5px;
+  }
+
+  .progress-track {
+    height: 6px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 99px;
+    overflow: hidden;
+  }
+
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #f97316, #fb923c);
+    border-radius: 99px;
+    transition: width 0.4s ease;
+  }
+
+  /* ===== Quiz Card ===== */
+  .quiz-card {
+    background: #fff;
+    border-radius: 20px;
+    padding: 36px 32px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+    overflow: hidden;
+    position: relative;
+  }
+
+  @media (max-width: 480px) {
+    .quiz-card { padding: 24px 16px; }
+  }
+
+  /* ===== Step Transitions ===== */
+  .quiz-step {
+    display: none;
+    animation: fadeIn 0.35s ease;
+  }
+
+  .quiz-step.active {
+    display: block;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateX(20px); }
+    to   { opacity: 1; transform: translateX(0); }
+  }
+
+  @keyframes fadeInLeft {
+    from { opacity: 0; transform: translateX(-20px); }
+    to   { opacity: 1; transform: translateX(0); }
+  }
+
+  .quiz-step.slide-back {
+    animation: fadeInLeft 0.35s ease;
+  }
+
+  /* ===== Step Title ===== */
+  .step-title {
+    font-family: 'Noto Sans TC', sans-serif;
+    font-size: clamp(18px, 4vw, 24px);
+    font-weight: 700;
+    color: #1e3a5f;
+    margin: 0 0 8px;
+  }
+
+  .step-hint {
+    font-size: 13px;
+    color: #9ca3af;
+    margin: 0 0 20px;
+  }
+
+  /* ===== Option Cards ===== */
+  .options-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 12px;
+    margin-bottom: 28px;
+  }
+
+  .options-grid-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 480px) {
+    .options-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  .option-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 16px 12px;
+    border: 2px solid #e5e7eb;
+    border-radius: 12px;
+    background: #f9fafb;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 13px;
+    font-weight: 600;
+    color: #374151;
+    font-family: 'Noto Sans TC', sans-serif;
+    text-align: center;
+    line-height: 1.3;
+  }
+
+  .option-card:first-child {
+    font-size: 22px;
+  }
+
+  .option-card > :first-child {
+    font-size: 28px;
+    line-height: 1;
+  }
+
+  .option-card:hover {
+    border-color: #f97316;
+    background: #fff7ed;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(249,115,22,0.15);
+  }
+
+  .option-card.selected {
+    border-color: #f97316;
+    background: #fff7ed;
+    color: #c2410c;
+    box-shadow: 0 0 0 3px rgba(249,115,22,0.2);
+  }
+
+  /* ===== Step Navigation ===== */
+  .step-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin-top: 8px;
+  }
+
+  .btn-back {
+    background: none;
+    border: 2px solid #e5e7eb;
+    color: #6b7280;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: 'Noto Sans TC', sans-serif;
+  }
+
+  .btn-back:hover {
+    border-color: #9ca3af;
+    color: #374151;
+  }
+
+  .btn-next {
+    background: #1e3a5f;
+    color: #fff;
+    border: none;
+    padding: 12px 28px;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: 'Noto Sans TC', sans-serif;
+  }
+
+  .btn-next:hover:not(:disabled) {
+    background: #2a4f7c;
+    transform: translateY(-1px);
+  }
+
+  .btn-next:disabled {
+    background: #d1d5db;
+    cursor: not-allowed;
+  }
+
+  /* ===== Contact Form ===== */
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  @media (max-width: 480px) {
+    .form-row { grid-template-columns: 1fr; }
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .form-group label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #374151;
+    font-family: 'Noto Sans TC', sans-serif;
+  }
+
+  .required { color: #ef4444; }
+  .optional { color: #9ca3af; font-weight: 400; }
+
+  .form-group input {
+    padding: 11px 14px;
+    border: 2px solid #e5e7eb;
+    border-radius: 10px;
+    font-size: 15px;
+    color: #111827;
+    transition: border-color 0.2s;
+    font-family: 'Noto Sans TC', sans-serif;
+    background: #fafafa;
+  }
+
+  .form-group input:focus {
+    outline: none;
+    border-color: #f97316;
+    background: #fff;
+  }
+
+  .form-group input::placeholder {
+    color: #9ca3af;
+  }
+
+  .btn-submit {
+    background: linear-gradient(135deg, #f97316, #ea6c08);
+    color: #fff;
+    border: none;
+    padding: 14px 28px;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: 'Noto Sans TC', sans-serif;
+    white-space: nowrap;
+  }
+
+  .btn-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(249,115,22,0.35);
+  }
+
+  .btn-submit:disabled {
+    background: #d1d5db;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+  }
+
+  /* ===== Loading State ===== */
+  .loading-animation {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  .loading-icon {
+    font-size: 48px;
+    animation: bounce 1s infinite;
+  }
+
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+
+  .loading-bars {
+    display: flex;
+    gap: 6px;
+    align-items: flex-end;
+    height: 40px;
+  }
+
+  .loading-bar {
+    width: 8px;
+    background: linear-gradient(to top, #f97316, #fb923c);
+    border-radius: 4px;
+    animation: bar 1.2s ease-in-out infinite;
+  }
+
+  .loading-bar:nth-child(1) { animation-delay: 0s; }
+  .loading-bar:nth-child(2) { animation-delay: 0.2s; }
+  .loading-bar:nth-child(3) { animation-delay: 0.4s; }
+
+  @keyframes bar {
+    0%, 100% { height: 12px; }
+    50% { height: 36px; }
+  }
+
+  .loading-title {
+    font-family: 'Noto Sans TC', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: #1e3a5f;
+    text-align: center;
+    margin: 0 0 8px;
+  }
+
+  .loading-subtitle {
+    text-align: center;
+    color: #6b7280;
+    font-size: 14px;
+    margin: 0 0 28px;
+  }
+
+  .loading-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 300px;
+    margin: 0 auto;
+  }
+
+  .loading-step {
+    font-size: 14px;
+    color: #9ca3af;
+    padding: 8px 14px;
+    border-radius: 8px;
+    background: #f9fafb;
+    transition: all 0.4s;
+    font-family: 'Noto Sans TC', sans-serif;
+  }
+
+  .loading-step.active {
+    color: #1e3a5f;
+    background: #eff6ff;
+    font-weight: 600;
+  }
+
+  .loading-step.done {
+    color: #059669;
+    background: #ecfdf5;
+  }
+
+  /* ===== Error State ===== */
+  .error-icon { font-size: 52px; text-align: center; margin-bottom: 12px; }
+  .error-title {
+    font-family: 'Noto Sans TC', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: #1e3a5f;
+    text-align: center;
+    margin: 0 0 8px;
+  }
+  .error-msg { text-align: center; color: #6b7280; margin: 0 0 24px; }
+  .error-cta { text-align: center; }
+  .error-cta p { color: #374151; margin-bottom: 12px; }
+  .btn-consult {
+    display: inline-block;
+    background: linear-gradient(135deg, #f97316, #ea6c08);
+    color: #fff;
+    padding: 14px 28px;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.2s;
+    font-family: 'Noto Sans TC', sans-serif;
+  }
+  .btn-consult:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(249,115,22,0.35);
+  }
+
+  /* ===== Report State ===== */
+  .report-header {
+    text-align: center;
+    padding-bottom: 24px;
+    border-bottom: 2px solid #e5e7eb;
+    margin-bottom: 24px;
+  }
+
+  .report-badge {
+    display: inline-block;
+    background: #ecfdf5;
+    color: #059669;
+    font-size: 13px;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 99px;
+    margin-bottom: 12px;
+  }
+
+  .report-title {
+    font-family: 'Noto Sans TC', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: #1e3a5f;
+    margin: 0 0 12px;
+  }
+
+  .report-meta {
+    font-size: 13px;
+    color: #9ca3af;
+    margin-bottom: 16px;
+  }
+
+  .btn-pdf {
+    background: #f3f4f6;
+    color: #9ca3af;
+    border: 2px dashed #d1d5db;
+    padding: 8px 20px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: not-allowed;
+    font-family: 'Noto Sans TC', sans-serif;
+  }
+
+  /* ===== Report Content ===== */
+  .report-content {
+    background: #fff;
+    border: 2px solid #1e3a5f;
+    border-radius: 16px;
+    padding: 28px;
+    margin-bottom: 28px;
+    line-height: 1.75;
+    color: #374151;
+    font-size: 15px;
+  }
+
+  .report-content h2 {
+    font-family: 'Noto Sans TC', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: #1e3a5f;
+    margin: 24px 0 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #e5e7eb;
+  }
+
+  .report-content h2:first-child { margin-top: 0; }
+
+  .report-content h3 {
+    font-family: 'Noto Sans TC', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: #374151;
+    margin: 16px 0 8px;
+  }
+
+  .report-content p { margin: 8px 0; }
+
+  .report-content ul, .report-content ol {
+    padding-left: 20px;
+    margin: 8px 0;
+  }
+
+  .report-content li { margin-bottom: 6px; }
+
+  .report-content strong { color: #1e3a5f; }
+
+  /* ===== CTA Box ===== */
+  .cta-box {
+    background: linear-gradient(135deg, #1e3a5f 0%, #2a4f7c 100%);
+    border-radius: 16px;
+    padding: 32px 28px;
+    text-align: center;
+    margin-top: 8px;
+  }
+
+  .cta-box h3 {
+    font-family: 'Noto Sans TC', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: #fff;
+    margin: 0 0 12px;
+  }
+
+  .cta-box p {
+    color: rgba(255,255,255,0.8);
+    font-size: 15px;
+    margin: 0 0 8px;
+  }
+
+  .cta-button {
+    display: inline-block;
+    background: linear-gradient(135deg, #f97316, #ea6c08);
+    color: #fff;
+    padding: 14px 32px;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 700;
+    text-decoration: none;
+    margin-top: 16px;
+    transition: all 0.2s;
+    font-family: 'Noto Sans TC', sans-serif;
+  }
+
+  .cta-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(249,115,22,0.4);
+  }
+</style>
+
+<script>
+  // ===== State =====
+  const formData = {
+    industry: '',
+    size: '',
+    painPoints: [] as string[],
+    tools: [] as string[],
+    company: '',
+    name: '',
+    title: '',
+    email: '',
+    phone: '',
+  };
+
+  let currentStep = 1;
+  const TOTAL_STEPS = 5; // Progress bar goes 1-5 (step 6 is result)
+
+  // ===== DOM =====
+  function getEl<T extends HTMLElement>(id: string) {
+    return document.getElementById(id) as T;
+  }
+
+  const progressFill = getEl<HTMLDivElement>('progressFill');
+  const progressLabel = getEl<HTMLSpanElement>('progressLabel');
+  const progressWrap = getEl<HTMLDivElement>('progressWrap');
+
+  // ===== Progress =====
+  function updateProgress(step: number) {
+    const pct = Math.min((step / TOTAL_STEPS) * 100, 100);
+    progressFill.style.width = pct + '%';
+    progressLabel.textContent = step <= TOTAL_STEPS ? `Step ${step} / ${TOTAL_STEPS}` : '完成';
+  }
+
+  // ===== Step Transition =====
+  function goToStep(to: number, direction: 'forward' | 'back' = 'forward') {
+    const from = currentStep;
+    const fromEl = getEl(`step${from}`);
+    const toEl = getEl(`step${to}`);
+
+    fromEl.classList.remove('active');
+    toEl.classList.remove('slide-back');
+    if (direction === 'back') {
+      toEl.classList.add('slide-back');
+    }
+    toEl.classList.add('active');
+    currentStep = to;
+
+    if (to === 6) {
+      progressWrap.style.display = 'none';
+    } else {
+      progressWrap.style.display = '';
+      updateProgress(to);
+    }
+  }
+
+  // ===== Single-select option cards =====
+  function bindSingleSelect(field: 'industry' | 'size', nextBtn: HTMLButtonElement) {
+    const cards = document.querySelectorAll<HTMLButtonElement>(`.option-card[data-field="${field}"]`);
+    cards.forEach(card => {
+      card.addEventListener('click', () => {
+        cards.forEach(c => c.classList.remove('selected'));
+        card.classList.add('selected');
+        (formData as any)[field] = card.dataset.value || '';
+        nextBtn.disabled = false;
+      });
+    });
+  }
+
+  // ===== Multi-select option cards =====
+  function bindMultiSelect(field: 'painPoints' | 'tools', nextBtn: HTMLButtonElement, maxSelect = 99) {
+    const cards = document.querySelectorAll<HTMLButtonElement>(`.option-card[data-field="${field}"]`);
+    cards.forEach(card => {
+      card.addEventListener('click', () => {
+        const val = card.dataset.value || '';
+        const arr = (formData as any)[field] as string[];
+        if (card.classList.contains('selected')) {
+          card.classList.remove('selected');
+          const idx = arr.indexOf(val);
+          if (idx > -1) arr.splice(idx, 1);
+        } else {
+          if (arr.length < maxSelect) {
+            card.classList.add('selected');
+            arr.push(val);
+          }
+        }
+        nextBtn.disabled = arr.length === 0;
+      });
+    });
+  }
+
+  // ===== Contact form validation =====
+  function validateContact() {
+    const company = (getEl<HTMLInputElement>('company')).value.trim();
+    const name = (getEl<HTMLInputElement>('name')).value.trim();
+    const title = (getEl<HTMLInputElement>('title')).value.trim();
+    const email = (getEl<HTMLInputElement>('email')).value.trim();
+    return company && name && title && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  }
+
+  const submitBtn = getEl<HTMLButtonElement>('submitBtn');
+
+  ['company', 'name', 'title', 'email', 'phone'].forEach(id => {
+    getEl<HTMLInputElement>(id).addEventListener('input', () => {
+      submitBtn.disabled = !validateContact();
+    });
+  });
+
+  // ===== Markdown-to-HTML (simple) =====
+  function markdownToHtml(md: string): string {
+    return md
+      // h2
+      .replace(/^## (.+)$/gm, '<h2>$1</h2>')
+      // h3
+      .replace(/^### (.+)$/gm, '<h3>$1</h3>')
+      // bold
+      .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+      // unordered list items
+      .replace(/^[\-\*] (.+)$/gm, '<li>$1</li>')
+      // ordered list items
+      .replace(/^\d+\. (.+)$/gm, '<li>$1</li>')
+      // wrap consecutive <li> blocks in <ul>
+      .replace(/(<li>.*<\/li>\n?)+/gs, (block) => `<ul>${block}</ul>`)
+      // paragraphs (lines that are not tags)
+      .replace(/^(?!<[a-z])(.+)$/gm, '<p>$1</p>')
+      // clean up empty paragraphs
+      .replace(/<p>\s*<\/p>/g, '')
+      .trim();
+  }
+
+  // ===== Loading Steps Animation =====
+  function animateLoadingSteps() {
+    const steps = [
+      { id: 'ls1', delay: 0 },
+      { id: 'ls2', delay: 2000 },
+      { id: 'ls3', delay: 5000 },
+      { id: 'ls4', delay: 9000 },
+    ];
+    steps.forEach(({ id, delay }) => {
+      setTimeout(() => {
+        const el = getEl(id);
+        if (el) {
+          el.classList.remove('active');
+          el.classList.add('done');
+          el.textContent = '✓ ' + el.textContent?.replace(/^[⏳✓] /, '');
+          // Activate next
+          const next = document.querySelector<HTMLElement>(`.loading-step:not(.done):not(.active)`);
+          if (next) next.classList.add('active');
+        }
+      }, delay + 500);
+    });
+  }
+
+  // ===== Submit =====
+  async function submitForm() {
+    // Collect contact
+    formData.company = (getEl<HTMLInputElement>('company')).value.trim();
+    formData.name = (getEl<HTMLInputElement>('name')).value.trim();
+    formData.title = (getEl<HTMLInputElement>('title')).value.trim();
+    formData.email = (getEl<HTMLInputElement>('email')).value.trim();
+    formData.phone = (getEl<HTMLInputElement>('phone')).value.trim();
+
+    // Go to loading step
+    goToStep(6);
+    animateLoadingSteps();
+
+    try {
+      const res = await fetch('/api/ai-checkup', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          industry: formData.industry,
+          size: formData.size,
+          painPoints: formData.painPoints,
+          tools: formData.tools,
+          company: formData.company,
+          name: formData.name,
+          title: formData.title,
+          email: formData.email,
+          phone: formData.phone,
+        }),
+      });
+
+      const json = await res.json();
+
+      if (!res.ok || !json.success) {
+        throw new Error(json.error || '未知錯誤');
+      }
+
+      // Show report
+      const loadingState = getEl('loadingState');
+      const reportState = getEl('reportState');
+
+      loadingState.style.display = 'none';
+      reportState.style.display = '';
+
+      const metaEl = getEl('reportMeta');
+      metaEl.textContent = `${formData.company} · ${formData.industry} · ${formData.size}`;
+
+      const contentEl = getEl('reportContent');
+      contentEl.innerHTML = markdownToHtml(json.report || '');
+
+    } catch (err: any) {
+      const loadingState = getEl('loadingState');
+      const errorState = getEl('errorState');
+      const errorMsg = getEl('errorMsg');
+
+      loadingState.style.display = 'none';
+      errorState.style.display = '';
+      errorMsg.textContent = err?.message || '系統暫時繁忙，請稍後再試。';
+    }
+  }
+
+  // ===== Wire Up =====
+  document.addEventListener('DOMContentLoaded', () => {
+    const next1 = getEl<HTMLButtonElement>('next1');
+    const next2 = getEl<HTMLButtonElement>('next2');
+    const next3 = getEl<HTMLButtonElement>('next3');
+    const next4 = getEl<HTMLButtonElement>('next4');
+
+    bindSingleSelect('industry', next1);
+    bindSingleSelect('size', next2);
+    bindMultiSelect('painPoints', next3, 3);
+    bindMultiSelect('tools', next4);
+
+    next1.addEventListener('click', () => goToStep(2));
+    next2.addEventListener('click', () => goToStep(3));
+    next3.addEventListener('click', () => goToStep(4));
+    next4.addEventListener('click', () => goToStep(5));
+
+    getEl('back2').addEventListener('click', () => goToStep(1, 'back'));
+    getEl('back3').addEventListener('click', () => goToStep(2, 'back'));
+    getEl('back4').addEventListener('click', () => goToStep(3, 'back'));
+    getEl('back5').addEventListener('click', () => goToStep(4, 'back'));
+
+    submitBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (validateContact()) submitForm();
+    });
+
+    updateProgress(1);
+  });
+</script>
