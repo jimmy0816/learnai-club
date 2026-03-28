@@ -39,6 +39,24 @@ function escapeHtml(text) {
   return String(text || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 }
 
+async function sendWelcomeEmail(origin, { email, name }) {
+  try {
+    const res = await fetch(`${origin}/api/send-email`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ to: email, template: 'welcome', name: name || '你好' }),
+    });
+    const json = await res.json();
+    if (json.success) {
+      console.log('D0 welcome email sent to', email, 'via', json.provider);
+    } else {
+      console.warn('D0 welcome email failed:', json.error);
+    }
+  } catch (err) {
+    console.error('sendWelcomeEmail error:', err);
+  }
+}
+
 function buildPrompt({ industry, size, painPoints, tools }) {
   return `你是台灣企業 AI 導入顧問，專門幫中小企業評估 AI 自動化機會。
 
@@ -101,7 +119,7 @@ async function callAnthropic(apiKey, prompt) {
       'content-type': 'application/json',
     },
     body: JSON.stringify({
-      model: 'claude-sonnet-4-5-20250514',
+      model: 'claude-3-haiku-20240307',
       max_tokens: 2000,
       messages: [{ role: 'user', content: prompt }],
     }),
@@ -239,6 +257,12 @@ export async function onRequestPost(context) {
   } else {
     console.warn('TELEGRAM_BOT_TOKEN not set, skipping notification');
   }
+
+  // Send D0 welcome email (non-blocking)
+  const origin = new URL(request.url).origin;
+  sendWelcomeEmail(origin, { email, name }).catch(e =>
+    console.error('D0 welcome email failed:', e)
+  );
 
   // Return report
   return new Response(

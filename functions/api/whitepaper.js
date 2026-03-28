@@ -11,6 +11,24 @@ function escapeHtml(text) {
   return String(text || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 }
 
+async function sendWelcomeEmail(origin, { email, name }) {
+  try {
+    const res = await fetch(`${origin}/api/send-email`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ to: email, template: 'welcome', name: name || '你好' }),
+    });
+    const json = await res.json();
+    if (json.success) {
+      console.log('D0 welcome email sent to', email, 'via', json.provider);
+    } else {
+      console.warn('D0 welcome email failed:', json.error);
+    }
+  } catch (err) {
+    console.error('sendWelcomeEmail error:', err);
+  }
+}
+
 async function sendTelegram(botToken, chatId, message) {
   const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
   const res = await fetch(url, {
@@ -77,6 +95,12 @@ ${companyStr}${titleStr}
   } else {
     console.warn('TELEGRAM_BOT_TOKEN not set, skipping notification');
   }
+
+  // Send D0 welcome email (non-blocking)
+  const origin = new URL(request.url).origin;
+  sendWelcomeEmail(origin, { email, name: company || email }).catch(e =>
+    console.error('D0 welcome email failed:', e)
+  );
 
   // Return redirect URL to whitepaper content page
   return new Response(
