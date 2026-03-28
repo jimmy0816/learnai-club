@@ -197,8 +197,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   /* ===== Layout ===== */
   .checkup-section {
     min-height: 100vh;
-    background: linear-gradient(135deg, #1e3a5f 0%, #2a4f7c 60%, #1a3450 100%);
-    padding: 40px 16px 80px;
+    background: var(--color-bg);
+    padding: 0 16px 80px;
   }
 
   .checkup-container {
@@ -209,26 +209,27 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   /* ===== Header ===== */
   .checkup-header {
     text-align: center;
-    margin-bottom: 32px;
+    padding: 56px 0 40px;
   }
 
   .checkup-icon {
-    font-size: 52px;
-    margin-bottom: 12px;
+    display: none;
   }
 
   .checkup-title {
-    font-family: 'Noto Sans TC', sans-serif;
-    font-size: clamp(28px, 6vw, 42px);
-    font-weight: 900;
-    color: #fff;
-    margin: 0 0 10px;
+    font-family: var(--font-heading);
+    font-size: clamp(26px, 5vw, 40px);
+    font-weight: 700;
+    color: var(--color-text);
+    margin: 0 0 12px;
+    letter-spacing: -0.02em;
   }
 
   .checkup-subtitle {
     font-size: 16px;
-    color: rgba(255,255,255,0.75);
+    color: var(--color-text-secondary);
     margin: 0;
+    line-height: 1.7;
   }
 
   /* ===== Progress Bar ===== */
@@ -243,44 +244,46 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   }
 
   .progress-label {
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 600;
-    color: rgba(255,255,255,0.7);
-    letter-spacing: 0.5px;
+    color: var(--color-gold);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
   }
 
   .progress-track {
-    height: 6px;
-    background: rgba(255,255,255,0.2);
+    height: 3px;
+    background: var(--color-border);
     border-radius: 99px;
     overflow: hidden;
   }
 
   .progress-fill {
     height: 100%;
-    background: linear-gradient(90deg, #f97316, #fb923c);
+    background: var(--color-gold);
     border-radius: 99px;
     transition: width 0.4s ease;
   }
 
   /* ===== Quiz Card ===== */
   .quiz-card {
-    background: #fff;
-    border-radius: 20px;
-    padding: 36px 32px;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+    background: var(--color-bg-alt);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: 40px 36px;
+    box-shadow: var(--shadow-sm);
     overflow: hidden;
     position: relative;
   }
 
   @media (max-width: 480px) {
-    .quiz-card { padding: 24px 16px; }
+    .quiz-card { padding: 28px 20px; }
   }
 
   /* ===== Step Transitions ===== */
   .quiz-step {
     display: none;
-    animation: fadeIn 0.35s ease;
+    animation: fadeIn 0.3s ease;
   }
 
   .quiz-step.active {
@@ -288,39 +291,39 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   }
 
   @keyframes fadeIn {
-    from { opacity: 0; transform: translateX(20px); }
+    from { opacity: 0; transform: translateX(16px); }
     to   { opacity: 1; transform: translateX(0); }
   }
 
   @keyframes fadeInLeft {
-    from { opacity: 0; transform: translateX(-20px); }
+    from { opacity: 0; transform: translateX(-16px); }
     to   { opacity: 1; transform: translateX(0); }
   }
 
   .quiz-step.slide-back {
-    animation: fadeInLeft 0.35s ease;
+    animation: fadeInLeft 0.3s ease;
   }
 
   /* ===== Step Title ===== */
   .step-title {
-    font-family: 'Noto Sans TC', sans-serif;
-    font-size: clamp(18px, 4vw, 24px);
-    font-weight: 700;
-    color: #1e3a5f;
+    font-family: var(--font-heading);
+    font-size: clamp(18px, 3.5vw, 24px);
+    font-weight: 600;
+    color: var(--color-text);
     margin: 0 0 8px;
   }
 
   .step-hint {
     font-size: 13px;
-    color: #9ca3af;
-    margin: 0 0 20px;
+    color: var(--color-text-secondary);
+    margin: 0 0 24px;
   }
 
   /* ===== Option Cards ===== */
   .options-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-    gap: 12px;
+    gap: 10px;
     margin-bottom: 28px;
   }
 
@@ -338,40 +341,34 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     align-items: center;
     gap: 8px;
     padding: 16px 12px;
-    border: 2px solid #e5e7eb;
-    border-radius: 12px;
-    background: #f9fafb;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    background: var(--color-bg);
     cursor: pointer;
     transition: all 0.2s ease;
     font-size: 13px;
-    font-weight: 600;
-    color: #374151;
-    font-family: 'Noto Sans TC', sans-serif;
+    font-weight: 500;
+    color: var(--color-text);
+    font-family: var(--font-body);
     text-align: center;
-    line-height: 1.3;
-  }
-
-  .option-card:first-child {
-    font-size: 22px;
+    line-height: 1.4;
   }
 
   .option-card > :first-child {
-    font-size: 28px;
+    font-size: 22px;
     line-height: 1;
   }
 
   .option-card:hover {
-    border-color: #f97316;
-    background: #fff7ed;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(249,115,22,0.15);
+    border-color: var(--color-primary);
+    background: var(--color-bg-alt);
   }
 
   .option-card.selected {
-    border-color: #f97316;
-    background: #fff7ed;
-    color: #c2410c;
-    box-shadow: 0 0 0 3px rgba(249,115,22,0.2);
+    border-color: var(--color-primary);
+    border-width: 2px;
+    background: var(--color-bg-alt);
+    color: var(--color-primary);
   }
 
   /* ===== Step Navigation ===== */
@@ -385,38 +382,39 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
   .btn-back {
     background: none;
-    border: 2px solid #e5e7eb;
-    color: #6b7280;
+    border: 1px solid var(--color-border);
+    color: var(--color-text-secondary);
     padding: 10px 20px;
-    border-radius: 10px;
+    border-radius: var(--radius-sm);
     font-size: 14px;
-    font-weight: 600;
+    font-weight: 500;
     cursor: pointer;
     transition: all 0.2s;
-    font-family: 'Noto Sans TC', sans-serif;
+    font-family: var(--font-body);
+    letter-spacing: 0.02em;
   }
 
   .btn-back:hover {
-    border-color: #9ca3af;
-    color: #374151;
+    border-color: var(--color-text-secondary);
+    color: var(--color-text);
   }
 
   .btn-next {
-    background: #1e3a5f;
+    background: var(--color-primary);
     color: #fff;
     border: none;
     padding: 12px 28px;
-    border-radius: 10px;
-    font-size: 15px;
-    font-weight: 700;
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+    font-weight: 600;
     cursor: pointer;
-    transition: all 0.2s;
-    font-family: 'Noto Sans TC', sans-serif;
+    transition: background 0.2s;
+    font-family: var(--font-body);
+    letter-spacing: 0.02em;
   }
 
   .btn-next:hover:not(:disabled) {
-    background: #2a4f7c;
-    transform: translateY(-1px);
+    background: #1a5c3e;
   }
 
   .btn-next:disabled {
@@ -454,52 +452,55 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   .form-group label {
     font-size: 13px;
     font-weight: 600;
-    color: #374151;
-    font-family: 'Noto Sans TC', sans-serif;
+    color: var(--color-text);
+    font-family: var(--font-body);
     display: block;
     margin-bottom: 4px;
+    letter-spacing: 0.02em;
   }
 
-  .required { color: #ef4444; }
-  .optional { color: #9ca3af; font-weight: 400; }
+  .required { color: #cc4444; }
+  .optional { color: var(--color-text-secondary); font-weight: 400; }
 
   .form-group input {
     padding: 12px 16px;
-    border: 2px solid #d1d5db;
-    border-radius: 8px;
-    font-size: 16px;
-    color: #111827;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    font-size: 15px;
+    color: var(--color-text);
+    background: var(--color-bg);
     transition: border-color 0.2s;
-    font-family: 'Noto Sans TC', sans-serif;
-    background: #fafafa;
+    font-family: var(--font-body);
     box-sizing: border-box;
     width: 100%;
     max-width: 100%;
     display: block;
+    outline: none;
   }
 
   .form-group input:focus {
-    outline: none;
-    border-color: #f97316;
-    background: #fff;
+    border-color: var(--color-primary);
+    background: white;
   }
 
   .form-group input::placeholder {
-    color: #9ca3af;
+    color: var(--color-text-secondary);
+    opacity: 0.6;
   }
 
   .btn-submit {
-    background: linear-gradient(135deg, #f97316, #ea6c08);
+    background: var(--color-primary);
     color: #fff;
     border: none;
     padding: 14px 28px;
-    border-radius: 12px;
-    font-size: 16px;
-    font-weight: 700;
+    border-radius: var(--radius-sm);
+    font-size: 15px;
+    font-weight: 600;
     cursor: pointer;
-    transition: all 0.2s;
-    font-family: 'Noto Sans TC', sans-serif;
+    transition: background 0.2s;
+    font-family: var(--font-body);
     white-space: nowrap;
+    letter-spacing: 0.02em;
   }
 
   @media (max-width: 480px) {
@@ -515,15 +516,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   }
 
   .btn-submit:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(249,115,22,0.35);
+    background: #1a5c3e;
   }
 
   .btn-submit:disabled {
     background: #d1d5db;
     cursor: not-allowed;
-    transform: none;
-    box-shadow: none;
   }
 
   /* ===== Loading State ===== */
@@ -532,30 +530,30 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     align-items: center;
     justify-content: center;
     gap: 16px;
-    margin-bottom: 24px;
+    margin-bottom: 32px;
   }
 
   .loading-icon {
-    font-size: 48px;
-    animation: bounce 1s infinite;
+    font-size: 40px;
+    animation: bounce 1.2s infinite;
   }
 
   @keyframes bounce {
     0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-8px); }
+    50% { transform: translateY(-6px); }
   }
 
   .loading-bars {
     display: flex;
-    gap: 6px;
+    gap: 5px;
     align-items: flex-end;
-    height: 40px;
+    height: 36px;
   }
 
   .loading-bar {
-    width: 8px;
-    background: linear-gradient(to top, #f97316, #fb923c);
-    border-radius: 4px;
+    width: 6px;
+    background: var(--color-gold);
+    border-radius: 3px;
     animation: bar 1.2s ease-in-out infinite;
   }
 
@@ -564,159 +562,164 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   .loading-bar:nth-child(3) { animation-delay: 0.4s; }
 
   @keyframes bar {
-    0%, 100% { height: 12px; }
-    50% { height: 36px; }
+    0%, 100% { height: 10px; }
+    50% { height: 32px; }
   }
 
   .loading-title {
-    font-family: 'Noto Sans TC', sans-serif;
+    font-family: var(--font-heading);
     font-size: 22px;
-    font-weight: 700;
-    color: #1e3a5f;
+    font-weight: 600;
+    color: var(--color-text);
     text-align: center;
     margin: 0 0 8px;
   }
 
   .loading-subtitle {
     text-align: center;
-    color: #6b7280;
+    color: var(--color-text-secondary);
     font-size: 14px;
-    margin: 0 0 28px;
+    margin: 0 0 32px;
   }
 
   .loading-steps {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 8px;
     max-width: 300px;
     margin: 0 auto;
   }
 
   .loading-step {
     font-size: 14px;
-    color: #9ca3af;
+    color: var(--color-text-secondary);
     padding: 8px 14px;
-    border-radius: 8px;
-    background: #f9fafb;
+    border-radius: var(--radius-sm);
+    background: var(--color-bg);
     transition: all 0.4s;
-    font-family: 'Noto Sans TC', sans-serif;
+    font-family: var(--font-body);
+    border: 1px solid transparent;
   }
 
   .loading-step.active {
-    color: #1e3a5f;
-    background: #eff6ff;
+    color: var(--color-text);
+    background: var(--color-bg-alt);
+    border-color: var(--color-border);
     font-weight: 600;
   }
 
   .loading-step.done {
-    color: #059669;
-    background: #ecfdf5;
+    color: var(--color-primary);
+    background: var(--color-bg-alt);
   }
 
   /* ===== Error State ===== */
-  .error-icon { font-size: 52px; text-align: center; margin-bottom: 12px; }
+  .error-icon { font-size: 40px; text-align: center; margin-bottom: 16px; }
   .error-title {
-    font-family: 'Noto Sans TC', sans-serif;
+    font-family: var(--font-heading);
     font-size: 22px;
-    font-weight: 700;
-    color: #1e3a5f;
+    font-weight: 600;
+    color: var(--color-text);
     text-align: center;
     margin: 0 0 8px;
   }
-  .error-msg { text-align: center; color: #6b7280; margin: 0 0 24px; }
+  .error-msg { text-align: center; color: var(--color-text-secondary); margin: 0 0 24px; }
   .error-cta { text-align: center; }
-  .error-cta p { color: #374151; margin-bottom: 12px; }
+  .error-cta p { color: var(--color-text); margin-bottom: 12px; }
   .btn-consult {
     display: inline-block;
-    background: linear-gradient(135deg, #f97316, #ea6c08);
+    background: var(--color-primary);
     color: #fff;
     padding: 14px 28px;
-    border-radius: 12px;
-    font-size: 16px;
-    font-weight: 700;
+    border-radius: var(--radius-sm);
+    font-size: 15px;
+    font-weight: 600;
     text-decoration: none;
-    transition: all 0.2s;
-    font-family: 'Noto Sans TC', sans-serif;
+    transition: background 0.2s;
+    font-family: var(--font-body);
+    letter-spacing: 0.02em;
   }
   .btn-consult:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(249,115,22,0.35);
+    background: #1a5c3e;
   }
 
   /* ===== Report State ===== */
   .report-header {
     text-align: center;
-    padding-bottom: 24px;
-    border-bottom: 2px solid #e5e7eb;
-    margin-bottom: 24px;
+    padding-bottom: 28px;
+    border-bottom: 1px solid var(--color-border);
+    margin-bottom: 28px;
   }
 
   .report-badge {
     display: inline-block;
-    background: #ecfdf5;
-    color: #059669;
-    font-size: 13px;
-    font-weight: 700;
-    padding: 4px 12px;
-    border-radius: 99px;
-    margin-bottom: 12px;
+    background: var(--color-bg-section);
+    color: var(--color-primary);
+    font-size: 12px;
+    font-weight: 600;
+    padding: 4px 14px;
+    border-radius: 2px;
+    margin-bottom: 14px;
+    border: 1px solid var(--color-border);
+    letter-spacing: 0.05em;
   }
 
   .report-title {
-    font-family: 'Noto Sans TC', sans-serif;
+    font-family: var(--font-heading);
     font-size: 22px;
-    font-weight: 700;
-    color: #1e3a5f;
+    font-weight: 600;
+    color: var(--color-text);
     margin: 0 0 12px;
   }
 
   .report-meta {
     font-size: 13px;
-    color: #9ca3af;
+    color: var(--color-text-secondary);
     margin-bottom: 16px;
   }
 
   .btn-pdf {
-    background: #f3f4f6;
-    color: #9ca3af;
-    border: 2px dashed #d1d5db;
+    background: var(--color-bg-section);
+    color: var(--color-text-secondary);
+    border: 1px dashed var(--color-border);
     padding: 8px 20px;
-    border-radius: 8px;
+    border-radius: var(--radius-sm);
     font-size: 13px;
-    font-weight: 600;
+    font-weight: 500;
     cursor: not-allowed;
-    font-family: 'Noto Sans TC', sans-serif;
+    font-family: var(--font-body);
   }
 
   /* ===== Report Content ===== */
   .report-content {
-    background: #fff;
-    border: 2px solid #1e3a5f;
-    border-radius: 16px;
+    background: var(--color-bg-alt);
+    border: 1px solid var(--color-border);
+    border-left: 3px solid var(--color-gold);
+    border-radius: var(--radius-md);
     padding: 28px;
     margin-bottom: 28px;
-    line-height: 1.75;
-    color: #374151;
+    line-height: 1.8;
+    color: var(--color-text);
     font-size: 15px;
   }
 
   .report-content h2 {
-    font-family: 'Noto Sans TC', sans-serif;
+    font-family: var(--font-heading);
     font-size: 18px;
-    font-weight: 700;
-    color: #1e3a5f;
-    margin: 24px 0 12px;
+    font-weight: 600;
+    color: var(--color-text);
+    margin: 28px 0 12px;
     padding-bottom: 8px;
-    border-bottom: 1px solid #e5e7eb;
+    border-bottom: 1px solid var(--color-border);
   }
 
   .report-content h2:first-child { margin-top: 0; }
 
   .report-content h3 {
-    font-family: 'Noto Sans TC', sans-serif;
+    font-family: var(--font-heading);
     font-size: 15px;
-    font-weight: 700;
-    color: #374151;
+    font-weight: 600;
+    color: var(--color-text);
     margin: 16px 0 8px;
   }
 
@@ -729,48 +732,49 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
   .report-content li { margin-bottom: 6px; }
 
-  .report-content strong { color: #1e3a5f; }
+  .report-content strong { color: var(--color-primary); }
 
   /* ===== CTA Box ===== */
   .cta-box {
-    background: linear-gradient(135deg, #1e3a5f 0%, #2a4f7c 100%);
-    border-radius: 16px;
-    padding: 32px 28px;
+    background: #111111;
+    border-radius: var(--radius-md);
+    padding: 36px 28px;
     text-align: center;
     margin-top: 8px;
+    border: 1px solid rgba(200,184,154,0.2);
   }
 
   .cta-box h3 {
-    font-family: 'Noto Sans TC', sans-serif;
+    font-family: var(--font-heading);
     font-size: 20px;
-    font-weight: 700;
-    color: #fff;
+    font-weight: 600;
+    color: #f5f0e8;
     margin: 0 0 12px;
   }
 
   .cta-box p {
-    color: rgba(255,255,255,0.8);
+    color: rgba(245,240,232,0.6);
     font-size: 15px;
     margin: 0 0 8px;
   }
 
   .cta-button {
     display: inline-block;
-    background: linear-gradient(135deg, #f97316, #ea6c08);
+    background: var(--color-primary);
     color: #fff;
     padding: 14px 32px;
-    border-radius: 12px;
-    font-size: 16px;
-    font-weight: 700;
+    border-radius: var(--radius-sm);
+    font-size: 15px;
+    font-weight: 600;
     text-decoration: none;
     margin-top: 16px;
-    transition: all 0.2s;
-    font-family: 'Noto Sans TC', sans-serif;
+    transition: background 0.2s;
+    font-family: var(--font-body);
+    letter-spacing: 0.02em;
   }
 
   .cta-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(249,115,22,0.4);
+    background: #1a5c3e;
   }
 </style>
 

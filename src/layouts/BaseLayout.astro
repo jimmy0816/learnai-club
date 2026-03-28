@@ -39,7 +39,7 @@ const fullTitle = title.includes('Learn AI Club') ? title : `${title} | Learn AI
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Serif+TC:wght@400;600;700;900&display=swap" rel="stylesheet" />
 
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -59,28 +59,28 @@ const fullTitle = title.includes('Learn AI Club') ? title : `${title} | Learn AI
 </head>
 <body class="min-h-screen flex flex-col">
   <!-- Navigation -->
-  <nav class="sticky top-0 z-50 bg-white border-b border-gray-100 shadow-sm">
+  <nav style="position: sticky; top: 0; z-index: 50; background: #111111; border-bottom: 1px solid rgba(200,184,154,0.2);">
     <div class="container">
-      <div class="flex items-center justify-between h-16">
+      <div style="display: flex; align-items: center; justify-content: space-between; height: 64px;">
         <!-- Logo -->
-        <a href="/" class="flex items-center gap-2">
-          <div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background: #1e3a5f;">
-            <span class="text-white font-bold text-sm">AI</span>
+        <a href="/" style="display: flex; align-items: center; gap: 10px; text-decoration: none;">
+          <div style="width: 32px; height: 32px; border-radius: 4px; background: var(--color-gold); display: flex; align-items: center; justify-content: center;">
+            <span style="color: #111111; font-weight: 700; font-size: 13px; font-family: var(--font-body);">AI</span>
           </div>
-          <span class="font-bold text-lg" style="color: #1e3a5f;">Learn AI Club</span>
+          <span style="font-family: var(--font-heading); font-weight: 700; font-size: 18px; color: #f5f0e8; letter-spacing: -0.01em;">Learn AI Club</span>
         </a>
 
         <!-- Desktop Nav -->
-        <div class="hidden md:flex items-center gap-8">
-          <a href="/" class="text-gray-600 hover:text-[#1e3a5f] font-medium transition-colors">首頁</a>
-          <a href="/ai-checkup" class="text-gray-600 hover:text-[#1e3a5f] font-medium transition-colors">AI 健檢</a>
-          <a href="/blog" class="text-gray-600 hover:text-[#1e3a5f] font-medium transition-colors">部落格</a>
-          <a href="/consult" class="btn-primary text-sm py-2 px-5">預約諮詢</a>
+        <div class="hidden md:flex" style="align-items: center; gap: 36px;">
+          <a href="/" style="color: rgba(245,240,232,0.7); font-weight: 500; font-size: 14px; transition: color 0.2s; letter-spacing: 0.02em;" onmouseover="this.style.color='#f5f0e8'" onmouseout="this.style.color='rgba(245,240,232,0.7)'">首頁</a>
+          <a href="/ai-checkup" style="color: rgba(245,240,232,0.7); font-weight: 500; font-size: 14px; transition: color 0.2s; letter-spacing: 0.02em;" onmouseover="this.style.color='#f5f0e8'" onmouseout="this.style.color='rgba(245,240,232,0.7)'">AI 健檢</a>
+          <a href="/blog" style="color: rgba(245,240,232,0.7); font-weight: 500; font-size: 14px; transition: color 0.2s; letter-spacing: 0.02em;" onmouseover="this.style.color='#f5f0e8'" onmouseout="this.style.color='rgba(245,240,232,0.7)'">部落格</a>
+          <a href="/consult" class="btn-primary" style="font-size: 13px; padding: 10px 22px;">預約諮詢</a>
         </div>
 
         <!-- Mobile menu button -->
-        <button id="menu-btn" class="md:hidden p-2 rounded-lg hover:bg-gray-100" aria-label="選單">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <button id="menu-btn" class="md:hidden" style="padding: 8px; border-radius: 4px; background: none; border: none; cursor: pointer; color: #f5f0e8;" aria-label="選單">
+          <svg width="22" height="22" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
           </svg>
         </button>
@@ -88,12 +88,12 @@ const fullTitle = title.includes('Learn AI Club') ? title : `${title} | Learn AI
     </div>
 
     <!-- Mobile menu -->
-    <div id="mobile-menu" class="hidden md:hidden border-t border-gray-100 bg-white">
-      <div class="container py-4 flex flex-col gap-3">
-        <a href="/" class="text-gray-700 font-medium py-2">首頁</a>
-        <a href="/ai-checkup" class="text-gray-700 font-medium py-2">AI 健檢</a>
-        <a href="/blog" class="text-gray-700 font-medium py-2">部落格</a>
-        <a href="/consult" class="btn-primary text-center mt-2">預約諮詢</a>
+    <div id="mobile-menu" class="hidden md:hidden" style="border-top: 1px solid rgba(200,184,154,0.2); background: #111111;">
+      <div class="container" style="padding-top: 16px; padding-bottom: 16px; display: flex; flex-direction: column; gap: 12px;">
+        <a href="/" style="color: rgba(245,240,232,0.8); font-weight: 500; padding: 8px 0; font-size: 15px;">首頁</a>
+        <a href="/ai-checkup" style="color: rgba(245,240,232,0.8); font-weight: 500; padding: 8px 0; font-size: 15px;">AI 健檢</a>
+        <a href="/blog" style="color: rgba(245,240,232,0.8); font-weight: 500; padding: 8px 0; font-size: 15px;">部落格</a>
+        <a href="/consult" class="btn-primary" style="text-align: center; margin-top: 8px;">預約諮詢</a>
       </div>
     </div>
   </nav>
@@ -104,17 +104,17 @@ const fullTitle = title.includes('Learn AI Club') ? title : `${title} | Learn AI
   </main>
 
   <!-- Footer -->
-  <footer class="py-10 border-t border-gray-200" style="background: #1e3a5f;">
+  <footer style="background: #111111; padding: 48px 0; border-top: 1px solid rgba(200,184,154,0.2);">
     <div class="container">
-      <div class="flex flex-col md:flex-row items-center justify-between gap-4">
-        <div class="flex items-center gap-2">
-          <div class="w-7 h-7 rounded-lg bg-white/20 flex items-center justify-center">
-            <span class="text-white font-bold text-xs">AI</span>
+      <div style="display: flex; flex-direction: column; gap: 24px; align-items: center; text-align: center;">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <div style="width: 28px; height: 28px; border-radius: 4px; background: var(--color-gold); display: flex; align-items: center; justify-content: center;">
+            <span style="color: #111111; font-weight: 700; font-size: 11px;">AI</span>
           </div>
-          <span class="text-white font-semibold">Learn AI Club</span>
+          <span style="font-family: var(--font-heading); color: #f5f0e8; font-weight: 600; font-size: 16px;">Learn AI Club</span>
         </div>
-        <p class="text-white/60 text-sm">© 2026 Learn AI Club · 台灣 AI 企業顧問</p>
-        <a href="mailto:contact@learnai.club" class="text-white/70 hover:text-white text-sm transition-colors">聯絡我們</a>
+        <p style="color: rgba(245,240,232,0.4); font-size: 13px; letter-spacing: 0.05em;">© 2026 Learn AI Club · 台灣 AI 企業顧問</p>
+        <a href="mailto:contact@learnai.club" style="color: rgba(245,240,232,0.5); font-size: 13px; transition: color 0.2s;" onmouseover="this.style.color='rgba(245,240,232,0.9)'" onmouseout="this.style.color='rgba(245,240,232,0.5)'">contact@learnai.club</a>
       </div>
     </div>
   </footer>

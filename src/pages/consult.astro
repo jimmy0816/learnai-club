@@ -6,41 +6,41 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   description="由服務過國泰人壽、華碩、TOTO 的 AI 顧問親自診斷，免費找出最值得優先導入 AI 的流程。"
 >
   <!-- Hero -->
-  <section style="background: linear-gradient(135deg, #1e3a5f 0%, #0f2444 100%); padding: 64px 20px 48px;">
+  <section style="background: #111111; padding: 72px 20px 56px;">
     <div style="max-width: 640px; margin: 0 auto; text-align: center;">
-      <div style="font-size: 56px; margin-bottom: 16px;">📅</div>
-      <h1 style="font-family: 'Noto Sans TC', sans-serif; font-size: clamp(28px, 5vw, 42px); font-weight: 900; color: white; margin: 0 0 16px;">
+      <p style="font-size: 11px; font-weight: 600; color: var(--color-gold); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 20px;">免費策略諮詢</p>
+      <h1 style="font-family: var(--font-heading); font-size: clamp(26px, 4vw, 40px); font-weight: 700; color: #f5f0e8; margin: 0 0 16px; line-height: 1.2;">
         預約免費 30 分鐘 AI 策略諮詢
       </h1>
-      <p style="color: rgba(255,255,255,0.85); font-size: 18px; margin: 0;">
+      <p style="color: rgba(245,240,232,0.6); font-size: 16px; margin: 0; line-height: 1.7;">
         由服務過國泰人壽、華碩、TOTO 的 AI 顧問親自診斷
       </p>
     </div>
   </section>
 
   <!-- Form Section -->
-  <section style="background: #f8fafc; padding: 48px 20px 80px;">
+  <section style="background: var(--color-bg-section); padding: 56px 20px 80px;">
     <div style="max-width: 640px; margin: 0 auto;">
 
       <!-- Value props -->
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 16px; margin-bottom: 40px;">
-        <div style="background: white; border-radius: 12px; padding: 20px; text-align: center; box-shadow: 0 1px 4px rgba(0,0,0,0.08);">
-          <div style="font-size: 28px; margin-bottom: 8px;">🎯</div>
-          <div style="font-size: 14px; color: #374151; font-weight: 600;">找出最值得自動化的流程</div>
+        <div style="background: var(--color-bg-alt); border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: 20px; text-align: center; box-shadow: var(--shadow-sm);">
+          <div style="font-size: 13px; font-weight: 600; color: var(--color-text); margin-bottom: 4px;">找出最值得自動化的流程</div>
+          <div style="font-size: 12px; color: var(--color-text-secondary);">精準診斷</div>
         </div>
-        <div style="background: white; border-radius: 12px; padding: 20px; text-align: center; box-shadow: 0 1px 4px rgba(0,0,0,0.08);">
-          <div style="font-size: 28px; margin-bottom: 8px;">🚀</div>
-          <div style="font-size: 14px; color: #374151; font-weight: 600;">30 分鐘，具體可執行方案</div>
+        <div style="background: var(--color-bg-alt); border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: 20px; text-align: center; box-shadow: var(--shadow-sm);">
+          <div style="font-size: 13px; font-weight: 600; color: var(--color-text); margin-bottom: 4px;">30 分鐘，具體可執行方案</div>
+          <div style="font-size: 12px; color: var(--color-text-secondary);">高效率</div>
         </div>
-        <div style="background: white; border-radius: 12px; padding: 20px; text-align: center; box-shadow: 0 1px 4px rgba(0,0,0,0.08);">
-          <div style="font-size: 28px; margin-bottom: 8px;">💡</div>
-          <div style="font-size: 14px; color: #374151; font-weight: 600;">無銷售壓力，純乾貨</div>
+        <div style="background: var(--color-bg-alt); border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: 20px; text-align: center; box-shadow: var(--shadow-sm);">
+          <div style="font-size: 13px; font-weight: 600; color: var(--color-text); margin-bottom: 4px;">無銷售壓力，純乾貨</div>
+          <div style="font-size: 12px; color: var(--color-text-secondary);">安心諮詢</div>
         </div>
       </div>
 
       <!-- Form Card -->
-      <div id="form-card" style="background: white; border-radius: 16px; padding: 40px; box-shadow: 0 4px 24px rgba(0,0,0,0.10);">
-        <h2 style="font-family: 'Noto Sans TC', sans-serif; font-size: 22px; font-weight: 700; color: #1e3a5f; margin: 0 0 28px;">
+      <div id="form-card" style="background: var(--color-bg-alt); border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: 44px 40px; box-shadow: var(--shadow-sm);">
+        <h2 style="font-family: var(--font-heading); font-size: 22px; font-weight: 600; color: var(--color-text); margin: 0 0 32px;">
           填寫諮詢資料
         </h2>
 
@@ -50,11 +50,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             <label>不要填這個欄位 <input type="text" name="_honeypot" tabindex="-1" autocomplete="off"></label>
           </div>
 
-          <div class="form-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
+          <div class="form-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;">
             <!-- Company -->
             <div style="grid-column: 1 / -1;">
-              <label for="company" style="display: block; font-size: 14px; font-weight: 600; color: #374151; margin-bottom: 6px;">
-                公司名稱 <span style="color: #ef4444;">*</span>
+              <label for="company" style="display: block; font-size: 13px; font-weight: 600; color: var(--color-text); margin-bottom: 8px; letter-spacing: 0.02em;">
+                公司名稱 <span style="color: #cc4444;">*</span>
               </label>
               <input
                 type="text"
@@ -62,16 +62,16 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                 name="company"
                 required
                 placeholder="例：台灣製造股份有限公司"
-                style="width: 100%; padding: 12px 14px; border: 2px solid #e5e7eb; border-radius: 8px; font-size: 16px; color: #111827; box-sizing: border-box; transition: border-color 0.2s;"
-                onfocus="this.style.borderColor='#f97316'"
-                onblur="this.style.borderColor='#e5e7eb'"
+                style="width: 100%; padding: 12px 16px; border: 1px solid var(--color-border); border-radius: var(--radius-sm); font-size: 15px; color: var(--color-text); background: var(--color-bg); box-sizing: border-box; transition: border-color 0.2s; outline: none; font-family: var(--font-body);"
+                onfocus="this.style.borderColor='var(--color-primary)'; this.style.background='white';"
+                onblur="this.style.borderColor='var(--color-border)'; this.style.background='var(--color-bg)';"
               >
             </div>
 
             <!-- Name -->
             <div>
-              <label for="name" style="display: block; font-size: 14px; font-weight: 600; color: #374151; margin-bottom: 6px;">
-                姓名 <span style="color: #ef4444;">*</span>
+              <label for="name" style="display: block; font-size: 13px; font-weight: 600; color: var(--color-text); margin-bottom: 8px; letter-spacing: 0.02em;">
+                姓名 <span style="color: #cc4444;">*</span>
               </label>
               <input
                 type="text"
@@ -79,16 +79,16 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                 name="name"
                 required
                 placeholder="王小明"
-                style="width: 100%; padding: 12px 14px; border: 2px solid #e5e7eb; border-radius: 8px; font-size: 16px; color: #111827; box-sizing: border-box; transition: border-color 0.2s;"
-                onfocus="this.style.borderColor='#f97316'"
-                onblur="this.style.borderColor='#e5e7eb'"
+                style="width: 100%; padding: 12px 16px; border: 1px solid var(--color-border); border-radius: var(--radius-sm); font-size: 15px; color: var(--color-text); background: var(--color-bg); box-sizing: border-box; transition: border-color 0.2s; outline: none; font-family: var(--font-body);"
+                onfocus="this.style.borderColor='var(--color-primary)'; this.style.background='white';"
+                onblur="this.style.borderColor='var(--color-border)'; this.style.background='var(--color-bg)';"
               >
             </div>
 
             <!-- Title -->
             <div>
-              <label for="job-title" style="display: block; font-size: 14px; font-weight: 600; color: #374151; margin-bottom: 6px;">
-                職稱 <span style="color: #ef4444;">*</span>
+              <label for="job-title" style="display: block; font-size: 13px; font-weight: 600; color: var(--color-text); margin-bottom: 8px; letter-spacing: 0.02em;">
+                職稱 <span style="color: #cc4444;">*</span>
               </label>
               <input
                 type="text"
@@ -96,16 +96,16 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                 name="title"
                 required
                 placeholder="IT 主管 / 業務協理"
-                style="width: 100%; padding: 12px 14px; border: 2px solid #e5e7eb; border-radius: 8px; font-size: 16px; color: #111827; box-sizing: border-box; transition: border-color 0.2s;"
-                onfocus="this.style.borderColor='#f97316'"
-                onblur="this.style.borderColor='#e5e7eb'"
+                style="width: 100%; padding: 12px 16px; border: 1px solid var(--color-border); border-radius: var(--radius-sm); font-size: 15px; color: var(--color-text); background: var(--color-bg); box-sizing: border-box; transition: border-color 0.2s; outline: none; font-family: var(--font-body);"
+                onfocus="this.style.borderColor='var(--color-primary)'; this.style.background='white';"
+                onblur="this.style.borderColor='var(--color-border)'; this.style.background='var(--color-bg)';"
               >
             </div>
 
             <!-- Email -->
             <div>
-              <label for="email" style="display: block; font-size: 14px; font-weight: 600; color: #374151; margin-bottom: 6px;">
-                Email <span style="color: #ef4444;">*</span>
+              <label for="email" style="display: block; font-size: 13px; font-weight: 600; color: var(--color-text); margin-bottom: 8px; letter-spacing: 0.02em;">
+                Email <span style="color: #cc4444;">*</span>
               </label>
               <input
                 type="email"
@@ -113,32 +113,32 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                 name="email"
                 required
                 placeholder="you@company.com"
-                style="width: 100%; padding: 12px 14px; border: 2px solid #e5e7eb; border-radius: 8px; font-size: 16px; color: #111827; box-sizing: border-box; transition: border-color 0.2s;"
-                onfocus="this.style.borderColor='#f97316'"
-                onblur="this.style.borderColor='#e5e7eb'"
+                style="width: 100%; padding: 12px 16px; border: 1px solid var(--color-border); border-radius: var(--radius-sm); font-size: 15px; color: var(--color-text); background: var(--color-bg); box-sizing: border-box; transition: border-color 0.2s; outline: none; font-family: var(--font-body);"
+                onfocus="this.style.borderColor='var(--color-primary)'; this.style.background='white';"
+                onblur="this.style.borderColor='var(--color-border)'; this.style.background='var(--color-bg)';"
               >
             </div>
 
             <!-- Phone -->
             <div>
-              <label for="phone" style="display: block; font-size: 14px; font-weight: 600; color: #374151; margin-bottom: 6px;">
-                電話 <span style="color: #9ca3af; font-weight: 400;">（選填）</span>
+              <label for="phone" style="display: block; font-size: 13px; font-weight: 600; color: var(--color-text); margin-bottom: 8px; letter-spacing: 0.02em;">
+                電話 <span style="color: var(--color-text-secondary); font-weight: 400;">（選填）</span>
               </label>
               <input
                 type="tel"
                 id="phone"
                 name="phone"
                 placeholder="0912-345-678"
-                style="width: 100%; padding: 12px 14px; border: 2px solid #e5e7eb; border-radius: 8px; font-size: 16px; color: #111827; box-sizing: border-box; transition: border-color 0.2s;"
-                onfocus="this.style.borderColor='#f97316'"
-                onblur="this.style.borderColor='#e5e7eb'"
+                style="width: 100%; padding: 12px 16px; border: 1px solid var(--color-border); border-radius: var(--radius-sm); font-size: 15px; color: var(--color-text); background: var(--color-bg); box-sizing: border-box; transition: border-color 0.2s; outline: none; font-family: var(--font-body);"
+                onfocus="this.style.borderColor='var(--color-primary)'; this.style.background='white';"
+                onblur="this.style.borderColor='var(--color-border)'; this.style.background='var(--color-bg)';"
               >
             </div>
 
             <!-- Needs -->
             <div style="grid-column: 1 / -1;">
-              <label for="needs" style="display: block; font-size: 14px; font-weight: 600; color: #374151; margin-bottom: 6px;">
-                需求簡述 <span style="color: #ef4444;">*</span>
+              <label for="needs" style="display: block; font-size: 13px; font-weight: 600; color: var(--color-text); margin-bottom: 8px; letter-spacing: 0.02em;">
+                需求簡述 <span style="color: #cc4444;">*</span>
               </label>
               <textarea
                 id="needs"
@@ -146,44 +146,41 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                 required
                 rows="4"
                 placeholder="例如：我們想用 AI 優化客服流程"
-                style="width: 100%; padding: 12px 14px; border: 2px solid #e5e7eb; border-radius: 8px; font-size: 16px; color: #111827; box-sizing: border-box; resize: vertical; font-family: inherit; transition: border-color 0.2s;"
-                onfocus="this.style.borderColor='#f97316'"
-                onblur="this.style.borderColor='#e5e7eb'"
+                style="width: 100%; padding: 12px 16px; border: 1px solid var(--color-border); border-radius: var(--radius-sm); font-size: 15px; color: var(--color-text); background: var(--color-bg); box-sizing: border-box; resize: vertical; font-family: var(--font-body); transition: border-color 0.2s; outline: none; line-height: 1.7;"
+                onfocus="this.style.borderColor='var(--color-primary)'; this.style.background='white';"
+                onblur="this.style.borderColor='var(--color-border)'; this.style.background='var(--color-bg)';"
               ></textarea>
             </div>
           </div>
 
           <!-- Error message -->
-          <div id="form-error" style="display: none; background: #fef2f2; border: 1px solid #fecaca; border-radius: 8px; padding: 12px 16px; color: #dc2626; font-size: 14px; margin-bottom: 16px;"></div>
+          <div id="form-error" style="display: none; background: #fff0f0; border: 1px solid #e8b4b4; border-radius: var(--radius-sm); padding: 12px 16px; color: #c44; font-size: 14px; margin-bottom: 20px;"></div>
 
           <!-- Submit button -->
           <button
             type="submit"
             id="submit-btn"
-            style="width: 100%; padding: 16px; background: #f97316; color: white; border: none; border-radius: 10px; font-size: 17px; font-weight: 700; cursor: pointer; transition: background 0.2s, transform 0.1s; font-family: 'Noto Sans TC', sans-serif;"
-            onmouseover="if(!this.disabled) this.style.background='#ea580c'"
-            onmouseout="if(!this.disabled) this.style.background='#f97316'"
+            class="btn-primary"
+            style="width: 100%; justify-content: center; font-size: 16px; padding: 16px 32px;"
           >
             送出諮詢 →
           </button>
 
-          <p style="text-align: center; font-size: 12px; color: #9ca3af; margin-top: 12px; margin-bottom: 0;">
+          <p style="text-align: center; font-size: 12px; color: var(--color-text-secondary); opacity: 0.6; margin-top: 16px; margin-bottom: 0;">
             送出即代表同意我們與您聯繫以安排諮詢。
           </p>
         </form>
 
         <!-- Success message (hidden by default) -->
-        <div id="success-msg" style="display: none; text-align: center; padding: 32px 0;">
-          <div style="font-size: 56px; margin-bottom: 16px;">✅</div>
-          <h3 style="font-family: 'Noto Sans TC', sans-serif; font-size: 22px; font-weight: 700; color: #1e3a5f; margin: 0 0 12px;">
+        <div id="success-msg" style="display: none; text-align: center; padding: 40px 0;">
+          <div style="width: 56px; height: 56px; background: var(--color-bg-section); border: 1px solid var(--color-border); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-size: 24px;">✓</div>
+          <h3 style="font-family: var(--font-heading); font-size: 22px; font-weight: 600; color: var(--color-text); margin: 0 0 12px;">
             已收到！我們會在 24 小時內回覆您。
           </h3>
-          <p style="color: #6b7280; font-size: 15px;">
+          <p style="color: var(--color-text-secondary); font-size: 15px; margin-bottom: 28px;">
             感謝您預約諮詢，請留意 Email 通知。
           </p>
-          <a href="/" style="display: inline-block; margin-top: 24px; padding: 12px 28px; background: #1e3a5f; color: white; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 15px;">
-            ← 回到首頁
-          </a>
+          <a href="/" class="btn-secondary">← 回到首頁</a>
         </div>
       </div>
 
@@ -199,7 +196,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         grid-column: 1 !important;
       }
       #form-card {
-        padding: 24px 16px !important;
+        padding: 28px 20px !important;
       }
     }
   </style>
@@ -273,8 +270,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       // Loading state
       submitBtn.disabled = true;
       submitBtn.textContent = '送出中...';
-      submitBtn.style.background = '#9ca3af';
-      submitBtn.style.cursor = 'not-allowed';
+      (submitBtn as HTMLButtonElement).style.background = '#9ca3af';
+      (submitBtn as HTMLButtonElement).style.cursor = 'not-allowed';
 
       try {
         const res = await fetch('/api/consult', {
@@ -292,15 +289,15 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           showError(json.error || '送出失敗，請稍後再試或直接寄信至 contact@learnai.club');
           submitBtn.disabled = false;
           submitBtn.textContent = '送出諮詢 →';
-          submitBtn.style.background = '#f97316';
-          submitBtn.style.cursor = 'pointer';
+          (submitBtn as HTMLButtonElement).style.background = 'var(--color-primary)';
+          (submitBtn as HTMLButtonElement).style.cursor = 'pointer';
         }
       } catch {
         showError('網路錯誤，請稍後再試或直接寄信至 contact@learnai.club');
         submitBtn.disabled = false;
         submitBtn.textContent = '送出諮詢 →';
-        submitBtn.style.background = '#f97316';
-        submitBtn.style.cursor = 'pointer';
+        (submitBtn as HTMLButtonElement).style.background = 'var(--color-primary)';
+        (submitBtn as HTMLButtonElement).style.cursor = 'pointer';
       }
     });
   </script>
