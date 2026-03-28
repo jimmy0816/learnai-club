@@ -1,0 +1,1112 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout
+  title="2026 台灣企業 AI 導入實戰白皮書｜線上版"
+  description="10 個產業 AI 應用案例、ROI 計算模型、30/60/90 天導入路線圖、20 個免費 AI 工具清單。由 Learn AI Club 與 AutoLab 聯合出品。"
+>
+
+  <!-- 頂部提示欄 -->
+  <div class="print:hidden sticky top-0 z-50 bg-blue-600 text-white text-center py-2.5 px-4 text-sm font-medium">
+    📄 此為白皮書線上版。如需 PDF 版本，請
+    <a href="/consult" class="underline font-bold hover:text-blue-100">聯繫我們</a>
+    或直接按 <kbd class="bg-blue-700 px-1.5 py-0.5 rounded text-xs font-mono">Ctrl+P</kbd> 列印本頁。
+  </div>
+
+  <div class="whitepaper-body">
+
+    <!-- ======== 封面 Hero ======== -->
+    <section class="cover-section print:break-after-page">
+      <div class="cover-inner">
+        <div class="cover-brand">📚 Learn AI Club × AutoLab 聯合出品</div>
+        <div class="cover-year-bg">2026</div>
+        <h1 class="cover-h1">2026 台灣企業<br />AI 導入實戰白皮書</h1>
+        <p class="cover-subtitle">10 個產業 × AI 應用案例 × ROI 計算 × 30/60/90 天路線圖</p>
+        <div class="cover-meta">
+          <span>📅 2026 年版</span>
+          <span>·</span>
+          <span>📖 約 20 頁</span>
+          <span>·</span>
+          <span>🇹🇼 繁體中文</span>
+        </div>
+        <div class="cover-tags">
+          {['製造業', '零售電商', '餐飲業', '物流', '金融保險', '服務業', '科技業', '醫療', '教育', '傳統產業'].map(t => (
+            <span class="cover-tag">{t}</span>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <div class="wp-container">
+
+      <!-- ======== 前言 ======== -->
+      <section class="wp-section">
+        <div class="quote-box">
+          <p class="text-lg leading-relaxed">
+            這份白皮書不是一份充滿術語的學術報告，而是一本給台灣中小企業老闆看的 <strong>實戰手冊</strong>。
+          </p>
+          <p class="mt-3 text-gray-600">
+            我們訪談了超過 50 家台灣企業，整理出最實際、最有效、最快回本的 AI 導入案例。
+          </p>
+          <p class="mt-3 font-bold text-orange-600">最重要的一件事：你不需要百萬預算才能開始。NT$5,000/月，就可以讓 AI 開始為你工作。</p>
+        </div>
+      </section>
+
+      <!-- ======== 第一章 ======== -->
+      <section class="wp-section print:break-before-page">
+        <div class="chapter-header">
+          <div class="chapter-num">第一章</div>
+          <h2 class="chapter-title">為什麼 2026 是企業導入 AI 的關鍵年？</h2>
+        </div>
+
+        <h3 class="wp-h3">台灣企業面臨的三大壓力</h3>
+
+        <div class="pressure-grid">
+          <div class="pressure-card">
+            <div class="pressure-icon">👥</div>
+            <h4>缺工問題已進入結構性困境</h4>
+            <p>台灣 2025 年缺工人數超過 26 萬人。這不是景氣循環問題，而是人口結構問題——不會自然好轉。AI 可以讓現有人力做更有價值的事。</p>
+          </div>
+          <div class="pressure-card">
+            <div class="pressure-icon">📈</div>
+            <h4>成本持續上升，利潤空間壓縮</h4>
+            <p>最低薪資連年調升，競爭對手有些已用 AI 降低 20-30% 人力成本，用更低報價搶客戶。不跟上就會落後。</p>
+          </div>
+          <div class="pressure-card">
+            <div class="pressure-icon">⚡</div>
+            <h4>數位原生競爭者的威脅</h4>
+            <p>新創企業天生就用 AI：3 個人做 10 個人的事，客服 24 小時不休息，行銷自動化每天發內容。差距會愈來愈大。</p>
+          </div>
+        </div>
+
+        <h3 class="wp-h3">AI 工具成熟度：中小企業也能用了</h3>
+
+        <div class="comparison-table">
+          <table>
+            <thead>
+              <tr>
+                <th>項目</th>
+                <th>2022 年前</th>
+                <th>2025 年後</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>所需人才</td>
+                <td>資料科學團隊（年薪 300-500 萬）</td>
+                <td>任何人都能操作</td>
+              </tr>
+              <tr>
+                <td>建置成本</td>
+                <td>數百萬開發費用</td>
+                <td>月費 NT$200-3,000</td>
+              </tr>
+              <tr>
+                <td>部署時間</td>
+                <td>6-12 個月</td>
+                <td>2-4 週</td>
+              </tr>
+              <tr>
+                <td>適合對象</td>
+                <td>大型企業</td>
+                <td>中小企業也能用</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3 class="wp-h3">不需要百萬預算才能開始</h3>
+
+        <div class="budget-table">
+          <table>
+            <thead>
+              <tr>
+                <th>規模</th>
+                <th>建議起點</th>
+                <th>月費</th>
+                <th>預期效益</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>10 人以下</td>
+                <td>AI 客服 + 自動回覆</td>
+                <td>NT$1,000-3,000</td>
+                <td>省 0.5 個人力</td>
+              </tr>
+              <tr>
+                <td>10-50 人</td>
+                <td>AI 排班 + 報表自動化</td>
+                <td>NT$3,000-8,000</td>
+                <td>省 1-2 個人力</td>
+              </tr>
+              <tr>
+                <td>50 人以上</td>
+                <td>AI 流程自動化平台</td>
+                <td>NT$8,000-20,000</td>
+                <td>省 3-5 個人力</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="tip-box">
+          💡 <strong>原則：</strong>先找一個最痛的流程，用 30 天驗證效果，再決定要不要擴大。
+        </div>
+      </section>
+
+      <!-- ======== 第二章 ======== -->
+      <section class="wp-section print:break-before-page">
+        <div class="chapter-header">
+          <div class="chapter-num">第二章</div>
+          <h2 class="chapter-title">10 個產業的 AI 應用案例</h2>
+        </div>
+
+        <p class="wp-lead">以下 10 個案例，每個都有真實工具、合理的效益數字，以及可以直接複製的做法。</p>
+
+        <!-- 案例 01 -->
+        <div class="case-card">
+          <div class="case-header">
+            <span class="case-num">案例 01</span>
+            <span class="case-industry">🏭 製造業</span>
+            <h3>AI 品檢取代人工目檢</h3>
+          </div>
+          <div class="case-body">
+            <div class="case-row problem">
+              <div class="case-label">問題</div>
+              <div>品檢人力高、人工目視漏檢率 3-5%，疲勞導致品質不穩定</div>
+            </div>
+            <div class="case-row solution">
+              <div class="case-label">AI 解法</div>
+              <div>電腦視覺自動檢測：產線末端架設工業相機，AI 即時分析每個零件的外觀瑕疵（刮痕、缺角、尺寸偏差）</div>
+            </div>
+            <div class="case-row benefit">
+              <div class="case-label">效益</div>
+              <div>漏檢率降至 0.3-0.8%、每條產線減少 1-2 名品檢人員工時需求、客戶退貨率下降約 60%</div>
+            </div>
+            <div class="case-tools">
+              <span class="tool-badge">Landing AI</span>
+              <span class="tool-badge">Cognex ViDi</span>
+              <span class="tool-badge">Roboflow</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 案例 02 -->
+        <div class="case-card">
+          <div class="case-header">
+            <span class="case-num">案例 02</span>
+            <span class="case-industry">🛍️ 零售/電商</span>
+            <h3>AI 客服 + 庫存預測</h3>
+          </div>
+          <div class="case-body">
+            <div class="case-row problem">
+              <div class="case-label">問題</div>
+              <div>每日客服訊息 300-500 則，80% 是重複問題，客服人員無法 24 小時回應</div>
+            </div>
+            <div class="case-row solution">
+              <div class="case-label">AI 解法</div>
+              <div>LINE OA 智能客服自動回答前 20 個常見問題；Google Gemini 分析歷史銷售數據，預測庫存缺貨風險</div>
+            </div>
+            <div class="case-row benefit">
+              <div class="case-label">效益</div>
+              <div>80% 詢問由 AI 自動處理、客服回應時間從 45 分鐘縮短至 30 秒、庫存缺貨率降低約 35%</div>
+            </div>
+            <div class="case-tools">
+              <span class="tool-badge">LINE OA</span>
+              <span class="tool-badge">ChatGPT API</span>
+              <span class="tool-badge">Tidio</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 案例 03 -->
+        <div class="case-card">
+          <div class="case-header">
+            <span class="case-num">案例 03</span>
+            <span class="case-industry">🍽️ 餐飲業</span>
+            <h3>AI 排班 + LINE bot 訂位</h3>
+          </div>
+          <div class="case-body">
+            <div class="case-row problem">
+              <div class="case-label">問題</div>
+              <div>每週排班耗費 2-3 小時，電話訂位忙線、LINE 訊息漏回，每週流失 20-30 桌訂位</div>
+            </div>
+            <div class="case-row solution">
+              <div class="case-label">AI 解法</div>
+              <div>When I Work 智慧排班自動生成最佳排班表；LINE OA 訂位機器人全天候接受訂位，自動發送確認和提醒</div>
+            </div>
+            <div class="case-row benefit">
+              <div class="case-label">效益</div>
+              <div>排班時間從 2-3 小時縮短至 20 分鐘、訂位流失率降低約 70%、爽約率從 20% 降至 8%</div>
+            </div>
+            <div class="case-tools">
+              <span class="tool-badge">When I Work</span>
+              <span class="tool-badge">BotBonnie</span>
+              <span class="tool-badge">LINE OA</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 案例 04 -->
+        <div class="case-card">
+          <div class="case-header">
+            <span class="case-num">案例 04</span>
+            <span class="case-industry">🚚 物流業</span>
+            <h3>AI 路線優化 + 自動派單</h3>
+          </div>
+          <div class="case-body">
+            <div class="case-row problem">
+              <div class="case-label">問題</div>
+              <div>每日配送點 200-400 個，手動規劃路線效率差，調度員每天花 2-3 小時指派任務</div>
+            </div>
+            <div class="case-row solution">
+              <div class="case-label">AI 解法</div>
+              <div>OptimoRoute 計算最短路線，考慮時間窗口、車輛載重、司機工時；緊急插單自動重規劃</div>
+            </div>
+            <div class="case-row benefit">
+              <div class="case-label">效益</div>
+              <div>路線縮短約 15-25%、調度員工作時間減少 60%、準時交貨率從 78% 提升至 92%、月油耗節省 10-15%</div>
+            </div>
+            <div class="case-tools">
+              <span class="tool-badge">OptimoRoute</span>
+              <span class="tool-badge">Google Maps API</span>
+              <span class="tool-badge">Onfleet</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 案例 05 -->
+        <div class="case-card">
+          <div class="case-header">
+            <span class="case-num">案例 05</span>
+            <span class="case-industry">🏦 金融/保險</span>
+            <h3>AI 文件審查 + 風控</h3>
+          </div>
+          <div class="case-body">
+            <div class="case-row problem">
+              <div class="case-label">問題</div>
+              <div>每日處理 100-200 件理賠，每件審查 20-40 分鐘，重複性高、錯誤率偏高</div>
+            </div>
+            <div class="case-row solution">
+              <div class="case-label">AI 解法</div>
+              <div>OCR 自動辨識文件，AI 比對完整性；低風險案件自動快速審核，高風險案件標記給資深人員</div>
+            </div>
+            <div class="case-row benefit">
+              <div class="case-label">效益</div>
+              <div>文件審查時間縮短 50-70%、錯誤率降低約 40%、客戶理賠等待從 5 天縮短至 1-2 天</div>
+            </div>
+            <div class="case-tools">
+              <span class="tool-badge">Azure Document Intelligence</span>
+              <span class="tool-badge">Automation Anywhere</span>
+              <span class="tool-badge">UiPath</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 案例 06 -->
+        <div class="case-card">
+          <div class="case-header">
+            <span class="case-num">案例 06</span>
+            <span class="case-industry">💇 服務業</span>
+            <h3>AI 預約管理 + 客戶跟進</h3>
+          </div>
+          <div class="case-body">
+            <div class="case-row problem">
+              <div class="case-label">問題</div>
+              <div>預約靠電話和 LINE 人工排班，每天接線 4 小時，爽約率約 20%，回訪跟進效果差</div>
+            </div>
+            <div class="case-row solution">
+              <div class="case-label">AI 解法</div>
+              <div>SimplyBook 線上自助預約整合 LINE OA；Make 自動化：服務後 24 小時滿意度調查、30 天未回訪優惠推播</div>
+            </div>
+            <div class="case-row benefit">
+              <div class="case-label">效益</div>
+              <div>電話接線時間從 4 小時降至 1 小時、爽約率從 20% 降至 8%、回客率提升約 25%</div>
+            </div>
+            <div class="case-tools">
+              <span class="tool-badge">Calendly</span>
+              <span class="tool-badge">BotBonnie</span>
+              <span class="tool-badge">Make</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 案例 07 -->
+        <div class="case-card">
+          <div class="case-header">
+            <span class="case-num">案例 07</span>
+            <span class="case-industry">💻 科技業</span>
+            <h3>AI 程式碼審查 + 自動測試</h3>
+          </div>
+          <div class="case-body">
+            <div class="case-row problem">
+              <div class="case-label">問題</div>
+              <div>每週 Code Review 耗時 20-30 小時，測試覆蓋率不足，上線前才發現 Bug</div>
+            </div>
+            <div class="case-row solution">
+              <div class="case-label">AI 解法</div>
+              <div>CodeRabbit 每次 PR 自動審查：找潛在 Bug、安全漏洞、效能問題；GitHub Copilot Chat 輔助撰寫單元測試</div>
+            </div>
+            <div class="case-row benefit">
+              <div class="case-label">效益</div>
+              <div>Code Review 時間減少約 40%、PR 階段 Bug 發現率提升 35%、測試覆蓋率從 42% 提升至 68%</div>
+            </div>
+            <div class="case-tools">
+              <span class="tool-badge">GitHub Copilot</span>
+              <span class="tool-badge">CodeRabbit</span>
+              <span class="tool-badge">Cursor</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 案例 08 -->
+        <div class="case-card">
+          <div class="case-header">
+            <span class="case-num">案例 08</span>
+            <span class="case-industry">🏥 醫療業</span>
+            <h3>AI 掛號 + 報告摘要</h3>
+          </div>
+          <div class="case-body">
+            <div class="case-row problem">
+              <div class="case-label">問題</div>
+              <div>門診掛號電話一天 200-300 通，前台疲於奔命；醫師讀報告花費大量診療時間</div>
+            </div>
+            <div class="case-row solution">
+              <div class="case-label">AI 解法</div>
+              <div>LINE OA 掛號機器人 24 小時掛號；Azure OpenAI Service 將檢驗報告自動標注異常、生成結構化摘要</div>
+            </div>
+            <div class="case-row benefit">
+              <div class="case-label">效益</div>
+              <div>前台掛號電話減少約 60%、醫師讀報告時間從 8 分鐘縮短至 2 分鐘、異常數值漏看率降低</div>
+            </div>
+            <div class="case-tools">
+              <span class="tool-badge">LINE OA 掛號套件</span>
+              <span class="tool-badge">Azure OpenAI Service</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 案例 09 -->
+        <div class="case-card">
+          <div class="case-header">
+            <span class="case-num">案例 09</span>
+            <span class="case-industry">🎓 教育業</span>
+            <h3>AI 出題 + 個人化學習</h3>
+          </div>
+          <div class="case-body">
+            <div class="case-row problem">
+              <div class="case-label">問題</div>
+              <div>教師備課出題耗時，統一進度讓好學生無聊、跟不上的更落後，個別學習狀況難以追蹤</div>
+            </div>
+            <div class="case-row solution">
+              <div class="case-label">AI 解法</div>
+              <div>ChatGPT 輸入主題和難度自動生成題目；NotebookLM 建立課程知識庫，學生隨時提問獲得個人化解答</div>
+            </div>
+            <div class="case-row benefit">
+              <div class="case-label">效益</div>
+              <div>教師備課出題時間減少約 50%、學生自主練習量提升、教師有更多時間做高價值互動教學</div>
+            </div>
+            <div class="case-tools">
+              <span class="tool-badge">Google NotebookLM</span>
+              <span class="tool-badge">ChatGPT</span>
+              <span class="tool-badge">Kahoot</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 案例 10 -->
+        <div class="case-card">
+          <div class="case-header">
+            <span class="case-num">案例 10</span>
+            <span class="case-industry">🏗️ 傳統產業（二代接班）</span>
+            <h3>AI 知識庫 + 報價自動化</h3>
+          </div>
+          <div class="case-body">
+            <div class="case-row problem">
+              <div class="case-label">問題</div>
+              <div>老師傅經驗都在腦子裡，報價全靠口頭傳承，每份報價 30-60 分鐘且無法標準化</div>
+            </div>
+            <div class="case-row solution">
+              <div class="case-label">AI 解法</div>
+              <div>Notion AI 建立技術知識庫，錄製老師傅工作過程轉為 SOP；Excel + ChatGPT API 建立自動報價助手</div>
+            </div>
+            <div class="case-row benefit">
+              <div class="case-label">效益</div>
+              <div>報價時間從 30-60 分鐘縮短至 5-10 分鐘、新員工上手從 3 個月縮短至 6 週、關鍵知識不再只在老師傅腦中</div>
+            </div>
+            <div class="case-tools">
+              <span class="tool-badge">Notion AI</span>
+              <span class="tool-badge">ChatGPT Team</span>
+              <span class="tool-badge">Make + Google Sheets</span>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- ======== 第三章 ======== -->
+      <section class="wp-section print:break-before-page">
+        <div class="chapter-header">
+          <div class="chapter-num">第三章</div>
+          <h2 class="chapter-title">ROI 計算模型</h2>
+        </div>
+
+        <h3 class="wp-h3">通用計算公式</h3>
+
+        <div class="formula-box">
+          <div class="formula-title">AI 導入淨效益計算</div>
+          <div class="formula-content">
+            <div class="formula-line">淨效益 =</div>
+            <div class="formula-plus">（節省的人力成本 + 效率提升價值 + 錯誤降低價值）</div>
+            <div class="formula-minus">−（AI 工具月費 + 導入初期成本攤提）</div>
+          </div>
+        </div>
+
+        <h3 class="wp-h3">三種規模的試算範例</h3>
+
+        <div class="roi-cards">
+          <div class="roi-card small">
+            <div class="roi-scale">10 人小公司</div>
+            <div class="roi-scenario">電商 · AI 客服 + 報表自動化</div>
+            <div class="roi-savings">每月節省</div>
+            <div class="roi-amount">NT$5 萬</div>
+            <div class="roi-payback">回本時間：約 1 個月</div>
+          </div>
+          <div class="roi-card medium">
+            <div class="roi-scale">50 人中型公司</div>
+            <div class="roi-scenario">製造業 · AI 品檢 + 客服自動化</div>
+            <div class="roi-savings">每月節省</div>
+            <div class="roi-amount">NT$10-15 萬</div>
+            <div class="roi-payback">回本時間：約 3-4 個月</div>
+          </div>
+          <div class="roi-card large">
+            <div class="roi-scale">200 人大型公司</div>
+            <div class="roi-scenario">服務業集團 · 全流程 AI 化</div>
+            <div class="roi-savings">每月節省</div>
+            <div class="roi-amount">NT$50-80 萬</div>
+            <div class="roi-payback">回本時間：約 2-3 個月</div>
+          </div>
+        </div>
+
+        <div class="tip-box warning">
+          ⚠️ <strong>提醒：</strong>以上數字為保守估算的參考範圍，實際效益依產業、流程複雜度、導入品質而異。建議先用「30 天試跑」驗證效益再決定是否擴大投資。
+        </div>
+      </section>
+
+      <!-- ======== 第四章 ======== -->
+      <section class="wp-section print:break-before-page">
+        <div class="chapter-header">
+          <div class="chapter-num">第四章</div>
+          <h2 class="chapter-title">30/60/90 天導入路線圖</h2>
+        </div>
+
+        <p class="wp-lead">無論你的公司規模大小，我們建議用以下節奏導入 AI——快速見效、降低風險。</p>
+
+        <div class="roadmap">
+
+          <div class="roadmap-phase phase1">
+            <div class="phase-badge">Day 1-30</div>
+            <h3 class="phase-title">盤點、選定、試跑</h3>
+            <p class="phase-goal">目標：找到一個最值得 AI 化的流程，跑出初步數據</p>
+            <ul class="phase-tasks">
+              <li>✅ 列出所有重複性工作（每週超過 2 小時）</li>
+              <li>✅ 評估「重複性」和「可量化效益」</li>
+              <li>✅ 選出 1 個優先試跑的流程</li>
+              <li>✅ 選定工具，完成基本設定（通常 2-4 小時）</li>
+              <li>✅ 正式試跑，記錄導入前後的時間差異</li>
+            </ul>
+          </div>
+
+          <div class="roadmap-phase phase2">
+            <div class="phase-badge">Day 31-60</div>
+            <h3 class="phase-title">驗證、決策、優化</h3>
+            <p class="phase-goal">目標：確認效益，決定是否繼續和擴大</p>
+            <ul class="phase-tasks">
+              <li>✅ 整理第一個月的效益數據，計算實際 ROI</li>
+              <li>✅ 與員工討論優化方向</li>
+              <li>✅ 深化第一個工具的使用（探索更多功能）</li>
+              <li>✅ 選定第二個要 AI 化的流程</li>
+              <li>✅ 確認預算（是否申請更高階方案）</li>
+            </ul>
+          </div>
+
+          <div class="roadmap-phase phase3">
+            <div class="phase-badge">Day 61-90</div>
+            <h3 class="phase-title">擴展、整合、制度化</h3>
+            <p class="phase-goal">目標：AI 導入從「試跑」變成「日常工作的一部分」</p>
+            <ul class="phase-tasks">
+              <li>✅ 同時運行 2-3 個 AI 流程</li>
+              <li>✅ 用 Make 或 Zapier 整合多個工具</li>
+              <li>✅ 撰寫每個 AI 工具的使用 SOP</li>
+              <li>✅ 指定 1-2 名「AI 管理員」</li>
+              <li>✅ 建立效益追蹤的固定報表（每月看一次）</li>
+            </ul>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ======== 第五章 ======== -->
+      <section class="wp-section print:break-before-page">
+        <div class="chapter-header">
+          <div class="chapter-num">第五章</div>
+          <h2 class="chapter-title">20 個免費 AI 工具清單</h2>
+        </div>
+
+        <p class="wp-lead">以下工具都有免費方案，適合作為你的「AI 第一步」。</p>
+
+        <div class="tools-grid">
+
+          <div class="tool-category">
+            <h3 class="tool-cat-title">🤖 對話 / 客服</h3>
+            <ul class="tool-list">
+              <li><strong>ChatGPT</strong>（OpenAI）<span class="tool-desc">文字生成、客服腳本</span></li>
+              <li><strong>Claude</strong>（Anthropic）<span class="tool-desc">長文件分析、繁中更自然</span></li>
+              <li><strong>Google Gemini</strong> <span class="tool-desc">整合 Google Workspace</span></li>
+              <li><strong>LINE OA 智能客服</strong> <span class="tool-desc">台灣市場首選</span></li>
+            </ul>
+          </div>
+
+          <div class="tool-category">
+            <h3 class="tool-cat-title">📝 文件 / 寫作</h3>
+            <ul class="tool-list">
+              <li><strong>Notion AI</strong> <span class="tool-desc">知識庫建立、文件整理</span></li>
+              <li><strong>Google Docs + Gemini</strong> <span class="tool-desc">文件撰寫、摘要、翻譯</span></li>
+              <li><strong>Grammarly</strong> <span class="tool-desc">英文文件品質提升</span></li>
+            </ul>
+          </div>
+
+          <div class="tool-category">
+            <h3 class="tool-cat-title">📊 數據 / 分析</h3>
+            <ul class="tool-list">
+              <li><strong>Power BI Desktop</strong> <span class="tool-desc">數據視覺化、報表（完全免費）</span></li>
+              <li><strong>Google Looker Studio</strong> <span class="tool-desc">整合 GA、Sheets（完全免費）</span></li>
+              <li><strong>Excel + Copilot</strong> <span class="tool-desc">數據分析、公式輔助</span></li>
+            </ul>
+          </div>
+
+          <div class="tool-category">
+            <h3 class="tool-cat-title">🎙️ 會議 / 語音</h3>
+            <ul class="tool-list">
+              <li><strong>tl;dv</strong> <span class="tool-desc">Zoom/Meet 會議自動摘要</span></li>
+              <li><strong>Otter.ai</strong> <span class="tool-desc">英文會議錄音轉文字</span></li>
+              <li><strong>Google Meet 字幕</strong> <span class="tool-desc">即時中文字幕（免費）</span></li>
+              <li><strong>Whisper</strong>（OpenAI）<span class="tool-desc">本地端語音轉文字（開源）</span></li>
+            </ul>
+          </div>
+
+          <div class="tool-category">
+            <h3 class="tool-cat-title">⚙️ 自動化 / 流程</h3>
+            <ul class="tool-list">
+              <li><strong>Make</strong>（前 Integromat）<span class="tool-desc">跨工具自動化流程</span></li>
+              <li><strong>n8n</strong> <span class="tool-desc">開源自架，無限使用</span></li>
+              <li><strong>Zapier</strong> <span class="tool-desc">簡單的工具整合</span></li>
+            </ul>
+          </div>
+
+          <div class="tool-category">
+            <h3 class="tool-cat-title">🧠 知識管理</h3>
+            <ul class="tool-list">
+              <li><strong>Google NotebookLM</strong> <span class="tool-desc">建立企業知識庫（完全免費）</span></li>
+              <li><strong>Obsidian</strong> <span class="tool-desc">個人知識管理（本地免費）</span></li>
+            </ul>
+          </div>
+
+          <div class="tool-category">
+            <h3 class="tool-cat-title">🎨 圖像 / 視覺</h3>
+            <ul class="tool-list">
+              <li><strong>Canva AI</strong> <span class="tool-desc">行銷素材、簡報製作</span></li>
+              <li><strong>Microsoft Designer</strong> <span class="tool-desc">快速生成社群圖片（免費）</span></li>
+            </ul>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ======== CTA 尾頁 ======== -->
+      <section class="wp-section cta-section print:break-before-page">
+        <div class="cta-inner">
+          <h2 class="cta-title">想要更具體的診斷？</h2>
+          <p class="cta-desc">讀完這份白皮書，你已經有了方向。<br />下一步，讓我們幫你找到最適合你公司的 AI 切入點。</p>
+
+          <div class="cta-options">
+            <div class="cta-option">
+              <div class="cta-option-icon">🔍</div>
+              <h3>免費 AI 健檢（2 分鐘）</h3>
+              <p>填寫公司資訊，立即獲得 AI 成熟度評分 + 最值得優化的 3 個流程</p>
+              <a href="/ai-checkup" class="cta-btn primary">開始免費健檢 →</a>
+            </div>
+            <div class="cta-option">
+              <div class="cta-option-icon">📅</div>
+              <h3>預約 30 分鐘顧問諮詢</h3>
+              <p>和我們的 AI 顧問面對面討論，量身打造導入建議。無銷售壓力。</p>
+              <a href="/consult" class="cta-btn secondary">預約免費諮詢 →</a>
+            </div>
+          </div>
+
+          <div class="cta-footer">
+            <p>📬 有任何問題：<a href="mailto:hello@learnai.club">hello@learnai.club</a></p>
+            <p>🌐 更多 AI 導入資源：<a href="/blog">learnai.club/blog</a></p>
+            <p class="cta-copyright">© 2026 Learn AI Club · AutoLab. 版權所有。本白皮書僅供參考，實際效益依企業情況而異。</p>
+          </div>
+        </div>
+      </section>
+
+    </div><!-- /wp-container -->
+  </div><!-- /whitepaper-body -->
+
+</BaseLayout>
+
+<style>
+  /* ===== PRINT-FRIENDLY CSS ===== */
+  @media print {
+    .sticky { position: static !important; }
+    @page { margin: 2cm; }
+    body { font-size: 12pt; }
+    .cover-section { page-break-after: always; }
+  }
+
+  /* ===== WHITEPAPER BODY ===== */
+  .whitepaper-body {
+    font-family: 'Noto Sans TC', sans-serif;
+  }
+
+  /* ===== COVER ===== */
+  .cover-section {
+    background: linear-gradient(160deg, #0a1628 0%, #1e3a5f 50%, #0f2040 100%);
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cover-section::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(ellipse at 70% 30%, rgba(249,115,22,0.08) 0%, transparent 60%);
+  }
+
+  .cover-inner {
+    text-align: center;
+    max-width: 700px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .cover-brand {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.05em;
+  }
+
+  .cover-year-bg {
+    font-size: 10rem;
+    font-weight: 900;
+    color: rgba(255,255,255,0.03);
+    position: absolute;
+    top: -2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    line-height: 1;
+    pointer-events: none;
+    font-family: 'Inter', sans-serif;
+  }
+
+  .cover-h1 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 900;
+    color: white;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+  }
+
+  .cover-subtitle {
+    font-size: 1.1rem;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 1.5rem;
+  }
+
+  .cover-meta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    color: rgba(255,255,255,0.4);
+    font-size: 0.85rem;
+    margin-bottom: 2rem;
+  }
+
+  .cover-tags {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+
+  .cover-tag {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.12);
+    color: rgba(255,255,255,0.6);
+    padding: 0.3rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+  }
+
+  /* ===== CONTAINER ===== */
+  .wp-container {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .wp-section {
+    padding: 3rem 0;
+    border-bottom: 1px solid #f0f0f0;
+  }
+
+  .wp-section:last-child { border-bottom: none; }
+
+  /* ===== CHAPTER HEADER ===== */
+  .chapter-header {
+    margin-bottom: 2rem;
+  }
+
+  .chapter-num {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #f97316;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.5rem;
+  }
+
+  .chapter-title {
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+    font-weight: 900;
+    color: #1e3a5f;
+    line-height: 1.2;
+  }
+
+  .wp-h3 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #1e3a5f;
+    margin: 2rem 0 1rem;
+    padding-left: 0.75rem;
+    border-left: 3px solid #f97316;
+  }
+
+  .wp-lead {
+    font-size: 1.1rem;
+    color: #555;
+    margin-bottom: 1.5rem;
+    line-height: 1.7;
+  }
+
+  /* ===== QUOTE BOX ===== */
+  .quote-box {
+    background: linear-gradient(135deg, #f0f7ff 0%, #fff9f5 100%);
+    border-left: 4px solid #f97316;
+    padding: 1.5rem 2rem;
+    border-radius: 0 12px 12px 0;
+    margin: 1rem 0;
+  }
+
+  /* ===== TIP BOX ===== */
+  .tip-box {
+    background: #fff9f0;
+    border: 1px solid #fed7aa;
+    border-radius: 10px;
+    padding: 1rem 1.25rem;
+    color: #92400e;
+    font-size: 0.95rem;
+    margin: 1.5rem 0;
+  }
+
+  .tip-box.warning {
+    background: #fff8e1;
+    border-color: #fbbf24;
+    color: #78350f;
+  }
+
+  /* ===== PRESSURE GRID ===== */
+  .pressure-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.25rem;
+    margin: 1.5rem 0;
+  }
+
+  .pressure-card {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 1.25rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  }
+
+  .pressure-icon { font-size: 2rem; margin-bottom: 0.75rem; }
+  .pressure-card h4 { font-weight: 700; color: #1e3a5f; margin-bottom: 0.5rem; font-size: 0.95rem; }
+  .pressure-card p { color: #666; font-size: 0.88rem; line-height: 1.6; }
+
+  /* ===== TABLES ===== */
+  .comparison-table, .budget-table { overflow-x: auto; margin: 1.5rem 0; }
+
+  table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+  th {
+    background: #1e3a5f;
+    color: white;
+    padding: 0.75rem 1rem;
+    text-align: left;
+    font-weight: 600;
+  }
+  td {
+    padding: 0.7rem 1rem;
+    border-bottom: 1px solid #f0f0f0;
+    color: #444;
+  }
+  tr:nth-child(even) td { background: #fafafa; }
+  tr:hover td { background: #fff5ee; }
+
+  /* ===== CASE CARDS ===== */
+  .case-card {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 16px;
+    margin-bottom: 1.5rem;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  }
+
+  .case-header {
+    background: linear-gradient(135deg, #f8faff 0%, #fff 100%);
+    padding: 1.25rem 1.5rem;
+    border-bottom: 1px solid #e5e7eb;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+
+  .case-num {
+    background: #1e3a5f;
+    color: white;
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 0.2rem 0.6rem;
+    border-radius: 20px;
+    letter-spacing: 0.05em;
+  }
+
+  .case-industry {
+    background: #fff5ee;
+    color: #c2410c;
+    font-size: 0.78rem;
+    font-weight: 600;
+    padding: 0.2rem 0.6rem;
+    border-radius: 20px;
+  }
+
+  .case-header h3 {
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: #1e3a5f;
+    margin: 0;
+    flex: 1;
+    min-width: 200px;
+  }
+
+  .case-body { padding: 1.25rem 1.5rem; }
+
+  .case-row {
+    display: grid;
+    grid-template-columns: 70px 1fr;
+    gap: 0.75rem;
+    margin-bottom: 0.85rem;
+    font-size: 0.9rem;
+  }
+
+  .case-label {
+    font-weight: 700;
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 6px;
+    text-align: center;
+    height: fit-content;
+    margin-top: 1px;
+  }
+
+  .case-row.problem .case-label { background: #fee2e2; color: #b91c1c; }
+  .case-row.solution .case-label { background: #dbeafe; color: #1d4ed8; }
+  .case-row.benefit .case-label { background: #d1fae5; color: #065f46; }
+
+  .case-tools { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; padding-top: 0.75rem; border-top: 1px solid #f0f0f0; }
+
+  .tool-badge {
+    background: #f1f5f9;
+    color: #475569;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.25rem 0.6rem;
+    border-radius: 6px;
+    border: 1px solid #e2e8f0;
+  }
+
+  /* ===== ROI FORMULA ===== */
+  .formula-box {
+    background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%);
+    color: white;
+    border-radius: 16px;
+    padding: 2rem;
+    margin: 1.5rem 0;
+    text-align: center;
+  }
+
+  .formula-title { font-size: 0.85rem; color: rgba(255,255,255,0.5); margin-bottom: 1rem; letter-spacing: 0.1em; text-transform: uppercase; }
+  .formula-line { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem; }
+  .formula-plus { color: #86efac; font-size: 1rem; margin-bottom: 0.25rem; }
+  .formula-minus { color: #fca5a5; font-size: 1rem; }
+
+  /* ===== ROI CARDS ===== */
+  .roi-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.25rem;
+    margin: 1.5rem 0;
+  }
+
+  .roi-card {
+    border-radius: 16px;
+    padding: 1.5rem;
+    text-align: center;
+    border: 2px solid transparent;
+  }
+
+  .roi-card.small { background: #f0fdf4; border-color: #86efac; }
+  .roi-card.medium { background: #fff7ed; border-color: #fed7aa; }
+  .roi-card.large { background: #eff6ff; border-color: #93c5fd; }
+
+  .roi-scale { font-weight: 800; font-size: 1.05rem; color: #1e3a5f; margin-bottom: 0.25rem; }
+  .roi-scenario { font-size: 0.78rem; color: #666; margin-bottom: 1rem; }
+  .roi-savings { font-size: 0.75rem; color: #888; text-transform: uppercase; letter-spacing: 0.05em; }
+  .roi-amount { font-size: 2rem; font-weight: 900; color: #f97316; font-family: 'Inter', sans-serif; }
+  .roi-payback { font-size: 0.8rem; color: #666; margin-top: 0.5rem; }
+
+  /* ===== ROADMAP ===== */
+  .roadmap { display: flex; flex-direction: column; gap: 1.5rem; margin-top: 1.5rem; }
+
+  .roadmap-phase {
+    border-radius: 16px;
+    padding: 1.5rem;
+    position: relative;
+    padding-left: 2rem;
+  }
+
+  .phase1 { background: #f0fdf4; border-left: 4px solid #22c55e; }
+  .phase2 { background: #fff7ed; border-left: 4px solid #f97316; }
+  .phase3 { background: #eff6ff; border-left: 4px solid #3b82f6; }
+
+  .phase-badge {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 800;
+    padding: 0.2rem 0.75rem;
+    border-radius: 20px;
+    margin-bottom: 0.75rem;
+  }
+
+  .phase1 .phase-badge { background: #22c55e; color: white; }
+  .phase2 .phase-badge { background: #f97316; color: white; }
+  .phase3 .phase-badge { background: #3b82f6; color: white; }
+
+  .phase-title { font-size: 1.15rem; font-weight: 800; color: #1e3a5f; margin-bottom: 0.5rem; }
+  .phase-goal { font-size: 0.88rem; color: #666; margin-bottom: 1rem; font-style: italic; }
+  .phase-tasks { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0.5rem; }
+  .phase-tasks li { font-size: 0.9rem; color: #444; padding-left: 0.25rem; }
+
+  /* ===== TOOLS GRID ===== */
+  .tools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.25rem;
+    margin-top: 1.5rem;
+  }
+
+  .tool-category {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 1.25rem;
+  }
+
+  .tool-cat-title { font-size: 0.95rem; font-weight: 800; color: #1e3a5f; margin-bottom: 0.75rem; }
+
+  .tool-list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0.6rem; }
+  .tool-list li { font-size: 0.85rem; color: #444; }
+  .tool-desc { display: block; font-size: 0.78rem; color: #888; margin-top: 0.1rem; }
+
+  /* ===== CTA SECTION ===== */
+  .cta-section {
+    background: linear-gradient(135deg, #1e3a5f 0%, #0f2447 100%);
+    border-radius: 24px;
+    margin: 2rem 0 4rem;
+    padding: 0 !important;
+    border: none !important;
+  }
+
+  .cta-inner { padding: 3rem 2rem; text-align: center; }
+
+  .cta-title { font-size: 2rem; font-weight: 900; color: white; margin-bottom: 0.75rem; }
+  .cta-desc { color: rgba(255,255,255,0.7); font-size: 1.05rem; margin-bottom: 2.5rem; line-height: 1.6; }
+
+  .cta-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .cta-option {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 16px;
+    padding: 1.5rem;
+  }
+
+  .cta-option-icon { font-size: 2rem; margin-bottom: 0.75rem; }
+  .cta-option h3 { font-size: 1rem; font-weight: 700; color: white; margin-bottom: 0.5rem; }
+  .cta-option p { font-size: 0.85rem; color: rgba(255,255,255,0.6); margin-bottom: 1.25rem; line-height: 1.6; }
+
+  .cta-btn {
+    display: inline-block;
+    padding: 0.65rem 1.5rem;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+
+  .cta-btn.primary { background: #f97316; color: white; }
+  .cta-btn.primary:hover { background: #ea580c; transform: translateY(-1px); }
+  .cta-btn.secondary { background: rgba(255,255,255,0.1); color: white; border: 1px solid rgba(255,255,255,0.3); }
+  .cta-btn.secondary:hover { background: rgba(255,255,255,0.2); }
+
+  .cta-footer { color: rgba(255,255,255,0.4); font-size: 0.85rem; }
+  .cta-footer a { color: rgba(255,255,255,0.6); text-decoration: underline; }
+  .cta-footer p { margin-bottom: 0.25rem; }
+  .cta-copyright { font-size: 0.75rem; margin-top: 0.75rem; }
+
+  /* ===== PRINT OVERRIDES ===== */
+  @media print {
+    .cover-section { min-height: 100vh; }
+    .cta-section { background: #1e3a5f !important; -webkit-print-color-adjust: exact; color-adjust: exact; }
+    .case-card, .pressure-card, .roi-card, .tool-category { break-inside: avoid; }
+  }
+</style>
