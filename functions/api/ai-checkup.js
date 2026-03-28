@@ -164,10 +164,10 @@ function extractScore(reportText) {
 async function callAnthropic(apiKey, prompt) {
   let response;
   try {
-    response = await fetch('https://api.anthropic.com/v1/messages', {
+    response = await fetch('https://ai-api.jimmy.vip/v1/messages', {
       method: 'POST',
       headers: {
-        'x-api-key': apiKey,
+        'x-proxy-token': 'jimmy-ai-proxy-2026',
         'anthropic-version': '2023-06-01',
         'content-type': 'application/json',
       },
