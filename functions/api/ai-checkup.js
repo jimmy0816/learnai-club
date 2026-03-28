@@ -154,7 +154,6 @@ ${painCostDetails}
 - 報告直接結束在 ROI 表格，不要加結尾語（CTA 由前端加）
 - 語氣像一個很厲害的顧問在跟老闆一對一簡報，不是在寫論文`;
 }
-}
 
 function extractScore(reportText) {
   // Try to extract the AI maturity score from the report
