@@ -46,14 +46,14 @@ const fullTitle = title.includes('Learn AI Club') ? title : `${title} | Learn AI
 
   <title>{fullTitle}</title>
 
-  <!-- TODO: Replace G-XXXXXXXXXX with real GA4 Measurement ID when Jimmy provides it -->
+  <!-- GA4 -->
   <Fragment set:html={`
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZH75Y4S3ZC"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-      gtag('config', 'G-XXXXXXXXXX');
+      gtag('config', 'G-ZH75Y4S3ZC');
     </script>
   `} />
 </head>
